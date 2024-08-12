@@ -16,14 +16,12 @@ const IMAGES = [
     comp: `"Muse Group."<br />"For the music"<br />"makers."`,
     title: `Muse Group. For the music makers.`,
     class: "text-gradient-red",
-
   },
   {
     id: "654d424d20c9a512579256fc",
     comp: <OurMission />,
     title: `Our Mission: Changing the lives of musicians every day`,
     class: "text-gradient-yellow-2",
-
   },
   // {
   //   id: "654d424d20c9a512579256fc",
@@ -37,7 +35,6 @@ const IMAGES = [
     title: "Home to the word's most popular music software and collections",
     classnames: "bg-gradient-to-r from-[#5127da] to-[#9bcefd]",
     class: "text-gradient-purp",
-
   },
 ];
 
@@ -149,7 +146,6 @@ export function Images({ imgIndex }: { imgIndex: number }) {
                 backgroundPosition: "center",
               }}
               animate={{
-                // scale: imgIndex === i ? 0.95 : 0.85,
                 scale: 0.9,
               }}
               transition={TWEEN_OPTIONS}
@@ -195,7 +191,7 @@ function Title({
       )}
     >
       <div
-      // style={{className}}
+        // style={{className}}
         className={cn(
           "uppercase",
           "text-5xl",

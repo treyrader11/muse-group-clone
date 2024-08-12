@@ -29,6 +29,10 @@
 
     --swiper-navigation-size: 44px;
   }
+
+  a {
+    color: var(--link)
+  }
 }
 
 @layer utilities {

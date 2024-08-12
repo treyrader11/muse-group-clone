@@ -1,5 +1,6 @@
 import { m } from "framer-motion";
 import type { Config } from "tailwindcss";
+// import colors from "tailwindcss/colors";
 
 const config: Config = {
   content: [
@@ -9,20 +10,42 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        black: {
+          DEFAULT: "hsl(var(--black))",
+          400: "hsl(var(--black-40))",
+          700: "hsl(var(--black-70))",
+          980: "hsl(var(--black-98))",
+        },
+        link: { DEFAULT: "hsl(var(--link))" },
+        limeGreen: { DEFAULT: "hsl(var(--lime-green))" },
+        grey: {
+          DEFAULT: "hsl(var(--grey))",
+          dark: "hsl(var(--accessible-components-dark-grey))",
+        },
+        aliceBlue: { DEFAULT: "hsl(var(--alice-blue))" },
+        yellow: { DEFAULT: "hsl(var(--yellow))" },
+        coldBlue: { DEFAULT: "hsl(var(--cold-blue))" },
+        gray: { DEFAULT: "hsl(var(--gray))" },
+        ug: { DEFAULT: "hsl(var(--ug))" },
+        musescore4: { DEFAULT: "hsl(var(--musescore4))" },
+        linkHover: { DEFAULT: "hsl(var(--link-hover))" },
+        stroke: { 200: "hsl(var(--stroke2))" },
+        orange: { DEFAULT: "hsl(var(--orange))", 200: "hsl(var(--orange-2))" },
+        musescore: {
+          DEFAULT: "hsl(var(--musescore))",
+          400: "hsl(var(--musescore4))",
+        },
       },
       screens: {
         xs: "400px",
       },
       fontFamily: {
-        poppins: ["var(--font-poppins)"],
-        inter: ["var(--font-inter)"],
-        nunito: ["var(--font-nunito)"],
-        oswald: ["var(--font-oswald)"],
-        grotesk: ["var(--font-grotesk)"],
+        poppins: "var(--font-poppins)",
+        inter: "var(--font-inter)",
+        nunito: "var(--font-nunito)",
+        oswald: "var(--font-oswald)",
+        grotesk: "var(--font-grotesk)",
       },
       keyframes: {
         "open-menu": {

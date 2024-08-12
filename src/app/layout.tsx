@@ -20,7 +20,8 @@ export default function RootLayout({
         className={cn(
           fontGrotesk.variable,
           fontOswald.variable,
-          "font-grotesk"
+          "font-grotesk",
+          // "text-black"
         )}
       >
         <Navbar />

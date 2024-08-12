@@ -3,13 +3,40 @@
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { usePathname } from "next/navigation";
+import path from "path";
+import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
+import { useWindowDimensions } from "@/lib/hooks";
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+
+  const pathname = usePathname();
+  const isNewsroomPage = pathname.includes("newsroom");
+
+  const { width } = useWindowDimensions();
+
+  const backgroundColor = isNewsroomPage
+    ? "bg-grey text-black"
+    : "bg-black text-white";
+
+  useEffect(() => {
+    // reset when page or width of viewport changes
+    setIsProductMenuOpen(false);
+    setIsMobileMenuOpen(false);
+  }, [pathname, width]);
+
+  // useEffect(() => {
+  //   setShowProductMenu(false);
+  //   setShowProductMenu(false);
+  // }, [isMobileMenuOpen]);
+
   return (
     <>
-      <div
+      <header
         className={cn(
           "w-full",
           "min-h-16",
@@ -18,7 +45,7 @@ export default function Navbar() {
           "fixed",
           "top-0",
           "z-10",
-          "bg-white"
+          isNewsroomPage ? "bg-black text-white" : "bg-white text-black"
         )}
       >
         <div
@@ -26,39 +53,70 @@ export default function Navbar() {
             "w-full",
             "grid",
             // "grid-cols-2", // does't stay in container
+            "[grid-template-columns:1fr_1fr]", // stays inside container
             "gap-8",
-            "max-w-[1366px]",
-            "[grid-template-columns:1fr_1fr]" // stays inside container
+            "max-w-[1366px]"
           )}
         >
-          {/* <Logo />
-          <Hamburger
-            isActive={isOpen}
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden ml-auto"
-          /> */}
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
-          <NavMenu className="hidden md:flex" />
+          <NavMenu
+            setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
+            isProductMenuOpen={isProductMenuOpen}
+            className={cn(
+              "hidden md:flex"
+              // { "bg-grey text-black": isNewsroomPage }
+            )}
+          />
         </div>
-      </div>
-      <Logo className="z-[99] fixed top-3 left-[4%]" />
-
-      <Hamburger
-        isActive={isOpen}
-        onClick={() => setIsOpen(!isOpen)}
-        className="md:hidden fixed z-[99] top-3 right-[4%]"
+      </header>
+      <Logo
+        backgroundColor={isNewsroomPage ? "white" : "black"}
+        className="z-[99] fixed top-3 left-[4%]"
       />
 
-      <MobileNavMenu isActive={isOpen}>
-        <NavMenu className="flex-col justify-center items-center" />
+      <Hamburger
+        isActive={isMobileMenuOpen}
+        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+        // onClick={handleClick}
+        className={cn({
+          "bg-white before:bg-white": isNewsroomPage,
+        })}
+      />
+
+      <ProductsMenu isActive={isProductMenuOpen} className={backgroundColor} />
+      <MobileNavMenu
+        isActive={isMobileMenuOpen}
+        className={cn({
+          "bg-black text-white": isNewsroomPage,
+        })}
+      >
+        <NavMenu
+          setIsProductMenuOpen={setIsProductMenuOpen}
+          isProductMenuOpen={isProductMenuOpen}
+          className={cn(
+            "flex-col",
+            "justify-center",
+            "items-center"
+            // backgroundColor
+            // { "bg-black text-white": isNewsroomPage && width > 768 }
+          )}
+        />
       </MobileNavMenu>
     </>
   );
 }
 
-function NavMenu({ className }: { className?: string }) {
+function NavMenu({
+  className,
+  setIsProductMenuOpen,
+  isProductMenuOpen,
+}: {
+  className?: string;
+  setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  isProductMenuOpen: boolean;
+}) {
   const LINKS = [
-    { href: "/", label: "Products" },
+    { href: "#", label: "Products" },
     { href: "/newsroom", label: "Newsroom" },
     { href: "/careers", label: "Careers" },
   ];
@@ -76,14 +134,32 @@ function NavMenu({ className }: { className?: string }) {
         "md:text-3xl",
         "leading-6",
         "tracking-tighter",
+        "h-full",
+        "pb-[70px]",
         className
       )}
     >
-      {LINKS.map(({ href, label }) => (
-        <Link className="hover:opacity-60" key={href} href={href}>
-          {label}
-        </Link>
-      ))}
+      {LINKS.map(({ href, label }) => {
+        if (label === "Products") {
+          return (
+            <Link
+              onClick={() => setIsProductMenuOpen(!isProductMenuOpen)}
+              // onClick={() => setShowProductMenu(true)}
+              className="hover:opacity-60"
+              key={href}
+              href={href}
+            >
+              {label}
+            </Link>
+          );
+        } else {
+          return (
+            <Link className="hover:opacity-60" key={href} href={href}>
+              {label}
+            </Link>
+          );
+        }
+      })}
     </nav>
   );
 }
@@ -98,27 +174,9 @@ function Burger({
   onClick: () => void;
 }) {
   return (
-    // <div
-    //   onClick={onClick}
-    //   data-menu="4"
-    //   className={cn(
-    //     "menu",
-    //     "size-10",
-    //     "mt-1",
-    //     "flex",
-    //     "cursor-pointer",
-    //     "fixed",
-    //     "z-[99]",
-    //     "right-[4%]",
-    //     className
-    //   )}
-    // >
-    //   <div className="icon"></div>
-    // </div>
-
     <div
       onClick={onClick}
-      className="fixed duration-500 transition-all right-[4%] z-10 w-[60px] h-[60px]"
+      className="fixed duration-500 transition-all right-[4%] z-10 size-[60px]"
     >
       <span
         className={cn(
@@ -158,9 +216,11 @@ function Burger({
 function MobileNavMenu({
   children,
   isActive,
+  className,
 }: {
   children: React.ReactNode;
   isActive: boolean;
+  className?: string;
 }) {
   return (
     <div
@@ -171,14 +231,16 @@ function MobileNavMenu({
         "flex",
         "flex-col",
         "justify-end",
-        "pb-[70px]",
-        "bg-gray-200",
+        // "pb-[70px]",
+        "bg-grey",
         "w-full",
         "transition-all",
         "duration-[600ms]",
         "ease-in-out",
         "-translate-y-full",
-        isActive ? "translate-y-0" : "-translate-y-full"
+        "min-h-screen",
+        isActive ? "translate-y-0" : "-translate-y-full",
+        className
 
         // with keyframes in config
         // isActive ? "flex" : "hidden",
@@ -194,8 +256,8 @@ function MobileNavMenu({
 }
 
 // "origin-top" <- tells it where to start the animation
-
 // tutorial: https://www.youtube.com/watch?v=0TxMHYCMALE
+
 function Hamburger({
   className,
   onClick,
@@ -206,15 +268,7 @@ function Hamburger({
   onClick: () => void;
 }) {
   return (
-    <div
-      className={cn(
-        // "fixed",
-        // "right-[4%]",
-        // "top-6",
-        // "z-10",
-        className
-      )}
-    >
+    <div className={cn("md:hidden fixed z-[99] top-3 right-[4%]")}>
       <button
         id="hamburger-button"
         onClick={onClick}
@@ -236,8 +290,6 @@ function Hamburger({
             "top-4",
             "-mt-0.5",
 
-            "rounded-full",
-            "before:rounded-full",
             "before:absolute",
             "before:bg-black",
             "before:h-[3px]",
@@ -245,19 +297,66 @@ function Hamburger({
             "before:transition-all",
             "before:duration-500",
             "before:-translate-x-4",
-            "before:-translate-y-3"
-
-            // third line
-            // "after:h-[3px]",
-            // "after:w-9",
-            // "after:transition-all",
-            // "after:duration-500",
-            // "after:-translate-x-4",
-            // "after:translate-y-3",
-            // isActive && "toggle-burger"
+            "before:-translate-y-3",
+            className
           )}
-        ></div>
+        />
       </button>
+    </div>
+  );
+}
+
+function ProductsMenu({
+  isActive,
+  className,
+}: {
+  isActive: boolean;
+  className?: string;
+}) {
+  return (
+    <div
+      className={cn(
+        "text-white",
+        "z-20",
+        // "fixed",
+        // "inset-0",
+        // "bg-grey",
+        // "min-h-screen",
+        // "w-full",
+        // "transition-all",
+        // "duration-[600ms]",
+        // "ease-in-out",
+        // "-translate-y-full",
+        // isActive ? "translate-y-0" : "-translate-y-full"
+
+        "fixed",
+        "inset-0",
+        "flex",
+        "flex-col",
+        "justify-end",
+        "pb-[70px]",
+        "bg-grey",
+        "w-full",
+        "transition-all",
+        "duration-[600ms]",
+        "ease-in-out",
+        "-translate-y-full",
+        isActive ? "translate-y-0" : "-translate-y-full",
+        className
+      )}
+    >
+      {PRODUCTS.map(({ label, id, route }) => (
+        <Link href={route}>
+          <Image
+            src={`https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${id}.svg`}
+            alt={label}
+            width={64}
+            height={64}
+            className="size-64 md:w-[128px]"
+          />
+          <p>{label}</p>
+        </Link>
+      ))}
     </div>
   );
 }

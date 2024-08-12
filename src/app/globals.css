@@ -5,16 +5,29 @@
 @layer base {
   :root {
     /* colors */
-    --black: #19191a;
-    --link: #0080ff;
-    --lime-green: #60bf60;
-    --grey: "#eef0f2"
 
+    /* use hsl if you want color channels to work with tw's opacity modifier syntax: */
+    --black: 240, 2%, 10%;
+    --link: 210, 100%, 50%;
+    --lime-green: 100, 100%, 50%;
+    --grey: 210, 13%, 94%;
+    --alice-blue: 213, 84%, 93%;
+    --black-70: 240, 2%, 10%;
+    --yellow: 60, 100%, 68%;
+    --cold-blue: 236, 100%, 47%;
+    --gray: 240, 1%, 20%;
+    --ug: 47, 100%, 50%;
+    --musescore4: 210, 95%, 93%;
+    --link-hover: 210, 100%, 50%;
+    --stroke2: 204, 9%, 89%;
+    --orange-2: 15, 95%, 61%;
+    --black-40: 240, 2%, 10%;
+    --black-98: 240, 2%, 10%;
+    --orange: 16, 78%, 60%;
+    --accessible-components-dark-grey: 0, 0%, 61%;
+    --musescore: 222, 28%, 14%;
 
-  }
-
-  body {
-    color: var(--black);
+    --swiper-navigation-size: 44px;
   }
 }
 
@@ -25,7 +38,7 @@
 }
 
 @layer components {
-  .title-slider {
+  /* .title-slider {
     background-image: linear-gradient(174deg, #ff2001 5%, white 41%);
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -33,5 +46,35 @@
     font-size: 120px;
     font-weight: 900;
     line-height: 88px;
+  } */
+
+  .text-gradient-yellow {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#ffff5b, #daecfe);
+    -webkit-background-clip: text;
+    background-clip: text;
   }
+
+  .text-gradient-red {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(174deg, #ff2001 5%, white 41%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-gradient-yellow-2 {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(#ffa800, #ffff5b);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .text-gradient-purp {
+    -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(333deg, #5127da 54%, #9bcefd 89%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+
 }

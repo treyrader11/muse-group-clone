@@ -6,42 +6,85 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import path from "path";
 import { ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
-import { useWindowDimensions } from "@/lib/hooks";
 import CloseButton from "./CloseButton";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
+import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  // const [navOverlayHeight, setNavOverlayHeight] = useState(-85);
+  // const [navOverlayHeight, setNavOverlayHeight] = useState(0);
 
   const pathname = usePathname();
   const isNewsroomPage = pathname.includes("newsroom");
 
   const { width } = useWindowDimensions();
-
   const isSmallScreen = width < 768;
 
+  // const { scrollY, scrollX } = useScroll();
+
+ 
   useEffect(() => {
     // reset when page or width of viewport changes
     setIsProductMenuOpen(false);
     setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
+  // useMotionValueEvent(scrollY, "change", (latest) => {
+  //   if (latest > 68) {
+  //     setHidden(false);
+  //   } else {
+  //     setHidden(true);
+  //   }
+
+  // });
+
+  // useMotionValueEvent(scrollY, "change", (latest) => {
+  //   if (latest <= 85) {
+  //     setScrollYValue(latest - 85);  // Cap the value at 85px
+  //   } else {
+  //     setScrollYValue(0);  // Cap the value at 85px
+  //   }
+  // });
+
+  // useMotionValueEvent(scrollY, "change", (latest) => {
+  //   if (latest <= 85) {
+  //     setNavOverlayHeight(latest - 85); // Cap the value at 85px
+  //   }
+  // });
+
   return (
     <>
+      <NavOverlay
+        // scrollY={navOverlayHeight}
+        // hidden={hidden}
+        // className={cn(hidden ? "top-0" : "-top-[100px]")}
+        className={cn(isNewsroomPage ? "bg-black" : "bg-white")}
+      />
       <header
         className={cn(
+          "fixed",
+          "top-0",
+
+          "bg-transparent",
+          // "bg-white",
+          // "sticky",
+          // "-top-[87px]",
+          "h-[87px]",
+
+          "z-50",
           "w-full",
           "min-h-16",
           "py-3",
           "px-[4%]",
-          "fixed",
-          "top-0",
-          "z-[99]",
-          // isNewsroomPage ? "bg-black text-white" : "bg-white"
-          { " text-white": isNewsroomPage }
-          //  "bg-transparent text-black"
+          { "text-white": isNewsroomPage },
+          // "[transition:background,0.3s_ease]]"
+          "transition-all",
+          "duration-500",
+          "ease-in-out"
         )}
       >
         <div
@@ -51,9 +94,6 @@ export default function Navbar() {
             "[grid-template-columns:1fr_1fr]", // stays inside container
             "gap-8",
             "max-w-[1366px]"
-            // "relative z-[99]"
-
-            // " z-[99] fixed top-3 left-[4%]"
           )}
         >
           <Logo
@@ -63,7 +103,6 @@ export default function Navbar() {
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
-            isProductMenuOpen={isProductMenuOpen}
             className={cn("hidden md:flex")}
             isActive={(href) => href === pathname}
           />
@@ -102,7 +141,6 @@ export default function Navbar() {
       >
         <NavMenu
           setIsProductMenuOpen={setIsProductMenuOpen}
-          isProductMenuOpen={isProductMenuOpen}
           className={cn("flex-col justify-center items-center")}
           isActive={(href) => href === pathname}
         />
@@ -111,17 +149,38 @@ export default function Navbar() {
   );
 }
 
-function NavMenu({
-  className,
-  setIsProductMenuOpen,
-  isProductMenuOpen,
-  isActive,
-}: {
+type NavOverlayProps = {
+  // scrollY: number;
+  className?: string;
+};
+
+function NavOverlay({ className }: NavOverlayProps) {
+  const scrollY = useScrollPosition(85);
+  return (
+    <motion.div
+      style={{
+        transform: `translateY(${scrollY}px)`,
+      }}
+      className={cn(
+        "fixed",
+        "top-0",
+        "bg-black",
+        "h-[71px]",
+        "md:h-[84px]",
+        "w-full",
+        "z-10",
+        className
+      )}
+    />
+  );
+}
+type NavMenuProps = {
   className?: string;
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  isProductMenuOpen: boolean;
   isActive: (href: string) => boolean;
-}) {
+};
+
+function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
   return (
     <nav
       className={cn(
@@ -140,14 +199,14 @@ function NavMenu({
         className
       )}
     >
-      {ROUTES.map(({ href, label }) => (
+      {ROUTES.map(({ path, label }) => (
         <Link
           onClick={() => setIsProductMenuOpen(true)}
           className={cn("hover:opacity-60", {
-            "opacity-60": isActive(href),
+            "opacity-60": isActive(path),
           })}
-          key={href}
-          href={href}
+          key={path}
+          href={path}
         >
           {label}
         </Link>
@@ -271,7 +330,7 @@ function Hamburger({
         id="hamburger-button"
         onClick={onClick}
         className={cn(
-          "focus:outline-none", // more accessible
+          "focus:outline-none", // using focus states like this makes more accessible
           "text-3xl",
           "cursor-pointer",
           "relative",
@@ -287,7 +346,7 @@ function Hamburger({
             "bg-black",
             "top-4",
             "-mt-0.5",
-
+            //before
             "before:absolute",
             "before:bg-black",
             "before:h-[3px]",
@@ -320,33 +379,22 @@ function ProductsMenu({
       className={cn(
         "z-20",
         "fixed",
-        // "absolute",
+        // "absolute", // setting absolute will move element out of view when scrolled
         "inset-0",
         "bg-grey",
         "transition-all",
         "duration-[600ms]",
         "ease-in-out",
         "px-20",
-        isActive ? "translate-y-0" : "-translate-y-[120%]",
-        // "inset-x-[4%]",
-
         "inset-y-0",
-        // "bg-black",
-        // "mt-[84px]",
-        // "border-t-2",
-        // "border-black",
-        // "flex",
-        // "flex-end",
-        // "items-center",
         "max-w-[1366px]",
         "align-self",
-        // "mx-auto",
-        // "mt-[84px]",
         "pt-8",
         "grid",
         "gap-8",
         "grid-cols-2",
         "md:grid-cols-4",
+        isActive ? "translate-y-0" : "-translate-y-[120%]",
         className
       )}
     >
@@ -356,15 +404,8 @@ function ProductsMenu({
           className="hidden md:block"
         />
 
-        {PRODUCTS.map(({ label, iconId, route }) => (
-          <Link
-            href={route}
-            className={cn(
-              "relative",
-              "w-[128px]",
-              "inline-block"
-            )}
-          >
+        {PRODUCTS.map(({ label, iconId, path }) => (
+          <Link href={path} className={cn("relative w-[128px] inline-block")}>
             <Image
               fill
               src={`https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${iconId}.svg`}

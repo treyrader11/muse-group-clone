@@ -4,7 +4,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const IMAGES = [
+const SLIDER_IMAGES = [
   {
     id: "667c1ec9ebf826c004a69380",
     comp: <About />,
@@ -65,7 +65,7 @@ export default function Slider({ className }: { className?: string }) {
 
       if (x === 0) {
         setImgIndex((pv) => {
-          if (pv === IMAGES.length - 1) {
+          if (pv === SLIDER_IMAGES.length - 1) {
             return 0;
           }
           return pv + 1;
@@ -79,7 +79,7 @@ export default function Slider({ className }: { className?: string }) {
   const onDragEnd = () => {
     const x = dragX.get();
 
-    if (x <= -DRAG_BUFFER && imgIndex < IMAGES.length - 1) {
+    if (x <= -DRAG_BUFFER && imgIndex < SLIDER_IMAGES.length - 1) {
       setImgIndex((pv) => pv + 1);
     } else if (x >= DRAG_BUFFER && imgIndex > 0) {
       setImgIndex((pv) => pv - 1);
@@ -92,7 +92,10 @@ export default function Slider({ className }: { className?: string }) {
         "relative",
         "py-8",
         "overflow-hidden",
-        "mx-auto",
+        // "mx-auto",
+        "-mt-[60px]",
+        "md:-mt-[100px]",
+        
         className
       )}
     >
@@ -120,9 +123,8 @@ export default function Slider({ className }: { className?: string }) {
       >
         <Images imgIndex={imgIndex} />
         <Title
-          // className={IMAGES[imgIndex].classnames}
-          title={IMAGES[imgIndex].comp}
-          className={IMAGES[imgIndex].class}
+          title={SLIDER_IMAGES[imgIndex].comp}
+          className={SLIDER_IMAGES[imgIndex].class}
         />
       </motion.div>
       <Indicators imgIndex={imgIndex} setImgIndex={setImgIndex} />
@@ -133,7 +135,7 @@ export default function Slider({ className }: { className?: string }) {
 export function Images({ imgIndex }: { imgIndex: number }) {
   return (
     <>
-      {IMAGES.map((img, i) => {
+      {SLIDER_IMAGES.map((img, i) => {
         return (
           <>
             <motion.div
@@ -143,7 +145,7 @@ export function Images({ imgIndex }: { imgIndex: number }) {
                   img.id
                 }_slider_${i + 1}_ipad.webp)`,
                 backgroundSize: "cover",
-                backgroundPosition: "center",
+                // backgroundPosition: "center",
               }}
               animate={{
                 scale: 0.9,
@@ -159,8 +161,10 @@ export function Images({ imgIndex }: { imgIndex: number }) {
                 "md:rounded-[34px]",
                 "min-h-[70vh]",
                 "md:min-h-[90vh]",
-                "backdrop-blur-sm"
-                // "relative"
+                "mx-auto",
+                // "inset-x-0"
+
+                // "-mt-10",
               )}
             />
             {/* <Title className={img.classnames}>{img.title}</Title> */}
@@ -248,7 +252,7 @@ function Indicators({
       />
 
       <div className={cn("space-x-2 absolute bottom-10 py-2")}>
-        {IMAGES.map((_, i) => {
+        {SLIDER_IMAGES.map((_, i) => {
           return (
             <button
               key={i}

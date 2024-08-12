@@ -16,12 +16,14 @@ export const PRODUCTS = [
     description:
       "The best platform for music makers to learn and play songs they love.",
   },
+
   {
     label: "MuseScore.com",
     iconId: "667b43d94a5ae4dd43194e70_ms",
-    coverid: "667ca0158cbfffe8a5cf2a01_MS-index.webp",
+    coverId: "667ca0158cbfffe8a5cf2a01_MS-index.webp",
     route: "musescore.com",
     description: "The home of sheet music.",
+    onColor: true,
   },
   {
     label: "MuseScore Studio",
@@ -36,6 +38,7 @@ export const PRODUCTS = [
     coverId: "6511efa10919fb9000588fd1_ADCT.webp",
     route: "/audacity",
     description: "The number one audio recording and editing app.",
+    onColor: true,
   },
   {
     label: "Muse Hub",
@@ -43,6 +46,7 @@ export const PRODUCTS = [
     coverId: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
     route: "/muse-hub",
     description: "One hub for all your creative apps.",
+    onColor: true,
   },
   {
     label: "Audio.com",
@@ -51,6 +55,7 @@ export const PRODUCTS = [
     route: "audio.com",
     description:
       "A rapidly-growing, free platform with a library spanning music, podcasts & more.",
+    onColor: true,
   },
   {
     label: "StaffPad",
@@ -59,6 +64,7 @@ export const PRODUCTS = [
     route: "/staffpad",
     description:
       "Handwrite music and watch it come alive with this award-winning tablet app.",
+    onColor: true,
   },
   {
     label: "Tonebridge",
@@ -67,5 +73,6 @@ export const PRODUCTS = [
     route: "/tonebridge",
     description:
       "A free, virtual effects-pedal. Transform your guitar tone to match the sound of iconic songs and records.",
+    onColor: true,
   },
 ];

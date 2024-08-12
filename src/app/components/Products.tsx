@@ -7,30 +7,39 @@ export default function Products() {
   return (
     <div>
       {PRODUCTS.map((project, i) => {
-        return <ProductCard key={i} index={i} {...project} />;
+        return <ProductCard key={i} {...project} />;
       })}
     </div>
   );
 }
 
 interface CardProps {
-  index: number;
   label: string;
   description: string;
   coverId: string;
   iconId: string;
+  onColor?: boolean;
 }
 
-function ProductCard({ coverId, label, description, iconId }: CardProps) {
+function ProductCard({
+  coverId,
+  label,
+  description,
+  iconId,
+  onColor,
+}: CardProps) {
   return (
     <div
       className={cn(
         "min-h-screen",
         "flex",
+
         "items-center",
         "justify-center",
         "sticky",
-        "top-0"
+        "top-0",
+        "top-[70px]",
+        { "text-white": onColor }
       )}
     >
       <div
@@ -42,17 +51,28 @@ function ProductCard({ coverId, label, description, iconId }: CardProps) {
         className={cn(
           "flex",
           "flex-col",
+          "gap-4",
           "relative",
-          "h-[500px]",
+          //   "min-h-[500px]",
           "max-w-[1500px]",
           "w-full",
-          "p-[50px]",
-          "origin-top",
-          "rounded-3xl"
+          "p-[40px]",
+          //   "origin-top",
+          "rounded-3xl",
+          "pt-[125%]"
         )}
       >
-        <div className="flex justify-between w-full">
-          <div className={cn("gap-4", "flex")}>
+        <div
+          className={cn(
+            "flex",
+            "absolute",
+            "top-0",
+            "justify-between",
+            "w-full"
+            // "pr-12"
+          )}
+        >
+          <div className={cn("gap-4", "flex-col", "sm:flex-row", "flex")}>
             <Image
               src={`${ASSETS_BASE_URL}/${iconId}.svg`}
               alt={label}
@@ -74,12 +94,16 @@ function ProductCard({ coverId, label, description, iconId }: CardProps) {
             </h3>
           </div>
 
-          <Image
-            width={64}
-            height={64}
-            alt="arrow icon"
-            src={`${ASSETS_BASE_URL}/6511efa00919fb9000588fb3_Arrow.svg`}
-          />
+          <div className="pr-14">
+            <Image
+              width={64}
+              height={64}
+              alt="arrow icon"
+              src={`${ASSETS_BASE_URL}/6511efa00919fb9000588fb${
+                onColor ? "6_Arrow-white" : "3_Arrow"
+              }.svg`}
+            />
+          </div>
         </div>
         <div
           className={cn(
@@ -91,33 +115,6 @@ function ProductCard({ coverId, label, description, iconId }: CardProps) {
         >
           {description}
         </div>
-
-        {/* <div
-          style={{
-            backgroundImage: `url(${ASSETS_BASE_URL}/${coverId})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-          }}
-          className={cn("flex h-full gap-[50px]")}
-        >
-          <div
-            className={cn(
-              "relative",
-              "w-full",
-              "rounded-3xl",
-              "overflow-hidden"
-            )}
-          >
-            <div className={cn("size-full relative")}>
-              <Image
-                fill
-                src={`${ASSETS_BASE_URL}/${coverId}`}
-                alt="image"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </div> */}
       </div>
     </div>
   );

@@ -46,7 +46,7 @@ export default function Logo({
         alt="logo"
         src={`${ASSETS_BASE_URL}/${mobileLogo}.svg`}
         // className="xs:hidden"
-        className={cn("hidden", { "xs:hidden": !retainSize })}
+        className={cn("", { "xs:hidden": !retainSize })}
         priority
       />
     </Link>

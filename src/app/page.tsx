@@ -11,14 +11,11 @@ import Preloader from "./components/Preloader";
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
 
-  // ask why this is async
   useEffect(() => {
-    (async () => {
-      setTimeout(() => {
-        setIsLoading(false);
-        document.body.style.cursor = "default";
-      }, 1500);
-    })();
+    setTimeout(() => {
+      setIsLoading(false);
+      document.body.style.cursor = "default";
+    }, 1500);
   }, []);
 
   return (

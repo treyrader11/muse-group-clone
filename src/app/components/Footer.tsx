@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 import Logo from "./Logo";
-import { ASSETS_BASE_URL, SOCIALS } from "@/lib/constants";
+import { ASSETS_BASE_URL, SOCIALS, FOOTER_LINKS } from "@/lib/constants";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -11,7 +11,7 @@ export default function Footer() {
       <div className={cn("max-w-[1366px] mx-auto border-t border-gray")}>
         <div className="mt-8 flex w-full justify-between">
           <Logo color="black" />
-          <ul className={cn("pl-0", "ml-0", "flex", "gap-8")}>
+          <ul className={cn("pl-0 ml-0 flex gap-8")}>
             {SOCIALS.map(({ id, label, path }) => (
               <li key={id} className="">
                 <a href={path} target="_blank" rel="noreferrer" className="">
@@ -42,7 +42,9 @@ export default function Footer() {
             "font-sans",
             "gap-9",
             "grid",
-            "grid-cols-2",
+            "grid-cols-1",
+            "xs:grid-cols-2",
+            // "grid-cols-2",
             "auto-rows-auto",
             "auto-cols-fr",
             "place-content-around",
@@ -77,9 +79,7 @@ export default function Footer() {
                 if (path) {
                   return (
                     <li key={path}>
-                      <Link href={path} className="">
-                        {label}
-                      </Link>
+                      <Link href={path}>{label}</Link>
                     </li>
                   );
                 }
@@ -108,30 +108,3 @@ function Copyright() {
     </div>
   );
 }
-
-const FOOTER_LINKS = [
-  {
-    label: "Press Contact",
-    href: "/mailto:j.sutton@mu.se",
-  },
-  {
-    label: "Partnerships",
-    href: "mailto:a.smirnova@mu.se",
-  },
-  {
-    label: "Careers",
-    href: "mailto:career@mu.se",
-  },
-  {
-    label: "Download Press Kit",
-    path: "/content/dowlonad-press-kit",
-  },
-  {
-    label: "Privacy Policy",
-    path: "/content/privacy-policy",
-  },
-  {
-    label: "Terms of Service",
-    path: "/content/terms-of-service",
-  },
-];

@@ -29,7 +29,8 @@ export default function RootLayout({
         <main
           className={cn(
             "overflow-clip", // keeps content intact including sticky elements
-            "mx-auto"
+            "mx-auto",
+            // "relative"
           )}
         >
           {children}

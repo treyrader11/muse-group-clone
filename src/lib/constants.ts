@@ -141,3 +141,30 @@ export const SOCIALS = [
     path: "https://www.linkedin.com/company/muse/",
   },
 ];
+
+export const FOOTER_LINKS = [
+  {
+    label: "Press Contact",
+    href: "/mailto:j.sutton@mu.se",
+  },
+  {
+    label: "Partnerships",
+    href: "mailto:a.smirnova@mu.se",
+  },
+  {
+    label: "Careers",
+    href: "mailto:career@mu.se",
+  },
+  {
+    label: "Download Press Kit",
+    path: "/content/dowlonad-press-kit",
+  },
+  {
+    label: "Privacy Policy",
+    path: "/content/privacy-policy",
+  },
+  {
+    label: "Terms of Service",
+    path: "/content/terms-of-service",
+  },
+];

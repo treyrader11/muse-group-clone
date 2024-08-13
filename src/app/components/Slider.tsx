@@ -186,7 +186,8 @@ function Bullets({ imgIndex, setImgIndex }: BulletProps) {
           "px-14",
           "py-5",
           "rounded-3xl",
-          "w-fit"
+          "w-fit",
+          "z-50"
         )}
       />
 
@@ -201,6 +202,7 @@ function Bullets({ imgIndex, setImgIndex }: BulletProps) {
               "transition-colors",
               "bg-white",
               "relative",
+               "z-50",
               {
                 "bg-yellow": i === imgIndex,
               }

@@ -17,6 +17,7 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
         "grid",
         "place-items-center",
         "fixed",
+        // "absolute",
         "z-[99]",
         "bg-black",
         "size-screen",

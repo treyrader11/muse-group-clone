@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import { fontOswald, fontGrotesk, fontInter } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
+import Footer from "./components/Footer";
 
 export const metadata: Metadata = {
   title: "Muse Group Clone",
@@ -35,6 +36,7 @@ export default function RootLayout({
         >
           {children}
         </main>
+        <Footer />
       </body>
     </html>
   );

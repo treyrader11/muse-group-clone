@@ -16,7 +16,6 @@ export const PRODUCTS = [
     description:
       "The best platform for music makers to learn and play songs they love.",
   },
-
   {
     label: "MuseScore.com",
     iconId: "667b43d94a5ae4dd43194e70_ms",
@@ -119,5 +118,23 @@ export const BANNERS = [
     image: "banner-2.png",
     backgroundColor: "hsl(var(--purp))",
     icon: "6511efa00919fb9000588fc5_Arrow-cold-blue",
+  },
+];
+
+export const SOCIALS = [
+  {
+    id: "6511efa00919fb9000588fb9_Connect_Facebook",
+    label: "Facebook",
+    path: "https://www.facebook.com/Museteamofficial",
+  },
+  {
+    id: "65411d0212e210b8b7d93f9a_Connect_Instagram",
+    label: "Instagram",
+    path: "https://www.instagram.com/wearemusegroup/",
+  },
+  {
+    id: "6511efa00919fb9000588fb5_Connect_LinkedIn",
+    label: "LinkedIn",
+    path: "https://www.linkedin.com/company/muse/",
   },
 ];

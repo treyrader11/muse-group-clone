@@ -17,8 +17,8 @@ export default function Logo({
     : "667b40c9f8dacab38d9c0890_logo-white";
 
   const mobileLogo = onDark
-    ? "667b41ed7a8c0f8368a469fc_M-logo-white"
-    : "667b42061b567aa6b91b5f66_M-logo-black";
+    ? "667b42061b567aa6b91b5f66_M-logo-black"
+    : "667b41ed7a8c0f8368a469fc_M-logo-white";
 
   return (
     <Link

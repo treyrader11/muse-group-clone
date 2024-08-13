@@ -61,7 +61,8 @@ export default function Slider({ className }: SliderProps) {
         "py-8",
         "overflow-hidden",
         "-mt-[60px]",
-        "md:-mt-[100px]",
+        "xs:-mt-[180px]",
+        "md:-mt-[155px]",
         className
       )}
     >
@@ -118,12 +119,11 @@ export function Images() {
                 // "aspect-square",
                 "shrink-0",
                 "rounded-2xl",
-                "xs:rounded-[38px]",
+                "xs:rounded-[32px]",
                 "md:rounded-[34px]",
                 "min-h-[70vh]",
                 "md:min-h-[90vh]",
                 "w-full"
-                // "mx-auto",
               )}
             />
           </>

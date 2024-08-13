@@ -50,13 +50,19 @@ const config: Config = {
       },
       keyframes: {
         "open-menu": {
+          // currently not being used (nav)
           "0%": { transform: "scaleY(0)" },
           "80%": { transform: "scaleY(1.2)" },
           "100%": { transform: "scaleY(1)" },
         },
+        "slide-up": {
+          "0%": { transform: "translateY(30px) scale(0.9)" },
+          "100%": { transform: "translateY(0) scale(1)" },
+        },
       },
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
+        "slide-up": "slide-up 0.5s ease-out",
       },
     },
   },

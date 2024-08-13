@@ -5,7 +5,11 @@ import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
 
 export default function Products() {
   return (
-    <section className={cn("xs:pt-[252px]")}>
+    <section
+      className={cn()
+      // "xs:pt-[252px]"
+      }
+    >
       {PRODUCTS.map((project, i) => {
         return <ProductCard key={i} {...project} />;
       })}
@@ -33,11 +37,11 @@ function ProductCard({
       className={cn(
         "min-h-screen",
         "flex",
-        "items-center",
+        // "items-center",
         "justify-center",
         "sticky",
-        "top-0",
-        "top-[70px]",
+        "top-[76px]",
+        // "xs:top-[70px]",
         { "text-white": onColor }
       )}
     >
@@ -52,11 +56,12 @@ function ProductCard({
           "flex-col",
           "gap-4",
           "relative",
-          //   "min-h-[500px]",
+          // "min-h-[500px]",
           "max-w-[1500px]",
           "w-full",
-          "p-[40px]",
-          "rounded-3xl",
+          "px-[40px]",
+          "rounded-2xl",
+          "xs:rounded-3xl",
           "pt-[125%]"
         )}
       >

@@ -1,25 +1,41 @@
+"use client";
+
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
 import React from "react";
 
-export default function Featured() {
+type FeaturedProps = {
+  className?: string;
+  children?: React.ReactNode;
+};
+
+export default function Featured({ className, children }: FeaturedProps) {
   return (
-    <section
+    <motion.section
+      initial={{
+        opacity: 0,
+        y: 20,
+      }}
+      animate={{
+        opacity: 1,
+        y: [20, -5, 0],
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.4, 0.0, 0.2, 1],
+      }}
       className={cn(
         "flex-center",
         "flex-col",
-        "pt-[256px]",
-        // "px-[4%]",
+        // "pt-20",
+        // "pt-[128px]",
+        "xs:pt-[14rem]",
         "font-oswald",
-        "w-full"
+        "px-3",
+        className
       )}
     >
-      <h1 className="title-mask">
-        What Muse <br />
-        creates
-        <br />
-      </h1>
-
-      <h3 className="xs:px-16">For&nbsp;OUR&nbsp;400M+ USERS</h3>
-    </section>
+      {children}
+    </motion.section>
   );
 }

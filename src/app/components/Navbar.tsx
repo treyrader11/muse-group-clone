@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import {ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
+import { ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
 import CloseButton from "./CloseButton";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
@@ -46,6 +46,8 @@ export default function Navbar() {
       />
       <header
         className={cn(
+          // "w-full",
+          "inset-x-0",
           "fixed",
           "top-0",
           "h-[87px]",
@@ -56,23 +58,15 @@ export default function Navbar() {
           { "text-white": isNewsroomPage }
         )}
       >
-        <div
-          className={cn(
-            "grid",
-            // "grid-cols-2", // does't stay in container
-            "[grid-template-columns:1fr_1fr]", // stays inside container
-            "gap-8",
-            "max-w-[1366px]"
-          )}
-        >
+        <div className={cn("grid grid-cols-2 gap-8 max-w-[1366px]")}>
           <Logo
             backgroundColor={isNewsroomPage ? "white" : "black"}
-            className={cn("hidden md:block")}
+            className={cn("hidden md:block ")}
           />
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
-            className={cn("hidden md:flex")}
+            className={cn("hidden md:flex self-start -mt-2")} // hack margin
             isActive={(href) => href === pathname}
           />
         </div>
@@ -110,7 +104,7 @@ export default function Navbar() {
       >
         <NavMenu
           setIsProductMenuOpen={setIsProductMenuOpen}
-          className={cn("flex-col justify-center items-center")}
+          className={cn("flex-col justify-center items-center pb-[70px]")}
           isActive={(href) => href === pathname}
         />
       </MobileNavMenu>
@@ -153,7 +147,7 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
     <nav
       className={cn(
         "flex",
-        "justify-evenly",
+        "justify-between",
         "gap-x-5",
         "gap-y-[70px]",
         "uppercase",
@@ -163,7 +157,7 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
         "md:text-3xl",
         "leading-6",
         "tracking-tighter",
-        "pb-[70px]",
+
         className
       )}
     >

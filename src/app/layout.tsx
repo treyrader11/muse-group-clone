@@ -25,7 +25,16 @@ export default function RootLayout({
         )}
       >
         <Navbar />
-        <main className={cn("pt-16 md:pt-[128px] mx-auto")}>{children}</main>
+        <main
+          className={cn(
+            "pt-24",
+            "md:pt-[128px]",
+            "overflow-clip", // keeps content intact including sticky elements
+            "mx-auto"
+          )}
+        >
+          {children}
+        </main>
       </body>
     </html>
   );

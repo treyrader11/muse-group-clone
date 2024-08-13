@@ -73,13 +73,7 @@ export default function Navbar() {
             className={cn("hidden md:block ")}
           />
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
-          {/* <NavMenu
-            setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
-            className={cn("hidden md:flex self-start -mt-2")} // hack margin
-            isActive={(href) =>
-              href === pathname || (isProductMenuOpen && href !== pathname)
-            }
-          /> */}
+
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
             className={cn("hidden md:flex self-start -mt-2")} // hack margin
@@ -124,11 +118,6 @@ export default function Navbar() {
           "bg-black text-white": isNewsroomPage,
         })}
       >
-        {/* <NavMenu
-          setIsProductMenuOpen={setIsProductMenuOpen}
-          className={cn("flex-col justify-center items-center pb-[70px]")}
-          isActive={(href) => href === pathname}
-        /> */}
         <NavMenu
           setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
           className={cn("flex-col justify-center items-center pb-[70px]")}
@@ -174,40 +163,6 @@ type NavMenuProps = {
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   isActive: (href: string) => boolean;
 };
-
-// function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
-//   return (
-//     <nav
-//       className={cn(
-//         "flex",
-//         "justify-between",
-//         "gap-x-5",
-//         "gap-y-[70px]",
-//         "uppercase",
-//         "font-oswald",
-//         "font-semibold",
-//         "text-5xl",
-//         "md:text-3xl",
-//         "leading-6",
-//         "tracking-tighter",
-//         className
-//       )}
-//     >
-//       {ROUTES.map(({ path, label }) => (
-//         <Link
-//           onClick={() => setIsProductMenuOpen(true)}
-//           className={cn("hover:opacity-60", {
-//             "opacity-60": isActive(path),
-//           })}
-//           key={path}
-//           href={path}
-//         >
-//           {label}
-//         </Link>
-//       ))}
-//     </nav>
-//   );
-// }
 
 function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
   return (
@@ -438,7 +393,11 @@ function ProductsMenu({
         />
 
         {PRODUCTS.map(({ label, iconId, path }) => (
-          <Link href={path} className={cn("relative w-[128px] inline-block")}>
+          <Link
+            key={iconId}
+            href={path}
+            className={cn("relative w-[128px] inline-block")}
+          >
             <Image
               fill
               src={`${ASSETS_BASE_URL}/${iconId}.svg`}

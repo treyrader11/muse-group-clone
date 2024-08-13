@@ -100,3 +100,24 @@ export const SLIDER_IMAGES = [
     textGradient: "text-gradient-purp",
   },
 ];
+
+export const BANNERS = [
+  {
+    id: "6511efa10919fb9000588fef_Career",
+    title: "careers",
+    path: "/careers",
+    description: "Join the muse team",
+    image: "banner-1.png",
+    backgroundColor: "hsl(var(--lime-green))",
+    icon: "6511efa00919fb9000588fba_Arrow",
+  },
+  {
+    id: "65383b84a1a71fb9eeb76621_Newsroom",
+    title: "newsroom",
+    path: "/newsroom",
+    description: "Explore news and features",
+    image: "banner-2.png",
+    backgroundColor: "hsl(var(--purp))",
+    icon: "6511efa00919fb9000588fc5_Arrow-cold-blue",
+  },
+];

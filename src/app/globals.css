@@ -28,7 +28,7 @@
     --accessible-components-dark-grey: 0, 0%, 61%;
     --musescore: 222, 28%, 14%;
 
-    /* --swiper-navigation-size: 44px; */
+    --nav-height: 84px;
   }
 
   /* a {
@@ -55,7 +55,7 @@
     text-transform: uppercase;
   }
 
-  /* Explain global styles */
+  /* Make sure to xxplain global styles in video */
   section {
     padding-left: 4%;
     padding-right: 4%;
@@ -130,13 +130,16 @@
   }
 }
 
-@layer utilities {
+@layer components {
   .toggle-burger {
     @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:rotate-[720deg];
   }
 
   .flex-center {
     @apply flex items-center justify-center;
+  }
+  .size-screen {
+    @apply h-screen w-screen;
   }
 
   .title-mask {
@@ -146,7 +149,7 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .text-gradient-yellow {
     -webkit-text-fill-color: transparent;
     background-image: linear-gradient(#ffff5b, #daecfe);

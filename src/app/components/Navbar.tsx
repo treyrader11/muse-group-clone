@@ -6,17 +6,21 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
+import {
+  ASSETS_BASE_URL,
+  PRODUCTS,
+  ROUTES,
+  NAV_HEIGHT,
+  SMALL_HEIGHT_PERCENTAGE,
+} from "@/lib/constants";
 import CloseButton from "./CloseButton";
-import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
-  // const [navOverlayHeight, setNavOverlayHeight] = useState(0);
-  const [activeLink, setActiveLink] = useState("");
 
   const pathname = usePathname();
   const isNewsroomPage = pathname.includes("newsroom");
@@ -24,63 +28,51 @@ export default function Navbar() {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
-  // const { scrollY, scrollX } = useScroll(); // if i run into probelsm with custom hook, use framer motion and pass in the value
-
-  const handleLinkClick = (link: string) => {
-    setActiveLink(link);
-    if (link !== "overlay") {
-      // Route to the new page
-    } else {
-      // Trigger the overlay
-    }
-  };
   useEffect(() => {
     // reset when page or width of viewport changes
     setIsProductMenuOpen(false);
     setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
-  //if i run into probelsm with custom hook, use framer motion and pass in the value
-  // useMotionValueEvent(scrollY, "change", (latest) => {
-  //   if (latest <= 85) {
-  //     setNavOverlayHeight(latest - 85); // Cap the value at 85px
-  //   }
-  // });
-
   return (
     <>
-      <NavOverlay
-        // scrollY={navOverlayHeight}
-        className={cn(isNewsroomPage ? "bg-black" : "bg-white")}
-      />
+      <NavOverlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
       <header
         className={cn(
-          // "w-full",
-          "inset-x-0",
+          "inset-x-0", // can also use w-full
           "fixed",
           "top-0",
-          "h-[87px]",
+          "h-[71px]",
+          "md:h-[87px]",
           "z-50",
-          "min-h-16",
           "py-3",
           "px-[4%]",
           { "text-white": isNewsroomPage }
         )}
       >
-        <div className={cn("grid grid-cols-2 gap-8 max-w-[1366px]")}>
+        <div
+          className={cn(
+            "grid",
+            "grid-cols-2",
+            "place-content-start",
+            "gap-8",
+            "h-full",
+            "max-w-[1366px]",
+            "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding
+          )}
+        >
           <Logo
-            backgroundColor={isNewsroomPage ? "white" : "black"}
+            color={isNewsroomPage ? "white" : "black"}
             className={cn("hidden md:block ")}
           />
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
 
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
-            className={cn("hidden md:flex self-start -mt-2")} // hack margin
+            className={cn("hidden md:flex self-start")} // hack margin
             isActive={(href) => {
               // If the product menu is open, only make the products link active
               if (isProductMenuOpen && href === "/products") return true;
-
               // Otherwise, match based on the current pathname
               return href === pathname;
             }}
@@ -88,7 +80,7 @@ export default function Navbar() {
         </div>
       </header>
       <Logo
-        backgroundColor={isNewsroomPage ? "white" : "black"}
+        color={isNewsroomPage ? "white" : "black"}
         className="z-[99] md:hidden fixed top-3 left-[4%]"
       />
 
@@ -120,11 +112,10 @@ export default function Navbar() {
       >
         <NavMenu
           setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
-          className={cn("flex-col justify-center items-center pb-[70px]")}
+          className={cn("flex-col flex-center pb-[70px]")}
           isActive={(href) => {
             // If the product menu is open, only make the products link active
             if (isProductMenuOpen && href === "/products") return true;
-
             // Otherwise, match based on the current pathname
             return href === pathname;
           }}
@@ -135,7 +126,6 @@ export default function Navbar() {
 }
 
 type NavOverlayProps = {
-  // scrollY: number; // if i run into probelsm with custom hook, use framer motion and pass in the value
   className?: string;
 };
 
@@ -145,12 +135,14 @@ function NavOverlay({ className }: NavOverlayProps) {
     <motion.div
       style={{
         transform: `translateY(${scrollY}px)`,
+        // height: `${NAV_HEIGHT}px`,
       }}
       className={cn(
         "fixed",
         "top-0",
         "h-[71px]",
-        "md:h-[84px]",
+        "md:h-[87px]",
+        // `md:h-[${NAV_HEIGHT}px]`,
         "w-full",
         "z-10",
         className
@@ -176,7 +168,9 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
         "font-oswald",
         "font-semibold",
         "text-5xl",
-        "md:text-3xl",
+        // "md:text-3xl",
+        "md:text-[30px]",
+        // leading only works when text size is arbitrary value
         "leading-6",
         "tracking-tighter",
         className
@@ -185,11 +179,8 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
       {ROUTES.map(({ path, label }) => (
         <Link
           onClick={() => {
-            if (path === "/products") {
-              setIsProductMenuOpen(true);
-            } else {
-              setIsProductMenuOpen(false);
-            }
+            if (path === "/products") setIsProductMenuOpen(true);
+            else setIsProductMenuOpen(false);
           }}
           className={cn("hover:opacity-60", {
             "opacity-60": isActive(path),
@@ -374,7 +365,7 @@ function ProductsMenu({
         "duration-[600ms]",
         "ease-in-out",
         "px-20",
-        "inset-y-0",
+        // "inset-y-0",
         "max-w-[1366px]",
         "align-self",
         "pt-8",

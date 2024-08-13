@@ -1,6 +1,9 @@
 export const ASSETS_BASE_URL =
   "https://cdn.prod.website-files.com/6511efa00919fb9000588f9a";
 
+export const NAV_HEIGHT = 85;
+export const SMALL_HEIGHT_PERCENTAGE = (71 / NAV_HEIGHT) * 100;
+
 export const ROUTES = [
   { path: "#", label: "Products" },
   { path: "/newsroom", label: "Newsroom" },

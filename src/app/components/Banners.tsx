@@ -24,7 +24,7 @@ export default function Banners() {
       )}
     >
       {BANNERS.map(
-        ({ id, path, description, title, icon, backgroundColor }, i) => (
+        ({ id, path, description, title, icon, backgroundColor }) => (
           <Card
             linkTo={path}
             key={id}

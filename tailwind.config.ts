@@ -25,6 +25,7 @@ const config: Config = {
           dark: "hsl(var(--accessible-components-dark-grey))",
         },
         aliceBlue: { DEFAULT: "hsl(var(--alice-blue))" },
+        purple: { DEFAULT: "hsl(var(--purp))" },
         yellow: { DEFAULT: "hsl(var(--yellow))" },
         coldBlue: { DEFAULT: "hsl(var(--cold-blue))" },
         gray: { DEFAULT: "hsl(var(--gray))" },

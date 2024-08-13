@@ -4,6 +4,7 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SLIDER_IMAGES } from "@/lib/constants";
+import Card from "./Card";
 
 export const SPRING_OPTIONS = {
   type: "spring",
@@ -102,31 +103,20 @@ export function Images() {
     <>
       {SLIDER_IMAGES.map((img, i) => {
         return (
-          <>
+          <Card
+            key={i}
+            style={{
+              backgroundImage: `url(https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${
+                img.id
+              }_slider_${i + 1}_ipad.webp)`,
+              backgroundSize: "cover",
+            }}
+          >
             <motion.div
-              key={i}
-              style={{
-                backgroundImage: `url(https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${
-                  img.id
-                }_slider_${i + 1}_ipad.webp)`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
               transition={TWEEN_OPTIONS}
-              className={cn(
-                "w-screen",
-                "aspect-[8/10]",
-                // "aspect-square",
-                "shrink-0",
-                "rounded-2xl",
-                "xs:rounded-[32px]",
-                "md:rounded-[34px]",
-                "min-h-[70vh]",
-                "md:min-h-[90vh]",
-                "w-full"
-              )}
+              className={cn("w-screen aspect-[8/10] shrink-0")}
             />
-          </>
+          </Card>
         );
       })}
     </>

@@ -1,6 +1,7 @@
 import Hero from "./components/Hero";
 import Products from "./components/Products";
 import Featured from "./components/Featured";
+import Banners from "./components/Banners";
 
 export default function HomePage() {
   return (
@@ -22,6 +23,7 @@ export default function HomePage() {
           <br />
         </h2>
       </Featured>
+      <Banners />
     </>
   );
 }

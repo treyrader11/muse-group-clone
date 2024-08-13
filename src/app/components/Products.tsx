@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
+import Card from "./Card";
 
 export default function Products() {
   return (
     <section
-      className={cn()
-      // "xs:pt-[252px]"
+      className={
+        cn()
+        // "xs:pt-[252px]"
       }
     >
       {PRODUCTS.map((project, i) => {
@@ -41,11 +43,12 @@ function ProductCard({
         "justify-center",
         "sticky",
         "top-[76px]",
+        "sm:top-[126px]",
         // "xs:top-[70px]",
         { "text-white": onColor }
       )}
     >
-      <div
+      <Card
         style={{
           backgroundImage: `url(${ASSETS_BASE_URL}/${coverId})`,
           backgroundSize: "cover",
@@ -58,10 +61,11 @@ function ProductCard({
           "relative",
           // "min-h-[500px]",
           "max-w-[1500px]",
-          "w-full",
-          "px-[40px]",
-          "rounded-2xl",
-          "xs:rounded-3xl",
+        //   "w-full",
+        //   "px-[40px]",
+        //   "rounded-2xl",
+        //   "xs:rounded-3xl",
+        //   "md:rounded-[2rem]",
           "pt-[125%]"
         )}
       >
@@ -131,7 +135,7 @@ function ProductCard({
         >
           {description}
         </div> */}
-      </div>
+      </Card>
     </div>
   );
 }

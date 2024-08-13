@@ -9,9 +9,10 @@
     /* use hsl if you want color channels to work with tw's opacity modifier syntax: */
     --black: 240, 2%, 10%;
     --link: 210, 100%, 50%;
-    --lime-green: 100, 100%, 50%;
+    --lime-green: 118, 42%, 51%;
     --grey: 210, 13%, 94%;
     --alice-blue: 213, 84%, 93%;
+    --purp: 253, 68%, 58%;
     --black-70: 240, 2%, 10%;
     --yellow: 60, 100%, 68%;
     --cold-blue: 236, 100%, 47%;
@@ -27,9 +28,12 @@
     --accessible-components-dark-grey: 0, 0%, 61%;
     --musescore: 222, 28%, 14%;
 
-    --swiper-navigation-size: 44px;
+    /* --swiper-navigation-size: 44px; */
   }
 
+  /* a {
+    color: hsl(var(--link));
+  } */
   h1 {
     font-weight: 900;
     letter-spacing: -0.05em;
@@ -50,7 +54,6 @@
     text-align: center;
     text-transform: uppercase;
   }
-
 
   /* Explain global styles */
   section {
@@ -105,8 +108,8 @@
       line-height: 8rem;
     }
     h3 {
-      font-size: 3.75rem;
-      line-height: 4rem;
+      font-size: 4rem;
+      line-height: 3.7rem;
     }
   }
 
@@ -116,14 +119,14 @@
       font-size: 13rem;
       line-height: 11.5rem;
     }
+    h2 {
+      font-size: 11rem;
+      line-height: 10rem;
+    }
     h3 {
       font-size: 4.5rem;
-      line-height: 5rem;
+      line-height: 4.5rem;
     }
-  }
-
-  a {
-    color: var(--link);
   }
 }
 
@@ -139,10 +142,7 @@
   .title-mask {
     @apply overflow-hidden
     bg-clip-text
-    /* flex items-center justify-center */
     flex-center;
-    /* [background-image:linear-gradient(346deg,black_68%,#fa6d3e_87%)]
-    [-webkit-text-fill-color:transparent]; */
   }
 }
 

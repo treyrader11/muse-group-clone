@@ -5,7 +5,7 @@ import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
 
 export default function Products() {
   return (
-    <section>
+    <section className={cn("xs:pt-[252px]")}>
       {PRODUCTS.map((project, i) => {
         return <ProductCard key={i} {...project} />;
       })}

@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
+import {ASSETS_BASE_URL, PRODUCTS, ROUTES } from "@/lib/constants";
 import CloseButton from "./CloseButton";
 import { motion, useMotionValueEvent, useScroll } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
@@ -15,7 +15,6 @@ import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
-  // const [navOverlayHeight, setNavOverlayHeight] = useState(-85);
   // const [navOverlayHeight, setNavOverlayHeight] = useState(0);
 
   const pathname = usePathname();
@@ -24,32 +23,15 @@ export default function Navbar() {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
-  // const { scrollY, scrollX } = useScroll();
+  // const { scrollY, scrollX } = useScroll(); // if i run into probelsm with custom hook, use framer motion and pass in the value
 
- 
   useEffect(() => {
     // reset when page or width of viewport changes
     setIsProductMenuOpen(false);
     setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
-  // useMotionValueEvent(scrollY, "change", (latest) => {
-  //   if (latest > 68) {
-  //     setHidden(false);
-  //   } else {
-  //     setHidden(true);
-  //   }
-
-  // });
-
-  // useMotionValueEvent(scrollY, "change", (latest) => {
-  //   if (latest <= 85) {
-  //     setScrollYValue(latest - 85);  // Cap the value at 85px
-  //   } else {
-  //     setScrollYValue(0);  // Cap the value at 85px
-  //   }
-  // });
-
+  //if i run into probelsm with custom hook, use framer motion and pass in the value
   // useMotionValueEvent(scrollY, "change", (latest) => {
   //   if (latest <= 85) {
   //     setNavOverlayHeight(latest - 85); // Cap the value at 85px
@@ -60,31 +42,18 @@ export default function Navbar() {
     <>
       <NavOverlay
         // scrollY={navOverlayHeight}
-        // hidden={hidden}
-        // className={cn(hidden ? "top-0" : "-top-[100px]")}
         className={cn(isNewsroomPage ? "bg-black" : "bg-white")}
       />
       <header
         className={cn(
           "fixed",
           "top-0",
-
-          "bg-transparent",
-          // "bg-white",
-          // "sticky",
-          // "-top-[87px]",
           "h-[87px]",
-
           "z-50",
-          "w-full",
           "min-h-16",
           "py-3",
           "px-[4%]",
-          { "text-white": isNewsroomPage },
-          // "[transition:background,0.3s_ease]]"
-          "transition-all",
-          "duration-500",
-          "ease-in-out"
+          { "text-white": isNewsroomPage }
         )}
       >
         <div
@@ -150,7 +119,7 @@ export default function Navbar() {
 }
 
 type NavOverlayProps = {
-  // scrollY: number;
+  // scrollY: number; // if i run into probelsm with custom hook, use framer motion and pass in the value
   className?: string;
 };
 
@@ -164,7 +133,6 @@ function NavOverlay({ className }: NavOverlayProps) {
       className={cn(
         "fixed",
         "top-0",
-        "bg-black",
         "h-[71px]",
         "md:h-[84px]",
         "w-full",
@@ -379,7 +347,6 @@ function ProductsMenu({
       className={cn(
         "z-20",
         "fixed",
-        // "absolute", // setting absolute will move element out of view when scrolled
         "inset-0",
         "bg-grey",
         "transition-all",
@@ -408,7 +375,7 @@ function ProductsMenu({
           <Link href={path} className={cn("relative w-[128px] inline-block")}>
             <Image
               fill
-              src={`https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${iconId}.svg`}
+              src={`${ASSETS_BASE_URL}/${iconId}.svg`}
               alt={label}
               className=""
             />

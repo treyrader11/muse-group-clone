@@ -16,6 +16,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
   // const [navOverlayHeight, setNavOverlayHeight] = useState(0);
+  const [activeLink, setActiveLink] = useState("");
 
   const pathname = usePathname();
   const isNewsroomPage = pathname.includes("newsroom");
@@ -25,6 +26,14 @@ export default function Navbar() {
 
   // const { scrollY, scrollX } = useScroll(); // if i run into probelsm with custom hook, use framer motion and pass in the value
 
+  const handleLinkClick = (link: string) => {
+    setActiveLink(link);
+    if (link !== "overlay") {
+      // Route to the new page
+    } else {
+      // Trigger the overlay
+    }
+  };
   useEffect(() => {
     // reset when page or width of viewport changes
     setIsProductMenuOpen(false);
@@ -64,10 +73,23 @@ export default function Navbar() {
             className={cn("hidden md:block ")}
           />
           {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
+          {/* <NavMenu
+            setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
+            className={cn("hidden md:flex self-start -mt-2")} // hack margin
+            isActive={(href) =>
+              href === pathname || (isProductMenuOpen && href !== pathname)
+            }
+          /> */}
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
             className={cn("hidden md:flex self-start -mt-2")} // hack margin
-            isActive={(href) => href === pathname}
+            isActive={(href) => {
+              // If the product menu is open, only make the products link active
+              if (isProductMenuOpen && href === "/products") return true;
+
+              // Otherwise, match based on the current pathname
+              return href === pathname;
+            }}
           />
         </div>
       </header>
@@ -102,10 +124,21 @@ export default function Navbar() {
           "bg-black text-white": isNewsroomPage,
         })}
       >
-        <NavMenu
+        {/* <NavMenu
           setIsProductMenuOpen={setIsProductMenuOpen}
           className={cn("flex-col justify-center items-center pb-[70px]")}
           isActive={(href) => href === pathname}
+        /> */}
+        <NavMenu
+          setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
+          className={cn("flex-col justify-center items-center pb-[70px]")}
+          isActive={(href) => {
+            // If the product menu is open, only make the products link active
+            if (isProductMenuOpen && href === "/products") return true;
+
+            // Otherwise, match based on the current pathname
+            return href === pathname;
+          }}
         />
       </MobileNavMenu>
     </>
@@ -142,6 +175,40 @@ type NavMenuProps = {
   isActive: (href: string) => boolean;
 };
 
+// function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
+//   return (
+//     <nav
+//       className={cn(
+//         "flex",
+//         "justify-between",
+//         "gap-x-5",
+//         "gap-y-[70px]",
+//         "uppercase",
+//         "font-oswald",
+//         "font-semibold",
+//         "text-5xl",
+//         "md:text-3xl",
+//         "leading-6",
+//         "tracking-tighter",
+//         className
+//       )}
+//     >
+//       {ROUTES.map(({ path, label }) => (
+//         <Link
+//           onClick={() => setIsProductMenuOpen(true)}
+//           className={cn("hover:opacity-60", {
+//             "opacity-60": isActive(path),
+//           })}
+//           key={path}
+//           href={path}
+//         >
+//           {label}
+//         </Link>
+//       ))}
+//     </nav>
+//   );
+// }
+
 function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
   return (
     <nav
@@ -157,13 +224,18 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
         "md:text-3xl",
         "leading-6",
         "tracking-tighter",
-
         className
       )}
     >
       {ROUTES.map(({ path, label }) => (
         <Link
-          onClick={() => setIsProductMenuOpen(true)}
+          onClick={() => {
+            if (path === "/products") {
+              setIsProductMenuOpen(true);
+            } else {
+              setIsProductMenuOpen(false);
+            }
+          }}
           className={cn("hover:opacity-60", {
             "opacity-60": isActive(path),
           })}

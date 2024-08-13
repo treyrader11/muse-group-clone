@@ -46,6 +46,11 @@
     text-transform: uppercase;
   }
 
+  section {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+
   /* Styles for screens smaller than 400px */
   @media (max-width: 399px) {
     h1 {
@@ -104,19 +109,17 @@
     @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:rotate-[720deg];
   }
 
-  /* .title-mask {
-    @apply "text-9xl"
-    "tracking-tighter"
-    "md:text-[256px]"
-    "leading-[114px]"
-    "font-black"
-    "uppercase"
-    "text-center"
-    "overflow-hidden"
-    "bg-clip-text"
-    "[background-image:linear-gradient(346deg,black_68%,#fa6d3e_87%)]"
-    "[-webkit-text-fill-color:transparent]";
-  } */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .title-mask {
+    @apply overflow-hidden
+    bg-clip-text
+    flex-center
+    [background-image:linear-gradient(346deg,black_68%,#fa6d3e_87%)]
+    [-webkit-text-fill-color:transparent];
+  }
 }
 
 @layer components {
@@ -146,33 +149,5 @@
     background-image: linear-gradient(333deg, #5127da 54%, #9bcefd 89%);
     -webkit-background-clip: text;
     background-clip: text;
-  }
-
-  .title-mask {
-    background-image: linear-gradient(
-      346deg,
-      hsl(var(--black)) 68%,
-      #fa6d3e 87%
-    );
-    color: hsl(var(--black));
-    text-align: center;
-    text-transform: uppercase;
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    flex-flow: column wrap;
-    justify-content: center;
-    align-items: center;
-    font-size: 256px;
-    font-weight: 900;
-    line-height: 191px;
-    overflow: hidden;
-    letter-spacing: -0.05em;
-  }
-  @media screen and (max-width: 767px) {
-    .title-mask {
-      font-size: 8rem;
-      line-height: 120px;
-    }
   }
 }

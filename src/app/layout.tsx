@@ -25,17 +25,7 @@ export default function RootLayout({
         )}
       >
         <Navbar />
-        <main
-          className={cn(
-            "pt-16",
-            "md:pt-[128px]",
-            "size-full",
-            "mx-auto"
-            // "mx-[4%]" // global margin but it's breaking the hero slider. might create a component.
-          )}
-        >
-          {children}
-        </main>
+        <main className={cn("pt-16 md:pt-[128px] mx-auto")}>{children}</main>
       </body>
     </html>
   );

@@ -3,40 +3,7 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
-
-const SLIDER_IMAGES = [
-  {
-    id: "667c1ec9ebf826c004a69380",
-    comp: <About />,
-    title: `Home to the word's most popular music software and collections`,
-    class: "text-gradient-yellow",
-  },
-  {
-    id: "654d2e2883bfc44e90a9d380",
-    comp: `"Muse Group."<br />"For the music"<br />"makers."`,
-    title: `Muse Group. For the music makers.`,
-    class: "text-gradient-red",
-  },
-  {
-    id: "654d424d20c9a512579256fc",
-    comp: <OurMission />,
-    title: `Our Mission: Changing the lives of musicians every day`,
-    class: "text-gradient-yellow-2",
-  },
-  // {
-  //   id: "654d424d20c9a512579256fc",
-  //   comp: `"Millions of"<br />"creatives"<br />"have joined"<br />"the Muse"<br />"commuunity"`,
-  //   title: `Millions of creatives have joined the Muse community`,
-  //   classnames: "bg-gradient-to-r from-[#5127da] to-[#9bcefd]",
-  // },
-  {
-    id: "654d4437e50414f464bac639",
-    comp: `<p>"Home to the"<br />"word's most"<br />"popular music"<br />"software and"<br />"collections"</p>`,
-    title: "Home to the word's most popular music software and collections",
-    classnames: "bg-gradient-to-r from-[#5127da] to-[#9bcefd]",
-    class: "text-gradient-purp",
-  },
-];
+import { SLIDER_IMAGES } from "@/lib/constants";
 
 export const SPRING_OPTIONS = {
   type: "spring",
@@ -53,8 +20,9 @@ const TWEEN_OPTIONS = {
   type: "tween",
   duration: 0.7,
 };
+type SliderProps = { className?: string };
 
-export default function Slider({ className }: { className?: string }) {
+export default function Slider({ className }: SliderProps) {
   const [imgIndex, setImgIndex] = useState(0);
 
   const dragX = useMotionValue(0);
@@ -92,10 +60,8 @@ export default function Slider({ className }: { className?: string }) {
         "relative",
         "py-8",
         "overflow-hidden",
-        // "mx-auto",
         "-mt-[60px]",
         "md:-mt-[100px]",
-        
         className
       )}
     >
@@ -116,23 +82,21 @@ export default function Slider({ className }: { className?: string }) {
         className={cn(
           "flex",
           "items-center",
+          "mx-auto",
           "cursor-grab",
           "active:cursor-grabbing",
           "relative"
         )}
       >
-        <Images imgIndex={imgIndex} />
-        <Title
-          title={SLIDER_IMAGES[imgIndex].comp}
-          className={SLIDER_IMAGES[imgIndex].class}
-        />
+        <Images />
       </motion.div>
-      <Indicators imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <Bullets imgIndex={imgIndex} setImgIndex={setImgIndex} />
+      <Titles imgIndex={imgIndex} />
     </div>
   );
 }
 
-export function Images({ imgIndex }: { imgIndex: number }) {
+export function Images() {
   return (
     <>
       {SLIDER_IMAGES.map((img, i) => {
@@ -145,10 +109,7 @@ export function Images({ imgIndex }: { imgIndex: number }) {
                   img.id
                 }_slider_${i + 1}_ipad.webp)`,
                 backgroundSize: "cover",
-                // backgroundPosition: "center",
-              }}
-              animate={{
-                scale: 0.9,
+                backgroundPosition: "center",
               }}
               transition={TWEEN_OPTIONS}
               className={cn(
@@ -161,13 +122,10 @@ export function Images({ imgIndex }: { imgIndex: number }) {
                 "md:rounded-[34px]",
                 "min-h-[70vh]",
                 "md:min-h-[90vh]",
-                "mx-auto",
-                // "inset-x-0"
-
-                // "-mt-10",
+                "w-full"
+                // "mx-auto",
               )}
             />
-            {/* <Title className={img.classnames}>{img.title}</Title> */}
           </>
         );
       })}
@@ -175,63 +133,54 @@ export function Images({ imgIndex }: { imgIndex: number }) {
   );
 }
 
-function Title({
-  className,
-  // children,
-  title: Title,
-}: {
-  className?: string;
-  // children?: React.ReactNode;
-  title: React.ReactNode;
-}) {
+type TitleProps = { className?: string; imgIndex: number };
+
+function Titles({ className, imgIndex }: TitleProps) {
   return (
     <div
       className={cn(
         "absolute",
-        "top-12",
-        "left-8",
+        "top-10",
+        "left-2",
         "sm:top-20",
         "md:left-[32px]"
       )}
     >
-      <div
-        // style={{className}}
-        className={cn(
-          "uppercase",
-          "text-5xl",
-          "xs:text-6xl",
-          "md:text-8xl",
-          "font-black",
-          "leading-[40px]",
-          "xs:leading-[50px]",
-          "md:leading-[75px]",
-          // "bg-clip-text",
-          // "text-transparent",
-          "tracking-tighter",
-          // "bg-gradient-to-r",
-          // "from-yellow-200",
-          // "via-orange",
-          // "to-orange",
-          // "max-w-[80%]",
-          // "xs:max-w-[65%]",
-          className,
-          "text-"
-        )}
-      >
-        {Title}
-        {/* {children} */}
-      </div>
+      {SLIDER_IMAGES.map(({ comp, textGradient }, i) =>
+        i === imgIndex ? (
+          <motion.h1
+            key={i}
+            animate={{
+              scale: 0.9,
+            }}
+            transition={TWEEN_OPTIONS}
+            dangerouslySetInnerHTML={{ __html: comp }} // not for production (just use component)
+            className={cn(
+              "absolute",
+              "text-left",
+              "font-oswald",
+              "text-[3rem]",
+              "xs:text-7xl",
+              "md:text-8xl",
+              "leading-[3rem]",
+              "xs:leading-[4.2rem]",
+              "md:leading-[5.5rem]",
+              textGradient,
+              className
+            )}
+          />
+        ) : null
+      )}
     </div>
   );
 }
 
-function Indicators({
-  imgIndex,
-  setImgIndex,
-}: {
+type BulletProps = {
   imgIndex: number;
   setImgIndex: Dispatch<SetStateAction<number>>;
-}) {
+};
+
+function Bullets({ imgIndex, setImgIndex }: BulletProps) {
   return (
     <div className={cn("flex justify-center w-full relative")}>
       <div
@@ -252,55 +201,23 @@ function Indicators({
       />
 
       <div className={cn("space-x-2 absolute bottom-10 py-2")}>
-        {SLIDER_IMAGES.map((_, i) => {
-          return (
-            <button
-              key={i}
-              onClick={() => setImgIndex(i)}
-              className={cn(
-                "size-3.5",
-                "rounded-full",
-                "transition-colors",
-                "bg-neutral-500",
-                "relative",
-                {
-                  "bg-yellow": i === imgIndex,
-                }
-              )}
-            />
-          );
-        })}
+        {SLIDER_IMAGES.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setImgIndex(i)}
+            className={cn(
+              "size-3.5",
+              "rounded-full",
+              "transition-colors",
+              "bg-white",
+              "relative",
+              {
+                "bg-yellow": i === imgIndex,
+              }
+            )}
+          />
+        ))}
       </div>
     </div>
-  );
-}
-
-function OurMission() {
-  return (
-    <>
-      Our Mission:
-      <br />
-      Changing the
-      <br />
-      lives of musicans
-      <br />
-      every day
-    </>
-  );
-}
-
-function About() {
-  return (
-    <p>
-      Home to the:
-      <br />
-      {`word's most`}
-      <br />
-      popular music
-      <br />
-      software and
-      <br />
-      collections
-    </p>
   );
 }

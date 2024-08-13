@@ -77,36 +77,26 @@ export const PRODUCTS = [
   },
 ];
 
-// const SLIDER_IMAGES = [
-//   {
-//     id: "667c1ec9ebf826c004a69380",
-//     comp: <About />,
-//     title: `Home to the word's most popular music software and collections`,
-//     class: "text-gradient-yellow",
-//   },
-//   {
-//     id: "654d2e2883bfc44e90a9d380",
-//     comp: `"Muse Group."<br />"For the music"<br />"makers."`,
-//     title: `Muse Group. For the music makers.`,
-//     class: "text-gradient-red",
-//   },
-//   {
-//     id: "654d424d20c9a512579256fc",
-//     comp: <OurMission />,
-//     title: `Our Mission: Changing the lives of musicians every day`,
-//     class: "text-gradient-yellow-2",
-//   },
-//   // {
-//   //   id: "654d424d20c9a512579256fc",
-//   //   comp: `"Millions of"<br />"creatives"<br />"have joined"<br />"the Muse"<br />"commuunity"`,
-//   //   title: `Millions of creatives have joined the Muse community`,
-//   //   classnames: "bg-gradient-to-r from-[#5127da] to-[#9bcefd]",
-//   // },
-//   {
-//     id: "654d4437e50414f464bac639",
-//     comp: `<p>"Home to the"<br />"word's most"<br />"popular music"<br />"software and"<br />"collections"</p>`,
-//     title: "Home to the word's most popular music software and collections",
-//     classnames: "bg-gradient-to-r from-[#5127da] to-[#9bcefd]",
-//     class: "text-gradient-purp",
-//   },
-// ];
+// Make sure to configure tailwind to purge files inside of lib for these classes to work
+export const SLIDER_IMAGES = [
+  {
+    id: "667c1ec9ebf826c004a69380",
+    comp: `Muse Group. <br /> For the music<br />makers.`,
+    textGradient: "text-gradient-yellow",
+  },
+  {
+    id: "654d2e2883bfc44e90a9d380",
+    comp: `Our Mission: <br /> Changing the<br />lives of musicans<br />every day`,
+    textGradient: "text-gradient-red",
+  },
+  {
+    id: "654d424d20c9a512579256fc",
+    comp: `Millions of<br />creatives<br />have joined<br />the Muse<br />commuunity`,
+    textGradient: "text-gradient-yellow-2",
+  },
+  {
+    id: "654d4437e50414f464bac639",
+    comp: `<p>Home to the<br />word's most<br />popular music<br />software and<br />collections</p>`,
+    textGradient: "text-gradient-purp",
+  },
+];

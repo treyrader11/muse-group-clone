@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
 import Card from "./Card";
+import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export default function Products() {
   return (
@@ -22,18 +23,21 @@ export default function Products() {
 type CardProps = {
   label: string;
   description: string;
-  coverId: string;
   iconId: string;
   onColor?: boolean;
+  banner: { mobile: string; desktop: string };
 };
 
 function ProductCard({
-  coverId,
   label,
   description,
   iconId,
   onColor,
+  banner,
 }: CardProps) {
+  const { width } = useWindowDimensions();
+  const isSmallScreen = width < 768;
+
   return (
     <div
       className={cn(
@@ -50,23 +54,23 @@ function ProductCard({
     >
       <Card
         style={{
-          backgroundImage: `url(${ASSETS_BASE_URL}/${coverId})`,
+          backgroundImage: `url(${ASSETS_BASE_URL}/${
+            isSmallScreen ? banner.mobile : banner.desktop
+          })`,
           backgroundSize: "cover",
           backgroundPosition: "center",
+          // backgroundPosition: "50%",
         }}
         className={cn(
           "flex",
           "flex-col",
           "gap-4",
           "relative",
-          // "min-h-[500px]",
-          "max-w-[1500px]",
-        //   "w-full",
-        //   "px-[40px]",
-        //   "rounded-2xl",
-        //   "xs:rounded-3xl",
-        //   "md:rounded-[2rem]",
-          "pt-[125%]"
+          "pt-[125%]",
+          "size-fit",
+          "w-full",
+          "min-h-[80vh]",
+          "[background-position:50%]"
         )}
       >
         <div
@@ -81,13 +85,25 @@ function ProductCard({
           )}
         >
           <div className={cn("flex", "justify-between", "w-full")}>
-            <div className={cn("gap-4", "flex-col", "sm:flex-row", "flex")}>
+            <div
+              className={cn(
+                "gap-4",
+                "flex-col",
+                "sm:flex-row",
+                "flex",
+                "size-10",
+                "sm:size-20",
+                // "relative",
+                
+              )}
+            >
               <Image
                 src={`${ASSETS_BASE_URL}/${iconId}.svg`}
                 alt={label}
                 className="object-cover"
                 width={64}
                 height={64}
+                // fill
               />
               <h3
                 className={cn(

@@ -14,7 +14,10 @@ export const PRODUCTS = [
   {
     label: "Utilmate Guitar",
     iconId: "667b437c02f14a2e52dde805_ug",
-    coverId: "667c92402b305e07ee579088_cover-ug.webp",
+    banner: {
+      mobile: "667c9ebba85372ed7319e8e7_First%20Screen%20mob.webp",
+      desktop: "667c92402b305e07ee579088_cover-ug.webp",
+    },
     path: "/utilmate-guitar",
     description:
       "The best platform for music makers to learn and play songs they love.",
@@ -22,7 +25,10 @@ export const PRODUCTS = [
   {
     label: "MuseScore.com",
     iconId: "667b43d94a5ae4dd43194e70_ms",
-    coverId: "667ca0158cbfffe8a5cf2a01_MS-index.webp",
+    banner: {
+      mobile: "667ca059c2fc56b858c26dd4_First%20Screen%20mob%20index.webp",
+      desktop: "667ca0158cbfffe8a5cf2a01_MS-index.webp",
+    },
     path: "musescore.com",
     description: "The home of sheet music.",
     onColor: true,
@@ -30,14 +36,20 @@ export const PRODUCTS = [
   {
     label: "MuseScore Studio",
     iconId: "6511efa00919fb9000588fc0_logo_ms4",
-    coverId: "6511efa10919fb9000588fd0_ms4_web_mainpage.webp",
+    banner: {
+      mobile: "6567294fc86a15e485b81bc8_MS4.jpg",
+      desktop: "6511efa10919fb9000588fd0_ms4_web_mainpage.webp",
+    },
     path: "/musescore-studio",
     description: "The world’s most popular composition and notation software.",
   },
   {
     label: "Audacity",
     iconId: "6511efa00919fb9000588fbd_logo_ad",
-    coverId: "6511efa10919fb9000588fd1_ADCT.webp",
+    banner: {
+      mobile: "655d04e35a8770eed85927d1_ADCT.webp",
+      desktop: "6511efa10919fb9000588fd1_ADCT.webp",
+    },
     path: "/audacity",
     description: "The number one audio recording and editing app.",
     onColor: true,
@@ -45,7 +57,10 @@ export const PRODUCTS = [
   {
     label: "Muse Hub",
     iconId: "667b448089a26ad9b077176b_mh",
-    coverId: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
+    banner: {
+      mobile: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
+      desktop: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
+    },
     path: "/muse-hub",
     description: "One hub for all your creative apps.",
     onColor: true,
@@ -53,8 +68,11 @@ export const PRODUCTS = [
   {
     label: "Audio.com",
     iconId: "667b441b78e0517ea5a1b0c2_audio",
-    coverId: "667ca1053439d5df14de5c63_AU.webp",
     path: "audio.com",
+    banner: {
+      mobile: "667ca1578372278c1e3b9179_First%20Screen%20mob%20index.webp",
+      desktop: "667ca1053439d5df14de5c63_AU.webp",
+    },
     description:
       "A rapidly-growing, free platform with a library spanning music, podcasts & more.",
     onColor: true,
@@ -62,8 +80,11 @@ export const PRODUCTS = [
   {
     label: "StaffPad",
     iconId: "6511efa00919fb9000588fc4_logo_mh-1",
-    coverId: "6511efa10919fb9000588fd4_SP.webp",
     path: "/staffpad",
+    banner: {
+      mobile: "6511efa10919fb9000588fdd_SP.webp",
+      desktop: "6511efa10919fb9000588fd4_SP.webp",
+    },
     description:
       "Handwrite music and watch it come alive with this award-winning tablet app.",
     onColor: true,
@@ -71,8 +92,11 @@ export const PRODUCTS = [
   {
     label: "Tonebridge",
     iconId: "667d5b773ccdfd0443b55ad4_tb",
-    coverId: "6511efa10919fb9000588fd5_TB.webp",
     path: "/tonebridge",
+    banner: {
+      mobile: "6511efa10919fb9000588fdb_TB.webp",
+      desktop: "6511efa10919fb9000588fd5_TB.webp",
+    },
     description:
       "A free, virtual effects-pedal. Transform your guitar tone to match the sound of iconic songs and records.",
     onColor: true,

@@ -144,7 +144,7 @@ function NavOverlay({ className }: NavOverlayProps) {
         "md:h-[87px]",
         // `md:h-[${NAV_HEIGHT}px]`,
         "w-full",
-        "z-10",
+        "z-50",
         className
       )}
     />
@@ -263,7 +263,7 @@ function MobileNavMenu({
   return (
     <div
       className={cn(
-        "z-10",
+        "z-[88]",
         "fixed",
         "inset-0",
         "flex",
@@ -357,7 +357,7 @@ function ProductsMenu({
   return (
     <div
       className={cn(
-        "z-20",
+        "z-[89]",
         "fixed",
         "inset-0",
         "bg-grey",

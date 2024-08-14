@@ -19,6 +19,7 @@ export default function CloseButton({
         "absolute",
         "right-0",
         "top-[8%]",
+        "z-[90]",
         className
       )}
     >

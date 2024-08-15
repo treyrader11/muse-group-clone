@@ -7,12 +7,7 @@ import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export default function Products() {
   return (
-    <section
-      className={
-        cn()
-        // "xs:pt-[252px]"
-      }
-    >
+    <section>
       {PRODUCTS.map((project, i) => {
         return <ProductCard key={i} {...project} />;
       })}
@@ -84,7 +79,7 @@ function ProductCard({
             // "pr-12"
           )}
         >
-          <div className={cn("flex", "justify-between", "w-full")}>
+          <div className={cn("flex justify-betweenw-full")}>
             <div
               className={cn(
                 "gap-4",
@@ -92,9 +87,8 @@ function ProductCard({
                 "sm:flex-row",
                 "flex",
                 "size-10",
-                "sm:size-20",
+                "sm:size-20"
                 // "relative",
-                
               )}
             >
               <Image
@@ -141,16 +135,6 @@ function ProductCard({
             {description}
           </div>
         </div>
-        {/* <div
-          className={cn(
-            "tracking-[-1px]",
-            "font-inter",
-            "text-2xl",
-            "leading-[150%]"
-          )}
-        >
-          {description}
-        </div> */}
       </Card>
     </div>
   );

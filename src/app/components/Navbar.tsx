@@ -17,6 +17,7 @@ import CloseButton from "./CloseButton";
 import { motion } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
+import BurgerNew from "./Burger";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -84,13 +85,23 @@ export default function Navbar() {
         className="z-[99] md:hidden fixed top-3 left-[4%]"
       />
 
-      <Hamburger
+      {/* <Hamburger
         isActive={isMobileMenuOpen}
         onClick={() => {
           setIsProductMenuOpen(false);
           setIsMobileMenuOpen(!isMobileMenuOpen);
         }}
         className={cn({
+          "bg-white before:bg-white": isNewsroomPage,
+        })}
+      /> */}
+      <BurgerNew
+        isActive={isMobileMenuOpen}
+        onClick={() => {
+          setIsProductMenuOpen(false);
+          setIsMobileMenuOpen(!isMobileMenuOpen);
+        }}
+        className={cn( "right-0", "md:hidden", "fixed", "z-[99]", {
           "bg-white before:bg-white": isNewsroomPage,
         })}
       />
@@ -115,7 +126,8 @@ export default function Navbar() {
           className={cn("flex-col flex-center pb-[70px]")}
           isActive={(href) => {
             // If the product menu is open, only make the products link active
-            if (isProductMenuOpen && href === "/products") return true;
+            // if (isProductMenuOpen && href === "/products") true;
+            if (isProductMenuOpen) href === "/products";
             // Otherwise, match based on the current pathname
             return href === pathname;
           }}
@@ -142,7 +154,6 @@ function NavOverlay({ className }: NavOverlayProps) {
         "top-0",
         "h-[71px]",
         "md:h-[87px]",
-        // `md:h-[${NAV_HEIGHT}px]`,
         "w-full",
         "z-50",
         className

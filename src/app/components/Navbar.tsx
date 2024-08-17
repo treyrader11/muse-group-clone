@@ -40,7 +40,7 @@ export default function Navbar() {
       <NavOverlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
       <header
         className={cn(
-          "inset-x-0", 
+          "inset-x-0",
           "fixed",
           "top-0",
           "h-[71px]",
@@ -301,7 +301,15 @@ function ProductsMenu({
           >
             {/* <div className="flex flex-col border size-full border-red-400"> */}
             <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
-            <p className="absolute -bottom-8 xs:bottom-0 text-nowrap">
+            <p
+              className={cn(
+                "absolute",
+                // "-bottom-8",
+                "-bottom-5",
+                "xs:bottom-0",
+                "text-nowrap"
+              )}
+            >
               {label}
             </p>
             {/* </div> */}

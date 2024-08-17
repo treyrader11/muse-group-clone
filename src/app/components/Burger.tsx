@@ -86,7 +86,6 @@ export default function Burger({
         onClick={onClick}
         className={cn(
           "transition-all",
-          "duration-500",
           "w-8",
           "xs:w-10",
           "h-4",

@@ -6,14 +6,14 @@ import Link from "next/link";
 type LogoProps = {
   className?: string;
   color?: "black" | "white";
-  retainSize?: boolean;
+  // retainSize?: boolean;
 };
 
 export default function Logo({
   className,
   color = "black",
-  retainSize = false,
-}: LogoProps) {
+}: // retainSize = false,
+LogoProps) {
   const onDark = color === "white";
 
   const desktopLogo = onDark
@@ -27,17 +27,18 @@ export default function Logo({
   return (
     <Link
       href="/"
-      className={cn(
-        retainSize ? "size-[30%]" : "size-[9%] xs:size-[30%] md:size-full",
-        className
-      )}
+      // className={cn(
+      //   retainSize ? "size-[30%]" : "size-[9%] xs:size-[30%] md:size-full",
+      //   className
+      // )}
+      className={cn("size-[9%] xs:size-[30%] md:size-full", className)}
     >
       <Image
         width={222}
         height={60}
         alt="logo"
         src={`${ASSETS_BASE_URL}/${desktopLogo}.svg`}
-        className={cn("block", { "hidden xs:block": !retainSize })}
+        className={cn("hidden xs:block")}
         priority
       />
       <Image
@@ -45,8 +46,7 @@ export default function Logo({
         height={60}
         alt="logo"
         src={`${ASSETS_BASE_URL}/${mobileLogo}.svg`}
-        // className="xs:hidden"
-        className={cn("", { "xs:hidden": !retainSize })}
+        className="xs:hidden"
         priority
       />
     </Link>

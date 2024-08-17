@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SLIDER_IMAGES } from "@/lib/constants";
-import Card from "./Card";
 
 export const SPRING_OPTIONS = {
   type: "spring",
@@ -62,9 +61,8 @@ export default function Slider({ className }: SliderProps) {
         "xs:rounded-3xl",
         "relative",
         "overflow-clip",
+        // "overflow-hidden",
         "-mt-[9rem]",
-        // "xs:-mt-[180px]",
-        // "md:-mt-[155px]",
         className
       )}
     >
@@ -103,7 +101,7 @@ export function Images() {
     <>
       {SLIDER_IMAGES.map((img, i) => {
         return (
-          <Card
+          <div
             key={i}
             style={{
               backgroundImage: `url(https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${
@@ -111,12 +109,13 @@ export function Images() {
               }_slider_${i + 1}_ipad.webp)`,
               backgroundSize: "cover",
             }}
+            className="w-full"
           >
             <motion.div
               transition={TWEEN_OPTIONS}
               className={cn("w-screen aspect-[8/10] shrink-0")}
             />
-          </Card>
+          </div>
         );
       })}
     </>

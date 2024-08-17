@@ -192,3 +192,24 @@ export const FOOTER_LINKS = [
     path: "/content/terms-of-service",
   },
 ];
+
+export const CATEGORY_FILTERS = [
+  {
+    label: "All",
+  },
+  {
+    label: "Press Releases",
+  },
+  {
+    label: "News",
+  },
+  {
+    label: "Features",
+  },
+  {
+    label: "Artists",
+  },
+  {
+    label: "Team",
+  },
+] as const;

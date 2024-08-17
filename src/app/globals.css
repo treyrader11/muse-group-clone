@@ -35,7 +35,6 @@
     font-weight: 900;
     letter-spacing: -0.05em;
     font-size: 4.5rem;
-    /* font-size: 7rem; */
     line-height: 68px;
   }
   h2 {
@@ -62,27 +61,6 @@
   section {
     padding: 7.5rem 1rem 0;
   }
-  /* section {
-    padding-left: 1rem;
-    padding-right: 1rem;
-    padding-top: 120px;
-  } */
-
-  /* Styles for screens smaller than 400px */
-  /* @media (max-width: 399px) {
-    h1 {
-      font-size: 4.5rem;
-      line-height: 68px;
-    }
-    h2 {
-      font-size: 4rem;
-      line-height: 60px;
-    }
-    h3 {
-      font-size: 3rem;
-      line-height: 2.25rem;
-    }
-  } */
 
   /* Styles for screens between 400px and 639px */
   @media (min-width: 400px) and (max-width: 639px) {
@@ -154,32 +132,32 @@
 }
 
 @layer utilities {
-  .text-gradient-yellow {
+  .text-gradient-green,
+  .text-gradient-orange,
+  .text-gradient-red,
+  .text-gradient-purp,
+  .text-gradient-yellow,
+  .text-gradient-yellow-2,
+  .text-gradient-lavender {
     -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(#ffff5b, #daecfe);
     -webkit-background-clip: text;
     background-clip: text;
+  }
+
+  .text-gradient-yellow {
+    background-image: linear-gradient(#ffff5b, #daecfe);
   }
 
   .text-gradient-red {
-    -webkit-text-fill-color: transparent;
     background-image: linear-gradient(174deg, #ff2001 5%, white 41%);
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   .text-gradient-yellow-2 {
-    -webkit-text-fill-color: transparent;
     background-image: linear-gradient(#ffa800, #ffff5b);
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   .text-gradient-purp {
-    -webkit-text-fill-color: transparent;
     background-image: linear-gradient(333deg, #5127da 54%, #9bcefd 89%);
-    -webkit-background-clip: text;
-    background-clip: text;
   }
 
   .text-gradient-green {
@@ -188,9 +166,6 @@
       hsl(var(--black)) 69%,
       hsl(var(--lime-green)) 86%
     );
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-orange {
@@ -199,9 +174,13 @@
       hsl(var(--black)) 68%,
       #fa6d3e 87%
     );
-    /* color: var(--black); */
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-lavender {
+    background-image: linear-gradient(
+      346deg,
+      hsl(var(--alice-blue)) 68%,
+      #fa6d3e 87%
+    );
   }
 }

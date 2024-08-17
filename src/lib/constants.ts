@@ -213,3 +213,5 @@ export const CATEGORY_FILTERS = [
     label: "Team",
   },
 ] as const;
+
+export type CategoryLabel = (typeof CATEGORY_FILTERS)[number]["label"];

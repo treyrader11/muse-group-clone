@@ -301,7 +301,7 @@ function ProductsMenu({
           >
             {/* <div className="flex flex-col border size-full border-red-400"> */}
             <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
-            <p className="absolute -bottom-6 xs:bottom-0 text-nowrap">
+            <p className="absolute -bottom-8 xs:bottom-0 text-nowrap">
               {label}
             </p>
             {/* </div> */}

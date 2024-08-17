@@ -8,7 +8,6 @@ export default function Categories() {
   const [activeCategory, setActiveCategory] = useState<CategoryLabel>(
     CATEGORY_FILTERS[0].label
   );
-
   return (
     <div>
       <ul
@@ -52,12 +51,12 @@ function CategoryItem({ className, label, onClick }: CategoryItemProps) {
       onClick={onClick}
       className={cn(
         "leading-[150%]",
-        "flex gap-2",
+        "flex",
+        "gap-2",
         "items-center",
         "justify-center",
         "bg-black",
         "text-white",
-        // "hover:text-white/50",
         "rounded-full",
         "py-3.5",
         "px-8",

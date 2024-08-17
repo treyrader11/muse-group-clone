@@ -34,20 +34,20 @@
   h1 {
     font-weight: 900;
     letter-spacing: -0.05em;
-    font-size: 4.5rem;
-    line-height: 68px;
+    font-size: 4rem;
+    line-height: 60px;
   }
   h2 {
     font-weight: 900;
     letter-spacing: -0.07em;
-    font-size: 4rem;
-    line-height: 60px;
+    font-size: 3.5rem;
+    line-height: 52px;
   }
   h3 {
     letter-spacing: -0.07em;
     font-weight: 500;
-    font-size: 5rem;
-    line-height: 2.25rem;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   h1,

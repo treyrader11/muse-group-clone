@@ -2,9 +2,8 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import { ASSETS_BASE_URL } from "@/lib/constants";
-import Categories from "./Categories";
 
-export default function Hero() {
+export default function Hero({ children }: { children: React.ReactNode }) {
   return (
     <section
       className={cn(
@@ -13,7 +12,7 @@ export default function Hero() {
         "space-y-2",
         "sm:space-y-24",
         "overflow-visible",
-        "pb-8",
+        "pb-8"
       )}
     >
       <h2 className={cn("font-oswald", "title-mask", "text-gradient-lavender")}>
@@ -28,7 +27,7 @@ export default function Hero() {
           className="object-cover"
         />
       </div>
-      <Categories />
+      {children}
     </section>
   );
 }

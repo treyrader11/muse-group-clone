@@ -1,13 +1,16 @@
-"use client";
-
 import { CATEGORY_FILTERS, type CategoryLabel } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-import React, { useState } from "react";
+import React from "react";
 
-export default function Categories() {
-  const [activeCategory, setActiveCategory] = useState<CategoryLabel>(
-    CATEGORY_FILTERS[0].label
-  );
+type CategoriesProps = {
+  activeCategory: CategoryLabel;
+  setActiveCategory: React.Dispatch<React.SetStateAction<CategoryLabel>>;
+};
+
+export default function Categories({
+  activeCategory,
+  setActiveCategory,
+}: CategoriesProps) {
   return (
     <div>
       <ul
@@ -19,18 +22,18 @@ export default function Categories() {
           "flex"
         )}
       >
-        {CATEGORY_FILTERS.map(({ label }) => (
-          <li key={label}>
+        {CATEGORY_FILTERS.map((category, i) => (
+          <li key={i}>
             <CategoryItem
-              onClick={() => setActiveCategory(label)}
+              onClick={() => setActiveCategory(category)}
               className={cn(
                 "text-white",
                 "text-2xl",
-                activeCategory === label
+                activeCategory === category
                   ? "text-black bg-white"
                   : "hover:text-white/50"
               )}
-              label={label}
+              label={category}
             />
           </li>
         ))}

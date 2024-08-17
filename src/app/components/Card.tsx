@@ -30,6 +30,7 @@ export default function Card({
           "xs:rounded-3xl",
           "md:rounded-[2rem]",
           "p-4",
+          "overflow-hidden",
           className
         )}
       >
@@ -43,12 +44,15 @@ export default function Card({
       style={style}
       className={cn(
         "flex",
-        // "items-center",
+        "flex-col",
+        "relative",
         "w-full",
-        "p-4",
+        // "px-[40px]",
         "rounded-2xl",
         "xs:rounded-3xl",
         "md:rounded-[2rem]",
+        "p-4",
+        "overflow-hidden",
         className
       )}
     >

@@ -1,3 +1,10 @@
+// import img1 from "@/public/news/muse-img-1.png";
+// import img2 from "@/public/news/muse-img-2.png";
+// import img3 from "@/public/news/muse-img-3.jpg";
+import img1 from "/public/news/muse-img.png";
+import img2 from "/public/news/muse-img-2.png";
+import img3 from "/public/news/muse-img-3.jpg";
+
 export const ASSETS_BASE_URL =
   "https://cdn.prod.website-files.com/6511efa00919fb9000588f9a";
 
@@ -194,24 +201,52 @@ export const FOOTER_LINKS = [
 ];
 
 export const CATEGORY_FILTERS = [
-  {
-    label: "All",
-  },
-  {
-    label: "Press Releases",
-  },
-  {
-    label: "News",
-  },
-  {
-    label: "Features",
-  },
-  {
-    label: "Artists",
-  },
-  {
-    label: "Team",
-  },
+  "All",
+  "Press Releases",
+  "News",
+  "Features",
+  "Artists",
+  "Team",
 ] as const;
 
-export type CategoryLabel = (typeof CATEGORY_FILTERS)[number]["label"];
+export type CategoryLabel = (typeof CATEGORY_FILTERS)[number];
+
+export const NEWS_DATA: NewsItem[] = [
+  {
+    // image: "/news/muse-img-2.png",
+    image: img1.src,
+    title: "From midi to Muse Group: Larry Morton & music industry innovation",
+    description: "The world’s most popular composition and notation software.",
+    path: "/muse-img-2.png",
+    category: "Team",
+    date: "August 8, 2024",
+  },
+  {
+    // image: "/news/muse-img.png",
+    image: img2.src,
+    title:
+      "Major updates come to Muse Hub and Audacity: introducting a new audio store",
+    description: "The world’s most popular composition and notation software.",
+    path: "/musescore-studio",
+    category: "Press Releases",
+    date: "July 17, 2024",
+  },
+  {
+    // image: "/news/muse-img-3.jpg",
+    image: img3.src,
+    title: "Muse Group and Collins collaborate on a monumental musical rebrand",
+    description: "The world’s most popular composition and notation software.",
+    path: "/musescore-studio",
+    category: "News",
+    date: "June 27, 2024",
+  },
+];
+
+export type NewsItem = {
+  image: string;
+  title: string;
+  description: string;
+  path: string;
+  category: CategoryLabel;
+  date: string;
+};

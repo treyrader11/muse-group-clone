@@ -31,6 +31,7 @@ export default function Footer() {
         <ul
           className={cn(
             "flex",
+            "flex-col",
             "justify-between",
             "leading-[40px]",
             "pb-4",
@@ -41,14 +42,9 @@ export default function Footer() {
             "font-bold",
             "font-sans",
             "gap-9",
-            "grid",
-            "grid-cols-1",
+            "xs:grid",
             "xs:grid-cols-2",
-            // "grid-cols-2",
-            "auto-rows-auto",
-            "auto-cols-fr",
             "place-content-around",
-            "[place-items:stretch_start]",
             "md:grid-cols-3",
             "md:items-end",
             "whitespace-nowrap",
@@ -87,7 +83,7 @@ export default function Footer() {
             </ul>
           </li>
 
-          <li className="flex self-end md:ml-auto">
+          <li className="flex xs:self-end md:ml-auto">
             <Copyright />
           </li>
         </ul>

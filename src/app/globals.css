@@ -34,14 +34,20 @@
   h1 {
     font-weight: 900;
     letter-spacing: -0.05em;
+    font-size: 4.5rem;
+    line-height: 68px;
   }
   h2 {
     font-weight: 900;
     letter-spacing: -0.07em;
+    font-size: 4rem;
+    line-height: 60px;
   }
   h3 {
     letter-spacing: -0.07em;
     font-weight: 500;
+    font-size: 3rem;
+    line-height: 2.25rem;
   }
 
   h1,
@@ -62,7 +68,7 @@
   } */
 
   /* Styles for screens smaller than 400px */
-  @media (max-width: 399px) {
+  /* @media (max-width: 399px) {
     h1 {
       font-size: 4.5rem;
       line-height: 68px;
@@ -75,7 +81,7 @@
       font-size: 3rem;
       line-height: 2.25rem;
     }
-  }
+  } */
 
   /* Styles for screens between 400px and 639px */
   @media (min-width: 400px) and (max-width: 639px) {

@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "./Card";
+import Card from "../Card";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { ASSETS_BASE_URL, BANNERS } from "@/lib/constants";

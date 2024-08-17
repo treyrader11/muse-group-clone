@@ -213,8 +213,7 @@ export type CategoryLabel = (typeof CATEGORY_FILTERS)[number];
 
 export const NEWS_DATA: NewsItem[] = [
   {
-    // image: "/news/muse-img-2.png",
-    image: img1.src,
+    image: "muse-img-2.png",
     title: "From midi to Muse Group: Larry Morton & music industry innovation",
     description: "The world’s most popular composition and notation software.",
     path: "/muse-img-2.png",
@@ -222,8 +221,7 @@ export const NEWS_DATA: NewsItem[] = [
     date: "August 8, 2024",
   },
   {
-    // image: "/news/muse-img.png",
-    image: img2.src,
+    image: "muse-img.png",
     title:
       "Major updates come to Muse Hub and Audacity: introducting a new audio store",
     description: "The world’s most popular composition and notation software.",
@@ -232,8 +230,7 @@ export const NEWS_DATA: NewsItem[] = [
     date: "July 17, 2024",
   },
   {
-    // image: "/news/muse-img-3.jpg",
-    image: img3.src,
+    image: "muse-img-3.jpg",
     title: "Muse Group and Collins collaborate on a monumental musical rebrand",
     description: "The world’s most popular composition and notation software.",
     path: "/musescore-studio",

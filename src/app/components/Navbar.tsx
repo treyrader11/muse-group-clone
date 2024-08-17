@@ -177,6 +177,8 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
         // leading only works when text size is arbitrary value
         "leading-6",
         "tracking-tighter",
+        // "relative",
+        // "z-[999]",
         className
       )}
     >
@@ -262,45 +264,124 @@ function ProductsMenu({
     >
       <div
         className={cn(
-          "absolute",
-          "inset-x-[4%]",
-          "inset-y-0",
+          // "absolute",
+          // "inset-x-[4%]",
+          // "inset-y-0",
           "mt-[84px]",
-          "md:border-t",
+          "md:border-t border-white/10",
           "max-w-[1366px]",
-          "pt-8",
-          "grid",
-          "gap-8",
-          "gap-y-10",
-          "grid-cols-2",
-          "md:grid-cols-4",
-          "place-items-center",
+          // "pt-8",
+          // "grid",
+          // "gap-8",
+          // "gap-y-10",
+          // "grid-cols-2",
+          // "md:grid-cols-4",
+          // "place-items-center",
           "mx-auto",
-          "max-w-[700px]",
+          // "max-w-[700px]",
+          "relative",
           className
         )}
       >
         <CloseButton
           onClick={() => setIsProductMenuOpen(false)}
-          className="hidden md:block "
+          className="hidden md:block mt-10"
         />
 
-        {PRODUCTS.map(({ label, iconId, path }) => (
+        <ul
+          className={cn(
+            "absolute",
+            "inset-x-[4%]",
+            "inset-y-0",
+            "pt-20",
+            "grid",
+            "gap-8",
+            "gap-y-10",
+            "grid-cols-2",
+            "md:grid-cols-4",
+            "place-items-center",
+            "mx-auto",
+            "max-w-[700px]",
+            // "overflow-hidden"
+          )}
+        >
+          {PRODUCTS.map(({ label, iconId, path }) => (
+            <li key={iconId} className="">
+              <Link
+                href={path}
+                className={cn(
+                  "relative",
+                  "size-full",
+                  "w-[120px]",
+                  "items-center",
+                  "flex",
+                  "flex-col",
+                  // "md:p-10",
+                  // "grid",
+                  // "grid-rows-2",
+                  "gap-10"
+                )}
+              >
+                <div
+                  className={cn(
+                    "absolute",
+                    "size-full",
+                    // "w-[120px]",
+                    "h-[120px]",
+                  )}
+                >
+                  <Image
+                    fill
+                    src={`${ASSETS_BASE_URL}/${iconId}.svg`}
+                    alt={label}
+                    className="object-cover"
+                  />
+                </div>
+                <p
+                  className={cn(
+                    "absolute",
+                    // "-bottom-8",
+                    "-bottom-5",
+                    "xs:bottom-0",
+                    "text-nowrap"
+                  )}
+                >
+                  {label}
+                </p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        {/* {PRODUCTS.map(({ label, iconId, path }) => (
           <Link
             key={iconId}
             href={path}
             className={cn(
               "relative",
               "size-full",
-              "w-[120px]",
+              // "w-[120px]",
               "items-center",
               "flex",
               "flex-col",
-              "gap-8"
+              // "grid",
+              // "grid-rows-2",
+              "gap-10"
             )}
           >
-            {/* <div className="flex flex-col border size-full border-red-400"> */}
-            <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
+            <div
+              className={cn(
+                "absolute",
+                "size-full",
+                "w-[120px]",
+                "items-center"
+              )}
+            >
+              <Image
+                fill
+                src={`${ASSETS_BASE_URL}/${iconId}.svg`}
+                alt={label}
+              />
+            </div>
             <p
               className={cn(
                 "absolute",
@@ -312,9 +393,9 @@ function ProductsMenu({
             >
               {label}
             </p>
-            {/* </div> */}
+            
           </Link>
-        ))}
+        ))} */}
       </div>
     </div>
   );

@@ -6,14 +6,9 @@ import Link from "next/link";
 type LogoProps = {
   className?: string;
   color?: "black" | "white";
-  // retainSize?: boolean;
 };
 
-export default function Logo({
-  className,
-  color = "black",
-}: // retainSize = false,
-LogoProps) {
+export default function Logo({ className, color = "black" }: LogoProps) {
   const onDark = color === "white";
 
   const desktopLogo = onDark
@@ -27,10 +22,6 @@ LogoProps) {
   return (
     <Link
       href="/"
-      // className={cn(
-      //   retainSize ? "size-[30%]" : "size-[9%] xs:size-[30%] md:size-full",
-      //   className
-      // )}
       className={cn("size-[9%] xs:size-[30%] md:size-full", className)}
     >
       <Image

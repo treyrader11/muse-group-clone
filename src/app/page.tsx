@@ -1,9 +1,9 @@
 "use client";
 
-import Hero from "./components/Hero";
-import Products from "./components/Products";
+import Hero from "./components/home/Hero";
+import Products from "./components/home/Products";
 import Featured from "./components/Featured";
-import Banners from "./components/Banners";
+import Banners from "./components/home/Banners";
 import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";

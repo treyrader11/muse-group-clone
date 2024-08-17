@@ -12,47 +12,36 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
   useEffect(() => setMounted(true), []);
 
   return (
+    // overlay container animation
     <div
       className={cn(
         "grid",
         "place-items-center",
         "fixed",
-        // "absolute",
+        "inset-0",
         "z-[99]",
         "bg-black",
         "size-screen",
         "transition-transform",
-        // "duration-[600ms]",
-        "duration-1000",
+        "duration-[600ms]",
         "ease-in-out",
         { "-translate-y-full": !isInView }
       )}
     >
+      {/* Fades out animation / container for logo */}
       <div
         className={cn(
+          "h-fit",
+          "overflow-hidden",
+          "absolute",
           "flex-center",
-          "opacity-0",
-          "transition-opacity",
+          "transition-all",
           "duration-300",
           "ease-in-out",
-          { "opacity-100 delay-800": mounted }
+          { "opacity-0 delay-1000": mounted }
         )}
       >
-        <div
-          className={cn(
-            "h-fit",
-            "overflow-hidden",
-            "absolute",
-            "flex-center",
-            "transition-all",
-            "duration-300",
-            "ease-in-out",
-            { "opacity-0 delay-1000": mounted }
-          )}
-        >
-
-          
-          {/* <Logo
+        {/* <Logo
             retainSize
             color="white"
             className={cn(
@@ -66,12 +55,11 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
               }
             )}
           /> */}
-          <MuseGroupLogo
-            className={cn({
-              "translate-y-0": mounted,
-            })}
-          />
-        </div>
+        <MuseGroupLogo
+          className={cn({
+            "translate-y-0": mounted,
+          })}
+        />
       </div>
     </div>
   );
@@ -81,10 +69,10 @@ function MuseGroupLogo({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        "size-[30%]",
-        "size-full",
+        // "size-[30%]",
+        // "size-full",
         "transition-all",
-        "duration-500",
+        "duration-[800ms]",
         "ease-in-out",
         "translate-y-full",
         className

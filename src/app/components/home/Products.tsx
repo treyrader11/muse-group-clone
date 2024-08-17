@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
-import Card from "./Card";
+import Card from "../Card";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export default function Products() {
@@ -40,7 +40,6 @@ function ProductCard({
         })`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        // backgroundPosition: "50%",
       }}
       className={cn(
         "min-h-screen",
@@ -67,9 +66,7 @@ function ProductCard({
             "sm:p-5"
           )}
         >
-          <ProductTitle
-            className={cn("gap-4", "flex-col", "size-full", "sm:flex-row", )}
-          >
+          <ProductTitle>
             <div className="size-10 xs:size-[4rem] relative">
               <Image
                 src={`${ASSETS_BASE_URL}/${iconId}.svg`}
@@ -125,23 +122,22 @@ function ArrowIcon({ className, src }: { className?: string; src: string }) {
   );
 }
 
-function ProductTitle({
-  className,
-  children,
-}: {
+type ProductTitleProps = {
   className?: string;
   children: React.ReactNode;
-}) {
+};
+
+function ProductTitle({ className, children }: ProductTitleProps) {
   return (
     <div
       className={cn(
+        "size-full",
+        "gap-4",
+        "flex",
+        "size-full",
         "gap-4",
         "flex-col",
         "sm:flex-row",
-        "flex",
-        "size-full",
-       
-
         className
       )}
     >

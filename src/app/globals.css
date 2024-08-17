@@ -60,6 +60,11 @@
   /* Make sure to xxplain global styles in video */
   section {
     padding: 7.5rem 1rem 0;
+    width: 100%;
+    height: 100%;
+    max-width: 1366px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* Styles for screens between 400px and 639px */

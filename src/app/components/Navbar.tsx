@@ -21,7 +21,7 @@ import Burger from "./Burger";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductMenuOpen, setIsProductMenuOpen] = useState(true);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
 
   const pathname = usePathname();
   const isNewsroomPage = pathname.includes("newsroom");
@@ -40,7 +40,7 @@ export default function Navbar() {
       <NavOverlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
       <header
         className={cn(
-          "inset-x-0", // can also use w-full
+          "inset-x-0", 
           "fixed",
           "top-0",
           "h-[71px]",

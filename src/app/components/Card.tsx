@@ -21,11 +21,15 @@ export default function Card({
         href={linkTo}
         style={style}
         className={cn(
+          "flex",
+          "flex-col",
+          "relative",
           "w-full",
-          "px-[40px]",
+          // "px-[40px]",
           "rounded-2xl",
           "xs:rounded-3xl",
           "md:rounded-[2rem]",
+          "p-4",
           className
         )}
       >
@@ -38,8 +42,10 @@ export default function Card({
     <div
       style={style}
       className={cn(
+        "flex",
+        // "items-center",
         "w-full",
-        "px-[40px]",
+        "p-4",
         "rounded-2xl",
         "xs:rounded-3xl",
         "md:rounded-[2rem]",
@@ -48,5 +54,27 @@ export default function Card({
     >
       {children}
     </div>
+  );
+}
+
+export function CardHeader({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return (
+    <header
+      className={cn(
+        "flex",
+        "justify-between",
+        "items-center",
+
+        className
+      )}
+    >
+      {children}
+    </header>
   );
 }

@@ -57,13 +57,15 @@ export default function Slider({ className }: SliderProps) {
 
   return (
     <div
+      style={{ borderRadius: "20px" }}
       className={cn(
         "relative",
-        "py-8",
+        //  "my-8",
+        // "mt-8",
         "overflow-hidden",
-        "-mt-[60px]",
-        "xs:-mt-[180px]",
-        "md:-mt-[155px]",
+        "-mt-[9rem]",
+        // "xs:-mt-[180px]",
+        // "md:-mt-[155px]",
         className
       )}
     >
@@ -87,7 +89,7 @@ export default function Slider({ className }: SliderProps) {
           "mx-auto",
           "cursor-grab",
           "active:cursor-grabbing",
-          "relative"
+          // "relative"
         )}
       >
         <Images />
@@ -202,7 +204,7 @@ function Bullets({ imgIndex, setImgIndex }: BulletProps) {
               "transition-colors",
               "bg-white",
               "relative",
-               "z-20",
+              "z-20",
               {
                 "bg-yellow": i === imgIndex,
               }

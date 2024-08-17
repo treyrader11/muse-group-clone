@@ -82,30 +82,37 @@ const config: Config = {
       //   "shrink-rotate-reverse": "shrink-rotate-reverse 0.5s forwards ease-in-out",
       // },
 
-
       // need to work on these
       keyframes: {
-        "shrink-rotate": {
-          "0%": { transform: "translateY(0) scaleX(1)", width: "100%" },
-          "50%": { transform: "translateY(0.5rem) scaleX(0.5)", width: "50%" },
+        "shrink": {
+          "50%": {  width: "50%", height: "50%" },
           "100%": {
-            transform: "translateY(0.5rem) rotate(45deg) scaleX(1)",
+            transform: "rotate(90deg) scaleX(1)",
+            width: "100%",
+          },
+        },
+        "shrink-rotate": {
+          "0%": { transform: "translateY(100%) ", width: "100%" },
+          "50%": { transform: "translateY(50%) scaleX(0.5)", width: "50%" },
+          "100%": {
+            transform: "rotate(90deg) scaleX(1)",
             width: "100%",
           },
         },
         "shrink-rotate-reverse": {
-          "0%": { transform: "translateY(0) scaleX(1)", width: "100%" },
-          "50%": { transform: "translateY(-0.5rem) scaleX(0.5)", width: "50%" },
+          // "0%": { transform: "scaleX(1)", width: "100%" },
+          "50%": { transform: "scaleX(0.5)", width: "50%" },
           "100%": {
-            transform: "translateY(-0.5rem) rotate(-45deg) scaleX(1)",
+            transform: " scaleX(1)",
             width: "100%",
           },
         },
       },
       animation: {
-        "shrink-rotate": "shrink-rotate 0.5s forwards ease-in-out",
+        "shrink": "shrink 0.5s forwards",
+        "shrink-rotate": "shrink-rotate 0.5s forwards",
         "shrink-rotate-reverse":
-          "shrink-rotate-reverse 0.5s forwards ease-in-out",
+          "shrink-rotate-reverse 0.5s",
       },
     },
   },

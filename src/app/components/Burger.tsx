@@ -1,7 +1,7 @@
 import { cn } from "@/lib/utils";
 import React from "react";
 
-export default function BurgerNew({
+export default function Burger({
   isActive,
   onClick,
   className,
@@ -11,19 +11,25 @@ export default function BurgerNew({
   className?: string;
 }) {
   return (
-    <div className={cn(className)}>
+    <div className={cn("bg-transparent", className)}>
       <button
         onClick={onClick}
         className={cn(
           "transition-all",
           "duration-500",
           "w-10",
-          "h-[1.5rem]",
+          "h-[1.4rem]",
           "relative",
           "rotate-0",
           "m-5",
           "delay-300", // delays rotation (make same as overlay fall)
-          isActive && cn("rotate-[135deg]", "duration-200", "")
+          isActive &&
+            cn(
+             
+              "rotate-[135deg]",
+              "duration-200",
+            //    "animate-shrink"
+            )
         )}
       >
         <span
@@ -31,18 +37,18 @@ export default function BurgerNew({
             "absolute",
             "top-0",
             "left-0",
-            "h-[.21rem]",
+            "h-[3px]",
             "w-full",
-            "bg-black",
             "duration-300",
-            "transition-[top,transform]",
+            "transition-transform",
+            // "inset-0",
+
             isActive &&
               cn(
                 "top-1/2",
-                "mt-[-3px]",
-                "delay-600",
+                "mt-[-3px]", // makes sure lines are even
+                // "delay-[600ms]",
                 "rotate-[90deg]"
-
                 // "animate-shrink-rotate"
               )
           )}
@@ -51,18 +57,17 @@ export default function BurgerNew({
         <span
           className={cn(
             "absolute",
-            "top-auto",
+            // "top-auto",
             "bottom-0",
             "left-0",
-            "h-[.21rem]",
+            "h-[3px]",
             "w-full",
-            "bg-black",
             "duration-300",
             "transition-[bottom]",
             isActive &&
               cn(
-                "bottom-1/2",
-                "rotate-0",
+                "bottom-1/2"
+                // "rotate-0"
                 // "animate-shrink-rotate-reverse"
               )
           )}

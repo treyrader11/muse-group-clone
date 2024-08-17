@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
-import Card from "./Card";
+import Card, { CardHeader } from "./Card";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export default function Products() {
@@ -34,108 +34,118 @@ function ProductCard({
   const isSmallScreen = width < 768;
 
   return (
-    <div
+    <Card
+      style={{
+        backgroundImage: `url(${ASSETS_BASE_URL}/${
+          isSmallScreen ? banner.mobile : banner.desktop
+        })`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        // backgroundPosition: "50%",
+      }}
       className={cn(
         "min-h-screen",
-        "flex",
-        // "items-center",
-        "justify-center",
         "sticky",
         "top-[76px]",
         "sm:top-[126px]",
-        // "xs:top-[70px]",
-        { "text-white": onColor }
+        { "text-white": onColor },
+        "min-h-[80vh]",
+        "pt-[120%]"
+        // "relative"
       )}
     >
-      <Card
-        style={{
-          backgroundImage: `url(${ASSETS_BASE_URL}/${
-            isSmallScreen ? banner.mobile : banner.desktop
-          })`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-          // backgroundPosition: "50%",
-        }}
-        className={cn(
-          "flex",
-          "flex-col",
-          "gap-4",
-          "relative",
-          "pt-[125%]",
-          "size-fit",
-          "w-full",
-          "min-h-[80vh]",
-          "[background-position:50%]"
-        )}
-      >
+      <div className={cn("flex flex-col w-full gap-5")}>
         <div
           className={cn(
+            "flex",
             "absolute",
-            "top-4",
-            "inset-x-4",
-            "justify-between",
+            "top-0",
+            "left-0",
+            "flex-col",
+            "pb-10",
             "w-full",
-            "space-y-6"
-            // "pr-12"
+            "gap-5",
+            "p-4",
+            "sm:p-5"
           )}
         >
-          <div className={cn("flex justify-betweenw-full")}>
-            <div
-              className={cn(
-                "gap-4",
-                "flex-col",
-                "sm:flex-row",
-                "flex",
-                "size-10",
-                "sm:size-20"
-                // "relative",
-              )}
-            >
+          <ProductTitle
+            className={cn("gap-4", "flex-col", "size-full", "sm:flex-row")}
+          >
+            <div className="size-10 xs:size-[4rem] relative">
               <Image
                 src={`${ASSETS_BASE_URL}/${iconId}.svg`}
                 alt={label}
                 className="object-cover"
-                width={64}
-                height={64}
-                // fill
+                fill
               />
-              <h3
-                className={cn(
-                  "uppercase",
-                  "text-white",
-                  "text-6xl",
-                  "font-extrabold",
-                  "tracking-tighter",
-                  "font-oswald"
-                )}
-              >
-                {label}
-              </h3>
             </div>
 
-            <div className="pr-10 hidden md:block">
-              <Image
-                width={64}
-                height={64}
-                alt="arrow icon"
+            <h3
+              className={cn(
+                "whitespace-nowrap",
+                onColor ? "text-white" : "text-black",
+                "font-oswald",
+                "text-left"
+              )}
+            >
+              {label}
+            </h3>
+            <div className={cn("hidden items-center md:flex ml-auto")}>
+              <ArrowIcon
                 src={`${ASSETS_BASE_URL}/6511efa00919fb9000588fb${
                   onColor ? "6_Arrow-white" : "3_Arrow"
                 }.svg`}
+                className={cn("")}
               />
             </div>
-          </div>
-          <div
+          </ProductTitle>
+
+          <p
             className={cn(
               "tracking-[-1px]",
               "font-inter",
-              "text-2xl",
+              "xs:text-2xl",
               "leading-[150%]"
             )}
           >
             {description}
-          </div>
+          </p>
         </div>
-      </Card>
+      </div>
+    </Card>
+  );
+}
+
+function ArrowIcon({ className, src }: { className?: string; src: string }) {
+  return (
+    <div className={cn("size-[4rem] relative", className)}>
+      <Image alt="arrow icon" className="" fill src={src} />
+    </div>
+  );
+}
+
+function ProductTitle({
+  className,
+  children,
+}: {
+  className?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div
+      className={cn(
+        "gap-4",
+        "flex-col",
+        "sm:flex-row",
+        "flex",
+        "size-full",
+        // "items-enter",
+        // "justify-enter",
+        className
+      )}
+    >
+      {children}
     </div>
   );
 }

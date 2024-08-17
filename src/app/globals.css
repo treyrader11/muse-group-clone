@@ -31,9 +31,6 @@
     --nav-height: 84px;
   }
 
-  /* a {
-    color: hsl(var(--link));
-  } */
   h1 {
     font-weight: 900;
     letter-spacing: -0.05em;
@@ -44,8 +41,7 @@
   }
   h3 {
     letter-spacing: -0.07em;
-    font-weight: 800;
-    text-transform: uppercase;
+    font-weight: 500;
   }
 
   h1,
@@ -57,10 +53,13 @@
 
   /* Make sure to xxplain global styles in video */
   section {
-    padding-left: 4%;
-    padding-right: 4%;
-    padding-top: 120px;
+    padding: 7.5rem 1rem 0;
   }
+  /* section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 120px;
+  } */
 
   /* Styles for screens smaller than 400px */
   @media (max-width: 399px) {
@@ -73,12 +72,9 @@
       line-height: 60px;
     }
     h3 {
-      font-size: 1.875rem;
+      font-size: 3rem;
       line-height: 2.25rem;
     }
-    /* section {
-      padding-top: 80px;
-    } */
   }
 
   /* Styles for screens between 400px and 639px */
@@ -92,8 +88,9 @@
       line-height: 80px;
     }
     h3 {
-      font-size: 3.75rem;
+      font-size: 4.5rem;
       line-height: 4rem;
+      font-weight: 700;
     }
   }
 
@@ -108,8 +105,8 @@
       line-height: 8rem;
     }
     h3 {
-      font-size: 4rem;
-      line-height: 3.7rem;
+      font-size: 5rem;
+      line-height: 4rem;
     }
   }
 
@@ -201,75 +198,3 @@
     -webkit-text-fill-color: transparent;
   }
 }
-
-
-/* 
-.menu-trigger {
-  width: 40px;
-  height: 25px;
-  position: relative;
-  cursor: pointer;
-  display: inline-block;
-  vertical-align: top;
-  margin: 20px;
-  appearance: none;
-  border: 0;
-  background: none;
-  overflow: visible;
-  transition: all 0.5s 0s;
-  span {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 2px;
-    background: #fff;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 2px;
-    background: #fff;
-    transition: 0.3s;
-    &:nth-of-type(1) {
-      transition: all 0.3s 0.3s, transform 0.3s 0s;
-    }
-
-    &:nth-of-type(2) {
-      top: 50%;
-      margin-top: -1px;
-      left: 0;
-      transition: all 0.3s 0.3s;
-    }
-
-    &:nth-of-type(3) {
-      bottom: 0;
-      top: auto;
-      left: 0;
-      transition: all 0.3s 0.3s, transform 0.3s 0s;
-    }
-  }
-  &.active {
-    transform: rotate(135deg);
-    transition: all 0.5s 0.3s;
-
-    span:nth-of-type(1) {
-      top: 50%;
-      margin-top: -1px;
-      transform: rotate(90deg);
-      transition: all 0.3s, transform 0.3s 0.3s;
-    }
-
-    span:nth-of-type(2) {
-      opacity: 0;
-      transition: all 0.3s, opacity 0.3s 0s;
-    }
-
-    span:nth-of-type(3) {
-      bottom: 50%;
-      margin-bottom: -1px;
-      transform: rotate(0deg);
-      transition: all 0.3s, transform 0.3s 0.3s;
-    }
-  }
-} */

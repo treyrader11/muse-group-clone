@@ -17,7 +17,7 @@ import CloseButton from "./CloseButton";
 import { motion } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
-import BurgerNew from "./Burger";
+import Burger from "./Burger";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -66,7 +66,6 @@ export default function Navbar() {
             color={isNewsroomPage ? "white" : "black"}
             className={cn("hidden md:block ")}
           />
-          {/* <Burger onClick={() => setIsOpen(!isOpen)} className="md:hidden" /> */}
 
           <NavMenu
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
@@ -85,31 +84,25 @@ export default function Navbar() {
         className="z-[99] md:hidden fixed top-3 left-[4%]"
       />
 
-      {/* <Hamburger
+      <Burger
         isActive={isMobileMenuOpen}
         onClick={() => {
           setIsProductMenuOpen(false);
           setIsMobileMenuOpen(!isMobileMenuOpen);
         }}
-        className={cn({
-          "bg-white before:bg-white": isNewsroomPage,
-        })}
-      /> */}
-      <BurgerNew
-        isActive={isMobileMenuOpen}
-        onClick={() => {
-          setIsProductMenuOpen(false);
-          setIsMobileMenuOpen(!isMobileMenuOpen);
-        }}
-        className={cn( "right-0", "md:hidden", "fixed", "z-[99]", {
-          "bg-white before:bg-white": isNewsroomPage,
-        })}
+        className={cn(
+          "right-0",
+          "md:hidden",
+          "fixed",
+          "z-[99]",
+          isNewsroomPage ? "[&_span]:bg-white" : "[&_span]:bg-black"
+        )}
       />
 
       <ProductsMenu
         isActive={isProductMenuOpen}
         setIsProductMenuOpen={setIsProductMenuOpen}
-        isMobile={width < 768}
+        // isMobile={width < 768}
         className={cn({
           "bg-black text-white": isNewsroomPage,
         })}
@@ -206,62 +199,6 @@ function NavMenu({ className, setIsProductMenuOpen, isActive }: NavMenuProps) {
   );
 }
 
-function Burger({
-  className,
-  onClick,
-  isActive,
-}: {
-  isActive: boolean;
-  className?: string;
-  onClick: () => void;
-}) {
-  return (
-    <div
-      onClick={onClick}
-      className={cn(
-        "fixed",
-        "duration-500",
-        "transition-all",
-        "right-[4%]",
-        "z-10",
-        "size-[60px]"
-      )}
-    >
-      <span
-        className={cn(
-          "before:absolute",
-          "before:w-[60px]",
-          "before:h-2",
-          "before:bg-black",
-          "before:top-0",
-          "before:left-0",
-          "after:absolute",
-          "after:w-[60px]",
-          "after:h-2",
-          "after:bg-black",
-          "after:bottom-0",
-          "after:left-0",
-          "transition-transform",
-          "duration-500",
-          isActive &&
-            cn(
-              "before:transform",
-              "before:rotate-45",
-              "before:scale-x-[1.25]",
-              "before:translate-x-[12px]",
-              "before:translate-y-[12px]",
-              "after:transform",
-              "after:-rotate-45",
-              "after:scale-x-[1.25]",
-              "after:translate-x-[12px]",
-              "after:-translate-y-[12px]"
-            )
-        )}
-      />
-    </div>
-  );
-}
-
 function MobileNavMenu({
   children,
   isActive,
@@ -289,13 +226,6 @@ function MobileNavMenu({
         "min-h-screen",
         isActive ? "translate-y-0" : "-translate-y-full",
         className
-
-        // with keyframes in config
-        // isActive ? "flex" : "hidden",
-        // "absolute",
-        // "top-0",
-        // "origin-top",
-        // "animate-open-menu"
       )}
     >
       {children}
@@ -306,61 +236,12 @@ function MobileNavMenu({
 // "origin-top" <- tells it where to start the animation
 // tutorial: https://www.youtube.com/watch?v=0TxMHYCMALE
 
-function Hamburger({
-  className,
-  onClick,
-  isActive,
-}: {
-  isActive: boolean;
-  className?: string;
-  onClick: () => void;
-}) {
-  return (
-    <div className={cn("md:hidden fixed z-[99] top-3 right-[4%]")}>
-      <button
-        id="hamburger-button"
-        onClick={onClick}
-        className={cn(
-          "focus:outline-none", // using focus states like this makes more accessible
-          "text-3xl",
-          "cursor-pointer",
-          "relative",
-          "size-8",
-          isActive && "toggle-burger rotate-[720deg]"
-        )}
-      >
-        <div
-          className={cn(
-            "absolute",
-            "h-[3px]",
-            "w-9",
-            "bg-black",
-            "top-4",
-            "-mt-0.5",
-            //before
-            "before:absolute",
-            "before:bg-black",
-            "before:h-[3px]",
-            "before:w-9",
-            "before:transition-all",
-            "before:duration-500",
-            "before:-translate-x-4",
-            "before:-translate-y-3",
-            className
-          )}
-        />
-      </button>
-    </div>
-  );
-}
-
 function ProductsMenu({
   isActive,
   className,
-  isMobile,
+
   setIsProductMenuOpen,
 }: {
-  isMobile: boolean;
   isActive: boolean;
   className?: string;
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -376,19 +257,30 @@ function ProductsMenu({
         "duration-[600ms]",
         "ease-in-out",
         "px-20",
-        // "inset-y-0",
         "max-w-[1366px]",
-        "align-self",
+        // "align-self",
         "pt-8",
-        "grid",
-        "gap-8",
-        "grid-cols-2",
-        "md:grid-cols-4",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
         className
       )}
     >
-      <CloseMenu>
+      <div
+        className={cn(
+          "absolute",
+          "inset-x-[4%]",
+          "inset-y-0",
+          "mt-[84px]",
+          "md:border-t",
+          "max-w-[1366px]",
+          "pt-8",
+          "grid",
+          "gap-8",
+          "grid-cols-2",
+          "md:grid-cols-4",
+          "place-items-center",
+          className
+        )}
+      >
         <CloseButton
           onClick={() => setIsProductMenuOpen(false)}
           className="hidden md:block"
@@ -400,47 +292,11 @@ function ProductsMenu({
             href={path}
             className={cn("relative w-[128px] inline-block")}
           >
-            <Image
-              fill
-              src={`${ASSETS_BASE_URL}/${iconId}.svg`}
-              alt={label}
-              className=""
-            />
+            <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
             <p className="space-y-10">{label}</p>
           </Link>
         ))}
-      </CloseMenu>
-    </div>
-  );
-}
-
-function CloseMenu({
-  children,
-  className,
-}: {
-  children: React.ReactNode;
-  className?: string;
-}) {
-  return (
-    <div
-      className={cn(
-        "absolute",
-        "inset-x-[4%]",
-        "inset-y-0",
-        "mt-[84px]",
-        "md:border-t",
-        // "border-black",
-        "max-w-[1366px]",
-        "pt-8",
-        "grid",
-        "gap-8",
-        "grid-cols-2",
-        "md:grid-cols-4",
-        "place-items-center",
-        className
-      )}
-    >
-      {children}
+      </div>
     </div>
   );
 }

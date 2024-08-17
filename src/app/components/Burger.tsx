@@ -90,6 +90,7 @@ export default function Burger({
           "w-8",
           "xs:w-10",
           "h-4",
+          "xs:h-[1.4rem]",
           "relative",
           "m-5",
           "duration-200",

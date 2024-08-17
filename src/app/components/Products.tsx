@@ -68,7 +68,7 @@ function ProductCard({
           )}
         >
           <ProductTitle
-            className={cn("gap-4", "flex-col", "size-full", "sm:flex-row")}
+            className={cn("gap-4", "flex-col", "size-full", "sm:flex-row", )}
           >
             <div className="size-10 xs:size-[4rem] relative">
               <Image
@@ -84,7 +84,9 @@ function ProductCard({
                 "whitespace-nowrap",
                 onColor ? "text-white" : "text-black",
                 "font-oswald",
-                "text-left"
+                "text-left",
+                "flex-shrink",
+                "text-[12vw]"
               )}
             >
               {label}
@@ -138,6 +140,8 @@ function ProductTitle({
         "sm:flex-row",
         "flex",
         "size-full",
+       
+
         className
       )}
     >

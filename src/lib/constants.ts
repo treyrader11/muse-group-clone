@@ -211,12 +211,12 @@ export const CATEGORY_FILTERS = [
 
 export type CategoryLabel = (typeof CATEGORY_FILTERS)[number];
 
-export const NEWS_DATA: NewsItem[] = [
+export const BLOG_DATA: BlogPost[] = [
   {
     image: "muse-img-2.png",
     title: "From midi to Muse Group: Larry Morton & music industry innovation",
     description: "The world’s most popular composition and notation software.",
-    path: "/muse-img-2.png",
+    id: "larry-morton-muse-group",
     category: "Team",
     date: "August 8, 2024",
   },
@@ -225,7 +225,7 @@ export const NEWS_DATA: NewsItem[] = [
     title:
       "Major updates come to Muse Hub and Audacity: introducting a new audio store",
     description: "The world’s most popular composition and notation software.",
-    path: "/musescore-studio",
+    id: "muse-hub-store-audacity-update",
     category: "Press Releases",
     date: "July 17, 2024",
   },
@@ -233,17 +233,17 @@ export const NEWS_DATA: NewsItem[] = [
     image: "muse-img-3.jpg",
     title: "Muse Group and Collins collaborate on a monumental musical rebrand",
     description: "The world’s most popular composition and notation software.",
-    path: "/musescore-studio",
+    id: "muse-group-rebrand",
     category: "News",
     date: "June 27, 2024",
   },
 ];
 
-export type NewsItem = {
+export type BlogPost = {
   image: string;
   title: string;
   description: string;
-  path: string;
+  id: string;
   category: CategoryLabel;
   date: string;
 };

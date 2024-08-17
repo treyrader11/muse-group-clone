@@ -207,7 +207,6 @@ const config: Config = {
             transform: " scale(0.3)",
           },
           "100%": {
-        
             top: "50%",
             transform: "rotate(90deg) scale(1)",
           },
@@ -223,12 +222,15 @@ const config: Config = {
             // transform: "scale-(1)",
           },
         },
-       
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(-7px)" },
+          to: { opacity: "1", transform: "none" },
+        },
       },
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
         "close-menu": "close-menu 0.5s ease-in-out forwards",
-      
+        "fade-in": "fade-in 300ms ease forwards",
       },
     },
   },

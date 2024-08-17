@@ -2,12 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import Hero from "./components/Hero";
-import News from "./components/News";
-import { useState } from "react";
+import NewsBlogs from "./components/NewsBlogs";
+import { useState, useEffect } from "react";
 import {
   CATEGORY_FILTERS,
   type CategoryLabel,
-  NEWS_DATA,
+  BLOG_DATA,
 } from "@/lib/constants";
 import CategoryFilters from "./components/CategoryFilters";
 
@@ -15,9 +15,16 @@ export default function NewsroomPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryLabel>(
     CATEGORY_FILTERS[0]
   );
-  const [filteredData, setFilteredData] = useState(NEWS_DATA);
+  const [filteredData, setFilteredData] = useState(BLOG_DATA);
 
-  console.log("filteredNews", filteredData);
+  useEffect(() => {
+    if (activeCategory === "All") setFilteredData(BLOG_DATA);
+    else {
+      setFilteredData(
+        BLOG_DATA.filter((post) => post.category === activeCategory)
+      );
+    }
+  }, [activeCategory]);
   return (
     <div className={cn("")}>
       <Hero>
@@ -26,7 +33,7 @@ export default function NewsroomPage() {
           setActiveCategory={setActiveCategory}
         />
       </Hero>
-      {filteredData.length && <News data={filteredData} />}
+      {filteredData.length > 0 && <NewsBlogs data={filteredData} />}
     </div>
   );
 }

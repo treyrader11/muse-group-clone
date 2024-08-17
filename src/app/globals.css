@@ -27,8 +27,9 @@
     --orange: 16, 78%, 60%;
     --accessible-components-dark-grey: 0, 0%, 61%;
     --musescore: 222, 28%, 14%;
+    --lilac: 253, 68%, 58%;
 
-    --nav-height: 84px;
+    /* --nav-height: 84px; */
   }
 
   h1 {
@@ -143,7 +144,8 @@
   .text-gradient-purp,
   .text-gradient-yellow,
   .text-gradient-yellow-2,
-  .text-gradient-lavender {
+  .text-gradient-lavender,
+  .text-gradient-lavender-2 {
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-clip: text;
@@ -186,6 +188,16 @@
       346deg,
       hsl(var(--alice-blue)) 68%,
       #fa6d3e 87%
+    );
+  }
+  .text-gradient-lavender-2 {
+    background-image: linear-gradient(
+      87deg,
+      #694adc 22%,
+      black 36%,
+      black 50%,
+      black 63%,
+      hsl(var(--lilac)) 80%
     );
   }
 }

@@ -21,7 +21,7 @@ import Burger from "./Burger";
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isProductMenuOpen, setIsProductMenuOpen] = useState(false);
+  const [isProductMenuOpen, setIsProductMenuOpen] = useState(true);
 
   const pathname = usePathname();
   const isNewsroomPage = pathname.includes("newsroom");
@@ -119,8 +119,8 @@ export default function Navbar() {
           className={cn("flex-col flex-center pb-[70px]")}
           isActive={(href) => {
             // If the product menu is open, only make the products link active
-            // if (isProductMenuOpen && href === "/products") true;
-            if (isProductMenuOpen) href === "/products";
+            if (isProductMenuOpen && href === "/products") true;
+            // if (isProductMenuOpen) href === "/products";
             // Otherwise, match based on the current pathname
             return href === pathname;
           }}
@@ -233,9 +233,6 @@ function MobileNavMenu({
   );
 }
 
-// "origin-top" <- tells it where to start the animation
-// tutorial: https://www.youtube.com/watch?v=0TxMHYCMALE
-
 function ProductsMenu({
   isActive,
   className,
@@ -258,7 +255,6 @@ function ProductsMenu({
         "ease-in-out",
         "px-20",
         "max-w-[1366px]",
-        // "align-self",
         "pt-8",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
         className
@@ -275,25 +271,40 @@ function ProductsMenu({
           "pt-8",
           "grid",
           "gap-8",
+          "gap-y-10",
           "grid-cols-2",
           "md:grid-cols-4",
           "place-items-center",
+          "mx-auto",
+          "max-w-[700px]",
           className
         )}
       >
         <CloseButton
           onClick={() => setIsProductMenuOpen(false)}
-          className="hidden md:block"
+          className="hidden md:block "
         />
 
         {PRODUCTS.map(({ label, iconId, path }) => (
           <Link
             key={iconId}
             href={path}
-            className={cn("relative w-[128px] inline-block")}
+            className={cn(
+              "relative",
+              "size-full",
+              "w-[120px]",
+              "items-center",
+              "flex",
+              "flex-col",
+              "gap-8"
+            )}
           >
+            {/* <div className="flex flex-col border size-full border-red-400"> */}
             <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
-            <p className="space-y-10">{label}</p>
+            <p className="absolute -bottom-6 xs:bottom-0 text-nowrap">
+              {label}
+            </p>
+            {/* </div> */}
           </Link>
         ))}
       </div>

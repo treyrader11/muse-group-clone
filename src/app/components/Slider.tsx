@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { SLIDER_IMAGES } from "@/lib/constants";
@@ -57,12 +57,11 @@ export default function Slider({ className }: SliderProps) {
 
   return (
     <div
-      style={{ borderRadius: "20px" }}
       className={cn(
+        "rounded-2xl",
+        "xs:rounded-3xl",
         "relative",
-        //  "my-8",
-        // "mt-8",
-        "overflow-hidden",
+        "overflow-clip",
         "-mt-[9rem]",
         // "xs:-mt-[180px]",
         // "md:-mt-[155px]",
@@ -88,8 +87,7 @@ export default function Slider({ className }: SliderProps) {
           "items-center",
           "mx-auto",
           "cursor-grab",
-          "active:cursor-grabbing",
-          // "relative"
+          "active:cursor-grabbing"
         )}
       >
         <Images />
@@ -132,9 +130,10 @@ function Titles({ className, imgIndex }: TitleProps) {
     <div
       className={cn(
         "absolute",
-        "top-10",
+        // "top-10",
         "left-2",
-        "sm:top-20",
+        // "sm:top-20",
+        "top-0",
         "md:left-[32px]"
       )}
     >
@@ -169,7 +168,7 @@ function Titles({ className, imgIndex }: TitleProps) {
 
 type BulletProps = {
   imgIndex: number;
-  setImgIndex: Dispatch<SetStateAction<number>>;
+  setImgIndex: React.Dispatch<React.SetStateAction<number>>;
 };
 
 function Bullets({ imgIndex, setImgIndex }: BulletProps) {

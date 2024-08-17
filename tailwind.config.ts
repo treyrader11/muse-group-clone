@@ -1,4 +1,5 @@
 import { m } from "framer-motion";
+import { transform } from "next/dist/build/swc";
 import type { Config } from "tailwindcss";
 // import colors from "tailwindcss/colors";
 
@@ -83,36 +84,64 @@ const config: Config = {
       // },
 
       // need to work on these
+      // keyframes: {
+      //   shrink: {
+      //     "50%": { width: "50%", height: "50%" },
+      //     "100%": {
+      //       transform: "rotate(90deg) scaleX(1)",
+      //       width: "100%",
+      //     },
+      //   },
+      //   "shrink-rotate": {
+      //     "0%": { transform: "translateY(100%) ", width: "100%" },
+      //     "50%": { transform: "translateY(50%) scaleX(0.5)", width: "50%" },
+      //     "100%": {
+      //       transform: "rotate(90deg) scaleX(1)",
+      //       width: "100%",
+      //     },
+      //   },
+      //   "shrink-rotate-reverse": {
+      //     // "0%": { transform: "scaleX(1)", width: "100%" },
+      //     "50%": { transform: "scaleX(0.5)", width: "50%" },
+      //     "100%": {
+      //       transform: " scaleX(1)",
+      //       width: "100%",
+      //     },
+      //   },
+      // },
+      // animation: {
+      //   shrink: "shrink 0.5s forwards",
+      //   "shrink-rotate": "shrink-rotate 0.5s forwards",
+      //   "shrink-rotate-reverse": "shrink-rotate-reverse 0.5s",
+      // },
       keyframes: {
-        "shrink": {
-          "50%": {  width: "50%", height: "50%" },
+        "open-menu": {
+          "50%": {
+            top: "50%",
+            // bottom: "50%",
+            transform: "scale(.5)",
+          },
           "100%": {
-            transform: "rotate(90deg) scaleX(1)",
-            width: "100%",
+            top: "50%",
+
+            transform: "scale(-1) rotate(90deg)",
           },
         },
-        "shrink-rotate": {
-          "0%": { transform: "translateY(100%) ", width: "100%" },
-          "50%": { transform: "translateY(50%) scaleX(0.5)", width: "50%" },
-          "100%": {
-            transform: "rotate(90deg) scaleX(1)",
-            width: "100%",
+        "close-menu": {
+          "50%": {
+            bottom: "30%",
+            transform: "scale(.5)",
           },
-        },
-        "shrink-rotate-reverse": {
-          // "0%": { transform: "scaleX(1)", width: "100%" },
-          "50%": { transform: "scaleX(0.5)", width: "50%" },
           "100%": {
-            transform: " scaleX(1)",
-            width: "100%",
+            top: "0%",
+            // bottom: "50%",
+            transform: "scale(1)",
           },
         },
       },
       animation: {
-        "shrink": "shrink 0.5s forwards",
-        "shrink-rotate": "shrink-rotate 0.5s forwards",
-        "shrink-rotate-reverse":
-          "shrink-rotate-reverse 0.5s",
+        "open-menu": "open-menu 0.5s ease-in-out forwards",
+        "close-menu": "close-menu 0.5s ease-in-out forwards",
       },
     },
   },

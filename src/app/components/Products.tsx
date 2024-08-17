@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
-import Card, { CardHeader } from "./Card";
+import Card from "./Card";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export default function Products() {
@@ -51,7 +50,6 @@ function ProductCard({
         { "text-white": onColor },
         "min-h-[80vh]",
         "pt-[120%]"
-        // "relative"
       )}
     >
       <div className={cn("flex flex-col w-full gap-5")}>
@@ -140,8 +138,6 @@ function ProductTitle({
         "sm:flex-row",
         "flex",
         "size-full",
-        // "items-enter",
-        // "justify-enter",
         className
       )}
     >

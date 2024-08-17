@@ -17,19 +17,15 @@ export default function Burger({
         className={cn(
           "transition-all",
           "duration-500",
-          "w-10",
+          "w-8",
+          "xs:w-10",
           "h-[1.4rem]",
+      
           "relative",
-          "rotate-0",
           "m-5",
-          "delay-300", // delays rotation (make same as overlay fall)
-          isActive &&
-            cn(
-             
-              "rotate-[135deg]",
-              "duration-200",
-            //    "animate-shrink"
-            )
+          "duration-200",
+          // delays rotation (make same as overlay fall)
+          isActive && cn("delay-300", "rotate-[135deg]")
         )}
       >
         <span
@@ -37,39 +33,34 @@ export default function Burger({
             "absolute",
             "top-0",
             "left-0",
-            "h-[3px]",
+            "h-[2.5px]",
+            "xs:h-[3px]",
             "w-full",
             "duration-300",
-            "transition-transform",
-            // "inset-0",
-
-            isActive &&
-              cn(
-                "top-1/2",
-                "mt-[-3px]", // makes sure lines are even
-                // "delay-[600ms]",
-                "rotate-[90deg]"
-                // "animate-shrink-rotate"
-              )
+            "transition-all",
+            isActive
+              ? "top-1/2 animate-open-menu"
+              : " animate-close-menu"
           )}
         />
 
         <span
           className={cn(
             "absolute",
-            // "top-auto",
             "bottom-0",
             "left-0",
-            "h-[3px]",
+            "h-[2.5px]",
+            "xs:h-[3px]",
             "w-full",
             "duration-300",
-            "transition-[bottom]",
-            isActive &&
-              cn(
-                "bottom-1/2"
-                // "rotate-0"
-                // "animate-shrink-rotate-reverse"
-              )
+            "transition-transform",
+            "transition-all",
+            // isActive && cn(" top-1/2 animate-close-menu"),
+            // isActive && cn(""),
+            isActive
+            ? "bottom-1/2 rotate-90" // Adjust as needed
+            : " "
+            
           )}
         />
       </button>

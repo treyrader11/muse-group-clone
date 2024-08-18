@@ -10,10 +10,10 @@ export default function Footer() {
     <footer className={cn("pt-[256px] text-2xl px-[4%]")}>
       <div className={cn("max-w-[1366px] mx-auto border-t border-gray")}>
         <div className="mt-8 flex w-full justify-between">
-          <Logo color="black" />
+          <Logo />
           <ul className={cn("pl-0 ml-0 flex gap-8")}>
             {SOCIALS.map(({ id, label, path }) => (
-              <li key={id} className="">
+              <li key={id}>
                 <a href={path} target="_blank" rel="noreferrer" className="">
                   <Image
                     src={`${ASSETS_BASE_URL}/${id}.svg`}
@@ -60,7 +60,7 @@ export default function Footer() {
                 if (href) {
                   return (
                     <li key={href}>
-                      <a href={`${href}`} className="">
+                      <a href={`${href}`} >
                         {label}
                       </a>
                     </li>

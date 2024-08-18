@@ -41,20 +41,6 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
           { "opacity-0 delay-1000": mounted }
         )}
       >
-        {/* <Logo
-            retainSize
-            color="white"
-            className={cn(
-              "size-full",
-              "transition-all",
-              "duration-500",
-              "ease-in-out",
-              "translate-y-full",
-              {
-                "translate-y-0": mounted,
-              }
-            )}
-          /> */}
         <MuseGroupLogo
           className={cn({
             "translate-y-0": mounted,
@@ -69,21 +55,22 @@ function MuseGroupLogo({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        // "size-[30%]",
-        // "size-full",
+        "w-[202px]",
+        "h-[40px]",
+        "sm:w-[222px]",
+        "sm:h-[60px]",
         "transition-all",
         "duration-[800ms]",
         "ease-in-out",
         "translate-y-full",
+        "relative",
         className
       )}
     >
       <Image
-        width={222}
-        height={60}
-        alt="logo"
+        fill
+        alt="Muse Group logo"
         src={`${ASSETS_BASE_URL}/667b40c9f8dacab38d9c0890_logo-white.svg`}
-        priority
       />
     </div>
   );

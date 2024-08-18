@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 import { ASSETS_BASE_URL } from "@/lib/constants";
-import { Back } from "gsap";
 
 export default function Hero({ children }: { children: React.ReactNode }) {
   return (

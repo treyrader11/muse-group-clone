@@ -22,14 +22,14 @@ export default function Logo({ className, color = "black" }: LogoProps) {
   return (
     <Link
       href="/"
-      className={cn("size-[9%] xs:size-[30%] md:size-full", className)}
+      className={cn("size-[9%] sm:size-[30%] md:size-full", className)}
     >
       <Image
         width={222}
         height={60}
         alt="logo"
         src={`${ASSETS_BASE_URL}/${desktopLogo}.svg`}
-        className={cn("hidden xs:block")}
+        className={cn("hidden sm:block")}
         priority
       />
       <Image
@@ -37,7 +37,7 @@ export default function Logo({ className, color = "black" }: LogoProps) {
         height={60}
         alt="logo"
         src={`${ASSETS_BASE_URL}/${mobileLogo}.svg`}
-        className="xs:hidden"
+        className="sm:hidden"
         priority
       />
     </Link>

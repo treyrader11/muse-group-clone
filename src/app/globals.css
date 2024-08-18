@@ -58,7 +58,7 @@
     text-transform: uppercase;
   }
 
-  /* Make sure to xxplain global styles in video */
+  /* Explain global styles in tutorial */
   section {
     padding: 7.5rem 1rem 0;
     width: 100%;
@@ -68,8 +68,9 @@
     margin-right: auto;
   }
 
-  /* Styles for screens between 400px and 639px */
-  @media (min-width: 400px) and (max-width: 639px) {
+  /* Styles for screens between 640px and 768px. same as sm: breakpoint */
+
+  @media (min-width: 640px) and (max-width: 768px) {
     h1 {
       font-size: 8rem;
       line-height: 114px;
@@ -85,8 +86,8 @@
     }
   }
 
-  /* Styles for screens between 640px and 767px */
-  @media (min-width: 640px) and (max-width: 767px) {
+  /* Styles for screens between 768px and 1024px */
+  @media (min-width: 768px) and (max-width: 1024px) {
     h1 {
       font-size: 10rem;
       line-height: 8.7rem;
@@ -102,7 +103,7 @@
   }
 
   /* Styles for screens 768px and above */
-  @media (min-width: 768px) {
+  @media (min-width: 1024px) {
     h1 {
       font-size: 13rem;
       line-height: 11.5rem;

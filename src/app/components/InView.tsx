@@ -40,11 +40,11 @@ export default function InView({
       <motion.div
         ref={ref}
         initial="hidden"
-        // animate={isInView ? "visible" : "hidden"}
+        animate={isInView ? "visible" : "hidden"}
         whileInView="visible"
         variants={variants}
         transition={transition}
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.25 }} // not working yet
         // viewport={{ once: true }}
       >
         {children}

@@ -6,10 +6,11 @@ export default function Hero() {
     <section
       className={cn(
         "min-h-screen",
+        "max-h-[80vh]", // for mobile
+        "max-h-[80dvh]",
         // "sm:min-h-0",
         // "sm:max-h-[80vh]",
-        "sm:px-12",
-      
+        "sm:px-12"
       )}
     >
       <Slider />

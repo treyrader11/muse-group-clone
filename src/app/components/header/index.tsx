@@ -23,8 +23,8 @@ export default function Header() {
 
   useEffect(() => {
     // reset when page or width of viewport changes
-    setIsProductMenuOpen(false);
-    setIsMobileMenuOpen(false);
+    isProductMenuOpen && setIsProductMenuOpen(false);
+    isMobileMenuOpen && setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
   return (

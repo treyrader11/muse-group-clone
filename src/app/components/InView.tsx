@@ -44,8 +44,7 @@ export default function InView({
         whileInView="visible"
         variants={variants}
         transition={transition}
-        viewport={{ once: true, amount: 0.25 }} // not working yet
-        // viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.25 }}
       >
         {children}
       </motion.div>

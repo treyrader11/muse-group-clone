@@ -8,18 +8,7 @@ import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import InView from "./components/InView";
-import { createTransition } from "@/lib/motion";
-
-const textVariants = {
-  hidden: {
-    opacity: 0,
-    y: "100%",
-  },
-  visible: {
-    opacity: 1,
-    y: "0%",
-  },
-};
+import { createTransition, slideUpVariants } from "@/lib/motion";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -48,14 +37,14 @@ export default function HomePage() {
 
 function WhatMuseCreates() {
   return (
-    <InView variants={textVariants} transition={createTransition()}>
+    <InView variants={slideUpVariants} transition={createTransition()}>
       <h1 className="title-mask text-gradient-orange">
         What Muse <br />
         creates
         <br />
       </h1>
       <InView
-        variants={textVariants}
+        variants={slideUpVariants}
         transition={createTransition({ ease: "easeInOut", duration: 0.5 })}
       >
         <h3 className="sm:px-16">For&nbsp;OUR&nbsp;400M+ USERS</h3>
@@ -66,7 +55,7 @@ function WhatMuseCreates() {
 
 function MoreToCome() {
   return (
-    <InView variants={textVariants} transition={createTransition()}>
+    <InView variants={slideUpVariants} transition={createTransition()}>
       <h2 className="title-mask text-gradient-green">
         and so much <br />
         more to come

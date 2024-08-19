@@ -25,50 +25,37 @@ export default function ProductMenu({
         "transition-all",
         "duration-[600ms]",
         "ease-in-out",
-        // "px-20",
+        "px-20",
         "max-w-[1366px]",
         "pt-8",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
-
-        //new
-        "grid",
-        "place-content-center",
         className
       )}
     >
       <nav
         className={cn(
-          // "mt-[84px]",
+          "mt-[84px]",
           "md:border-t",
           "border-white/10",
-          // "max-w-[1366px]",
-          // "mx-auto",
-          // "relative",
-          // "border border-red-400",
-
+          "max-w-[1366px]",
+          "mx-auto",
+          "relative",
           className
         )}
       >
         <ul
           className={cn(
-            // "relative",
-            // "pt-20",
-
+            "relative",
+            "pt-20",
+            "grid",
             "gap-8",
-            "xs:px-[6rem]",
-
-            "grid-cols-4",
-            // "md:grid-cols-4",
-            // "place-items-center",
-            // "mx-auto",
-            // "max-w-[700px]",
-            // "z-4",
-
-            "flex",
-            "flex-wrap",
-            "justify-center",
-            "items-evenly",
-            "md:grid"
+            "gap-y-10",
+            "grid-cols-2",
+            "md:grid-cols-4",
+            "place-items-center",
+            "mx-auto",
+            "max-w-[700px]",
+            "z-4"
           )}
         >
           <Close
@@ -81,25 +68,33 @@ export default function ProductMenu({
               href={path}
               className={cn(
                 "relative",
-                // "size-full",
+                "size-full",
                 "w-[120px]",
                 "items-center",
                 "flex",
                 "flex-col",
-                "gap-2"
-                // "grid",
-                // "grid-rows-2",
-                // "gap-10"
-                // "mx-auto"
+                "grid",
+                "grid-rows-2",
+                "gap-10"
               )}
             >
-              <Image
-                width={64}
-                height={64}
-                src={`${ASSETS_BASE_URL}/${iconId}.svg`}
-                alt={label}
-              />
-              <p className={cn("text-center font-inter")}>{label}</p>
+              <div
+                className={cn(
+                  "absolute",
+                  "size-full",
+                  "w-[120px]",
+                  "items-center"
+                )}
+              >
+                <Image
+                  fill
+                  src={`${ASSETS_BASE_URL}/${iconId}.svg`}
+                  alt={label}
+                />
+              </div>
+              <p className={cn("absolute", "-bottom-5", "sm:bottom-0")}>
+                {label}
+              </p>
             </Link>
           ))}
         </ul>

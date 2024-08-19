@@ -12,13 +12,13 @@ export const ROUTES = [
 
 export const PRODUCTS = [
   {
-    label: "Utilmate Guitar",
+    label: "Ultimate Guitar",
     iconId: "667b437c02f14a2e52dde805_ug",
     banner: {
       mobile: "667c9ebba85372ed7319e8e7_First%20Screen%20mob.webp",
       desktop: "667c92402b305e07ee579088_cover-ug.webp",
     },
-    path: "/utilmate-guitar",
+    path: "/ultimate-guitar",
     description:
       "The best platform for music makers to learn and play songs they love.",
   },
@@ -105,13 +105,11 @@ export const PRODUCTS = [
 
 // Make sure to configure tailwind to purge files inside of lib for these classes to work
 export const SLIDER_IMAGES = [
-  // https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/667c1edd2148a8112d42153a_slider_1_mob.webp
   {
-    // id: "667c1ec9ebf826c004a69380",
-    // id: "667c1edd2148a8112d42153a_slider_1_mob.webp"
     id: {
       mobile: "667c1edd2148a8112d42153a_slider_1_mob",
-      desktop: "667c1ec9ebf826c004a69380_slider_1_ipad",
+      // desktop: "667c1ec9ebf826c004a69380_slider_1_ipad",
+      desktop: "6682bc86d150ff1a2f34a4ac_slider_1",
     },
     comp: `Muse Group. <br /> For the music<br />makers.`,
     textGradient: "text-gradient-yellow",
@@ -125,7 +123,6 @@ export const SLIDER_IMAGES = [
     textGradient: "text-gradient-red",
   },
   {
-    // id: "654d424d20c9a512579256fc",
     id: {
       mobile: "654d42f8c6bd629979d9e739_slider_3_mob",
       desktop: "654d424d20c9a512579256fc_slider_3_ipad",
@@ -134,7 +131,6 @@ export const SLIDER_IMAGES = [
     textGradient: "text-gradient-yellow-2",
   },
   {
-    // id: "654d4437e50414f464bac639",
     id: {
       mobile: "654d444bfe854bc74cdf8bbb_slider_4_mob",
       desktop: "654d4437e50414f464bac639_slider_4_ipad",

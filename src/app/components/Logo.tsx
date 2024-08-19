@@ -56,7 +56,7 @@ export default function Logo({
     );
   } else
     return (
-      <Link href="/" className={cn("size-[9%]", "sm:size-[30vw]", className)}>
+      <Link href="/" className={cn("size-[8%]", "sm:size-[30vw]", className)}>
         <Image
           {...imageProps}
           src={`${ASSETS_BASE_URL}/${desktopLogo}.svg`}

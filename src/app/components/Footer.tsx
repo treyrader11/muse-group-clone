@@ -60,9 +60,7 @@ export default function Footer() {
                 if (href) {
                   return (
                     <li key={href}>
-                      <a href={`${href}`} >
-                        {label}
-                      </a>
+                      <a href={`${href}`}>{label}</a>
                     </li>
                   );
                 }

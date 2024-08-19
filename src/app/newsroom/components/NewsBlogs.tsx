@@ -1,7 +1,5 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { type BlogPost as TBlogPost } from "@/lib/constants";
 import BlogPost from "../../components/BlogPost";
 
@@ -16,7 +14,9 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
         // key={data.length}
         className={cn(
           "grid",
-          hasMultipleBlogs ? "md:grid-cols-2 max-w-7xl" : "max-w-4xl grid-cols-1",
+          hasMultipleBlogs // center and max-width if only 1 blog
+            ? "md:grid-cols-2 max-w-7xl"
+            : "max-w-4xl grid-cols-1",
           "md:gap-8",
           "lg:gap-[4rem]",
           "sm:px-6",
@@ -24,7 +24,7 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
         )}
       >
         {data.map((item, i) => (
-          <li className="animate-fade-in " key={i}>
+          <li className="animate-fade-in" key={i}>
             <BlogPost {...item} />
           </li>
         ))}

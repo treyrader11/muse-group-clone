@@ -3,12 +3,24 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
 
+const imageProps = {
+  width: 222,
+  height: 60,
+  alt: "Muse Group logo",
+  priority: true,
+};
+
 type LogoProps = {
   className?: string;
   color?: "black" | "white";
+  forPreloader?: boolean;
 };
 
-export default function Logo({ className, color = "black" }: LogoProps) {
+export default function Logo({
+  className,
+  color = "black",
+  forPreloader,
+}: LogoProps) {
   const onDark = color === "white";
 
   const desktopLogo = onDark
@@ -19,31 +31,42 @@ export default function Logo({ className, color = "black" }: LogoProps) {
     ? "667b41ed7a8c0f8368a469fc_M-logo-white"
     : "667b42061b567aa6b91b5f66_M-logo-black";
 
-  return (
-    <Link
-      href="/"
-      className={cn(
-        "size-[9%]",
-        "xs:size-[30vw]",
-        className
-      )}
-    >
-      <Image
-        width={222}
-        height={60}
-        alt="logo"
-        src={`${ASSETS_BASE_URL}/${desktopLogo}.svg`}
-        className={cn("hidden xs:block")}
-        priority
-      />
-      <Image
-        width={55}
-        height={60}
-        alt="logo"
-        src={`${ASSETS_BASE_URL}/${mobileLogo}.svg`}
-        className="xs:hidden"
-        priority
-      />
-    </Link>
-  );
+  if (forPreloader) {
+    return (
+      <div
+        className={cn(
+          "w-[202px]",
+          "h-[40px]",
+          "sm:w-[222px]",
+          "sm:h-[60px]",
+          "transition-all",
+          "duration-[800ms]",
+          "ease-in-out",
+          "translate-y-full",
+          "relative",
+          className
+        )}
+      >
+        <Image
+          fill
+          alt="Muse Group logo"
+          src={`${ASSETS_BASE_URL}/667b40c9f8dacab38d9c0890_logo-white.svg`}
+        />
+      </div>
+    );
+  } else
+    return (
+      <Link href="/" className={cn("size-[9%]", "sm:size-[30vw]", className)}>
+        <Image
+          {...imageProps}
+          src={`${ASSETS_BASE_URL}/${desktopLogo}.svg`}
+          className={cn("hidden sm:block")}
+        />
+        <Image
+          {...imageProps}
+          src={`${ASSETS_BASE_URL}/${mobileLogo}.svg`}
+          className="sm:hidden"
+        />
+      </Link>
+    );
 }

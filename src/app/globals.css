@@ -80,7 +80,7 @@
 
   /* Styles for screens between 640px and 768px. same as sm: breakpoint */
 
-  @media (min-width: 400px) {
+  @media (min-width: 500px) {
     /* h1 {
       font-size: 8rem;
       line-height: 114px;

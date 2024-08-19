@@ -37,7 +37,7 @@ export default function CategoryFilters({
               "text-2xl",
               activeCategory === category
                 ? "text-black bg-white"
-                : "hover:text-white/50"
+                : "hover:text-white/50 bg-black"
             )}
           >
             {category}
@@ -59,13 +59,9 @@ function Category({ className, onClick, children }: CategoryItemProps) {
     <button
       onClick={onClick}
       className={cn(
-        "relative",
-        "leading-[150%]",
-        "bg-black",
-        "text-white",
         "rounded-full",
-        "xs:py-3.5",
-        "xs:px-8",
+        "sm:py-3.5",
+        "sm:px-8",
         "py-1.5",
         "px-3",
         "sm:py-4",

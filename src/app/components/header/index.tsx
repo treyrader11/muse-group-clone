@@ -72,6 +72,8 @@ export default function Header() {
           />
         </div>
       </header>
+
+      {/* Put these here because they must over lap overlays */}
       <Logo
         color={isNewsroomPage ? "white" : "black"}
         className="z-highest md:hidden fixed top-3 left-[4%]"
@@ -95,7 +97,6 @@ export default function Header() {
       <ProductMenu
         isActive={isProductMenuOpen}
         setIsProductMenuOpen={setIsProductMenuOpen}
-        // isMobile={width < 768}
         className={cn({
           "bg-black text-white": isNewsroomPage,
         })}
@@ -137,7 +138,6 @@ function Overlay({ className }: { className?: string }) {
         "h-[71px]",
         "md:h-[87px]",
         "w-full",
-        // "z-50",
         "z-2",
         className
       )}

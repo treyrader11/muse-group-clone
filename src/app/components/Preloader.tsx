@@ -9,7 +9,11 @@ import { ASSETS_BASE_URL } from "@/lib/constants";
 export default function Preloader({ isInView }: { isInView: boolean }) {
   const [mounted, setMounted] = useState(false);
 
-  useEffect(() => setMounted(true), []);
+  // useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
 
   return (
     // overlay container animation
@@ -17,9 +21,9 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
       className={cn(
         "grid",
         "place-items-center",
-        "fixed",
+        "fixed", // causes warning in console
+        // "absolute", // does not cause warning in console
         "inset-0",
-        // "z-[99]",
         "z-highest",
         "bg-black",
         "size-screen",
@@ -42,37 +46,13 @@ export default function Preloader({ isInView }: { isInView: boolean }) {
           { "opacity-0 delay-1000": mounted }
         )}
       >
-        <MuseGroupLogo
+        <Logo
+          forPreloader
           className={cn({
             "translate-y-0": mounted,
           })}
         />
       </div>
-    </div>
-  );
-}
-
-function MuseGroupLogo({ className }: { className?: string }) {
-  return (
-    <div
-      className={cn(
-        "w-[202px]",
-        "h-[40px]",
-        "sm:w-[222px]",
-        "sm:h-[60px]",
-        "transition-all",
-        "duration-[800ms]",
-        "ease-in-out",
-        "translate-y-full",
-        "relative",
-        className
-      )}
-    >
-      <Image
-        fill
-        alt="Muse Group logo"
-        src={`${ASSETS_BASE_URL}/667b40c9f8dacab38d9c0890_logo-white.svg`}
-      />
     </div>
   );
 }

@@ -17,6 +17,7 @@ export default function Close({ className, onClick }: CloseProps) {
         "top-[8%]",
         // "z-[90]",
         "z-2",
+
         className
       )}
     >

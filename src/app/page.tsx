@@ -49,7 +49,12 @@ export default function HomePage() {
   return (
     <>
       <Preloader isInView={isLoading} />
-      <div ref={container} className={cn("pt-24 md:pt-[128px] overflow-clip")}>
+      <div
+        ref={container}
+        className={cn("pt-24 md:pt-[128px] overflow-clip", {
+          // fixed: isLoading,
+        })}
+      >
         <Hero />
         <Featured>
           <SlideUp

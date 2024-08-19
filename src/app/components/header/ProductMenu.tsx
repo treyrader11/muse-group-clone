@@ -1,5 +1,3 @@
-"use client";
-
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,6 +9,7 @@ type ProductsMenuProps = {
   className?: string;
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
 export default function ProductMenu({
   isActive,
   className,
@@ -28,13 +27,12 @@ export default function ProductMenu({
         "ease-in-out",
         "px-20",
         "max-w-[1366px]",
-        // "min-h-[100svh]",
         "pt-8",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
         className
       )}
     >
-      <div
+      <nav
         className={cn(
           "mt-[84px]",
           "md:border-t",
@@ -45,16 +43,12 @@ export default function ProductMenu({
           className
         )}
       >
-        {/* <Close
-          onClick={() => setIsProductMenuOpen(false)}
-          className="hidden md:block mt-10"
-        /> */}
-
         <ul
           className={cn(
-            "absolute",
-            "inset-x-[4%]",
-            "inset-y-0",
+            // "absolute",
+            // "inset-x-[4%]",
+            // "inset-y-0",
+            "relative",
             "pt-20",
             "grid",
             "gap-8",
@@ -63,49 +57,14 @@ export default function ProductMenu({
             "md:grid-cols-4",
             "place-items-center",
             "mx-auto",
-            "max-w-[700px]"
+            "max-w-[700px]",
+            "z-4"
           )}
         >
           <Close
             onClick={() => setIsProductMenuOpen(false)}
-            className="hidden md:flex mt-10 z-5"
+            className="hidden md:block mt-10"
           />
-          {/* {PRODUCTS.map(({ label, iconId, path }) => (
-            <li key={iconId} className="">
-              <Link
-                href={path}
-                className={cn(
-                  "relative",
-                  "size-full",
-                  "w-[120px]",
-                  "items-center",
-                  "flex",
-                  "flex-col",
-                  "gap-10"
-                )}
-              >
-                <div className={cn("absolute", "w-full", "h-[120px]")}>
-                  <Image
-                    fill
-                    src={`${ASSETS_BASE_URL}/${iconId}.svg`}
-                    alt={label}
-                    className="object-cover"
-                  />
-                </div>
-                <p
-                  className={cn(
-                    "absolute",
-                    "-bottom-5",
-                    "sm:bottom-0",
-                    "text-nowrap",
-                    "whitespace-nowrap"
-                  )}
-                >
-                  {label}
-                </p>
-              </Link>
-            </li>
-          ))} */}
           {PRODUCTS.map(({ label, iconId, path }) => (
             <Link
               key={iconId}
@@ -136,65 +95,13 @@ export default function ProductMenu({
                   alt={label}
                 />
               </div>
-              <p
-                className={cn(
-                  "absolute",
-                  // "-bottom-8",
-                  "-bottom-5",
-                  "sm:bottom-0"
-                  // "text-nowrap"
-                )}
-              >
+              <p className={cn("absolute", "-bottom-5", "sm:bottom-0")}>
                 {label}
               </p>
             </Link>
           ))}
         </ul>
-        {/* {PRODUCTS.map(({ label, iconId, path }) => (
-            <Link
-              key={iconId}
-              href={path}
-              className={cn(
-                "relative",
-                "size-full",
-                // "w-[120px]",
-                "items-center",
-                "flex",
-                "flex-col",
-                // "grid",
-                // "grid-rows-2",
-                "gap-10"
-              )}
-            >
-              <div
-                className={cn(
-                  "absolute",
-                  "size-full",
-                  "w-[120px]",
-                  "items-center"
-                )}
-              >
-                <Image
-                  fill
-                  src={`${ASSETS_BASE_URL}/${iconId}.svg`}
-                  alt={label}
-                />
-              </div>
-              <p
-                className={cn(
-                  "absolute",
-                  // "-bottom-8",
-                  "-bottom-5",
-                  "sm:bottom-0",
-                  "text-nowrap"
-                )}
-              >
-                {label}
-              </p>
-              
-            </Link>
-          ))} */}
-      </div>
+      </nav>
     </div>
   );
 }

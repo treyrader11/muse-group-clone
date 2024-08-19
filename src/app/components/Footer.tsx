@@ -83,7 +83,7 @@ export default function Footer() {
             </ul>
           </li>
 
-          <li className="flex xs:self-end md:ml-auto">
+          <li className="flex sm:self-end md:ml-auto">
             <Copyright />
           </li>
         </ul>

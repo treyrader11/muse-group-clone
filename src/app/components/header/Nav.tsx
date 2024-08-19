@@ -82,9 +82,9 @@ export function MobileNav({ children, isActive, className }: MobileNavProps) {
       className={cn(
         "z-[88]",
         "fixed",
-        // "inset-0",
-        "top-0",
-        "inset-x-0",
+        "inset-0",
+        // "top-0",
+        // "inset-x-0",
         "flex",
         "flex-col",
         "justify-end",

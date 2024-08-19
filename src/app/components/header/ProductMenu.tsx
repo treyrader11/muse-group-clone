@@ -55,7 +55,7 @@ export default function ProductMenu({
             // "pt-20",
 
             "gap-8",
-            "xs:px-[6rem]",
+            // "xs:px-[6rem]",
 
             "grid-cols-4",
             // "md:grid-cols-4",
@@ -81,16 +81,11 @@ export default function ProductMenu({
               href={path}
               className={cn(
                 "relative",
-                // "size-full",
                 "w-[120px]",
                 "items-center",
                 "flex",
                 "flex-col",
                 "gap-2"
-                // "grid",
-                // "grid-rows-2",
-                // "gap-10"
-                // "mx-auto"
               )}
             >
               <Image

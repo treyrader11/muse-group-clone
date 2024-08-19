@@ -18,7 +18,7 @@ export default function Banners() {
         "grid",
         "grid-cols-1",
         "md:grid-cols-2",
-        "gap-8",
+        "gap-4",
         "lg:gap-16",
         "max-w-[1366px]"
       )}

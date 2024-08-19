@@ -27,8 +27,6 @@ export default function Featured({ className, children }: FeaturedProps) {
       className={cn(
         "flex-center",
         "flex-col",
-        // "pt-20",
-        // "pt-[128px]",
         "sm:pt-[14rem]",
         "font-oswald",
         "px-3",

@@ -68,6 +68,9 @@ function Category({ className, onClick, children }: CategoryItemProps) {
         "sm:px-9",
         "text-sm",
         "sm:text-2xl",
+        // don't wanna overlap bg imnage
+        "relative",
+        "z-3",
         className
       )}
     >

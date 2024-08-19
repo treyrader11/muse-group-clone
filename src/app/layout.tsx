@@ -26,15 +26,15 @@ export default function RootLayout({
         )}
       >
         <Header />
-        <main
+        {/* <main
           className={cn(
-            // May not need overflow
             "overflow-clip", // keeps content intact including sticky elements
             "mx-auto"
           )}
         >
           {children}
-        </main>
+        </main> */}
+        {children}
         <Footer />
       </body>
     </html>

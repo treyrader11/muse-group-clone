@@ -3,18 +3,10 @@
 import { useEffect, useState } from "react";
 import Logo from "./Logo";
 import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { ASSETS_BASE_URL } from "@/lib/constants";
 
 export default function Preloader({ isInView }: { isInView: boolean }) {
   const [mounted, setMounted] = useState(false);
-
-  // useEffect(() => setMounted(true), []);
-  useEffect(() => {
-    setMounted(true);
-    return () => setMounted(false);
-  }, []);
-
+  useEffect(() => setMounted(true), []);
   return (
     // overlay container animation
     <div

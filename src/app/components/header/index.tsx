@@ -37,7 +37,6 @@ export default function Header() {
           "top-0",
           "h-[71px]",
           "md:h-[87px]",
-          // "z-50",
           "z-2",
           "py-3",
           "px-[4%]",

@@ -24,13 +24,10 @@ export default function Nav({
         "font-oswald",
         "font-semibold",
         "text-5xl",
-        // "md:text-3xl",
         "md:text-[30px]",
         // leading only works when text size is arbitrary value
         "leading-6",
         "tracking-tighter",
-        // "relative",
-        // "z-[999]",
         className
       )}
     >

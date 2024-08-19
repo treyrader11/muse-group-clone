@@ -8,8 +8,12 @@ import {
   CATEGORY_FILTERS,
   type CategoryLabel,
   BLOG_DATA,
+  type BlogPost,
 } from "@/lib/constants";
 import CategoryFilters from "./components/CategoryFilters";
+
+// const filterCategories = (category: CategoryLabel) => (blog: BlogPost) =>
+//   blog.category === category || category === "All";
 
 export default function NewsroomPage() {
   const [activeCategory, setActiveCategory] = useState<CategoryLabel>(
@@ -21,6 +25,9 @@ export default function NewsroomPage() {
   const availableCategories = CATEGORY_FILTERS.filter((category) =>
     BLOG_DATA.some((blog) => blog.category === category || category === "All")
   );
+  // const availableCategories = CATEGORY_FILTERS.filter((category) =>
+  //   BLOG_DATA.some(filterCategories(category))
+  // );
 
   useEffect(() => {
     if (activeCategory === "All") setFilteredData(BLOG_DATA);
@@ -32,7 +39,7 @@ export default function NewsroomPage() {
   }, [activeCategory]);
 
   return (
-    <div>
+    <main>
       <Hero>
         <CategoryFilters
           activeCategory={activeCategory}
@@ -41,6 +48,6 @@ export default function NewsroomPage() {
         />
       </Hero>
       {filteredData.length > 0 && <NewsBlogs data={filteredData} />}
-    </div>
+    </main>
   );
 }

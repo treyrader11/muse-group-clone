@@ -7,7 +7,9 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className={cn("pt-[256px] text-2xl px-[4%]")}>
+    <footer
+      className={cn("pt-[128px] sm:pt-[256px] text-2xl px-[4%]")}
+    >
       <div className={cn("max-w-[1366px] mx-auto border-t border-gray")}>
         <div className="mt-8 flex w-full justify-between">
           <Logo />

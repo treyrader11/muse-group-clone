@@ -8,7 +8,6 @@ export default function Hero({ children }: { children: React.ReactNode }) {
     <section
       className={cn(
         "min-h-screen",
-        // "max-w-none",
         "h-fit",
         "pb-8",
         "px-12",
@@ -21,9 +20,22 @@ export default function Hero({ children }: { children: React.ReactNode }) {
         "gap-y-8"
       )}
     >
-      <div>
+      <div
+        className={cn(
+          "relative",
+          // "grid",
+          // "grid-cols-1",
+          // "grid-rows-2",
+          "place-content-center"
+        )}
+      >
         <h2
-          className={cn("font-oswald", "title-mask", "text-gradient-lavender")}
+          className={cn(
+            "font-oswald",
+            "title-mask",
+            "text-gradient-lavender",
+            "start-1"
+          )}
         >
           Explore news and features
         </h2>
@@ -34,7 +46,7 @@ export default function Hero({ children }: { children: React.ReactNode }) {
   );
 }
 
-function BackgroundImage() {
+function BackgroundImage({ className }: { className?: string }) {
   return (
     <div
       className={cn(
@@ -43,7 +55,8 @@ function BackgroundImage() {
         "lg:top-3/4",
         "sm:inset-x-0",
         "md:w-[500px]",
-        "mx-auto"
+        "mx-auto",
+        className
       )}
     >
       <Image

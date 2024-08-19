@@ -34,6 +34,11 @@
     /* --nav-height: 84px; */
   }
 
+  /* main {
+    overflow: clip;
+    margin: 0 auto;
+  } */
+
   h1 {
     font-weight: 900;
     letter-spacing: -0.05em;

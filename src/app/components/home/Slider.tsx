@@ -3,7 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { SLIDER_IMAGES } from "@/lib/constants";
+import { ASSETS_BASE_URL, SLIDER_IMAGES } from "@/lib/constants";
+import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 
 export const SPRING_OPTIONS = {
   type: "spring",
@@ -26,6 +27,8 @@ export default function Slider({ className }: SliderProps) {
   const [imgIndex, setImgIndex] = useState(0);
 
   const dragX = useMotionValue(0);
+
+  // create a hook that lets you pass a width cap
 
   useEffect(() => {
     const intervalRef = setInterval(() => {
@@ -63,11 +66,6 @@ export default function Slider({ className }: SliderProps) {
         "relative",
         "overflow-clip",
         "-mt-[9rem]",
-        // "min-h-screen",
-        // "absolute",
-        // "w-screen",
-        // "-inset-x-0",
-        // "px-4",
         className
       )}
     >
@@ -90,8 +88,7 @@ export default function Slider({ className }: SliderProps) {
           "items-center",
           "mx-auto",
           "cursor-grab",
-          "active:cursor-grabbing",
-          // "h-screen",
+          "active:cursor-grabbing"
         )}
       >
         <Images />
@@ -103,34 +100,63 @@ export default function Slider({ className }: SliderProps) {
 }
 
 export function Images() {
+  const { width } = useWindowDimensions();
+  const isMobile = width < 640;
   return (
     <>
-      {SLIDER_IMAGES.map((img, i) => {
+      {SLIDER_IMAGES.map(({ id: { mobile, desktop } }) => {
+        const imageId = isMobile ? mobile : desktop;
         return (
           <div
-            key={i}
+            key={mobile}
             style={{
-              backgroundImage: `url(https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${
-                img.id
-              }_slider_${i + 1}_ipad.webp)`,
+              backgroundImage: `url(${ASSETS_BASE_URL}/${imageId}.webp)`,
               backgroundSize: "cover",
-              // backgroundSize: "contain",
-              // backgroundRepeat: "no-repeat",
             }}
-            className="w-full "
+            className="w-full aspect-[4/5]"
           >
             <motion.div
               transition={TWEEN_OPTIONS}
               className={cn(
                 "w-screen",
-                //  "min-h-[80vh]",
-                "aspect-[8/10] shrink-0"
+                "shrink-0",
+                "min-h-[80vh]",
+                "sm:min-h-[50vh]",
+                "aspect-[8/10]"
               )}
             />
           </div>
         );
       })}
     </>
+    // <>
+    //   {SLIDER_IMAGES.map(({ id: {img: { mobile, desktop } }) => {
+    //     // const { mobile, desktop } = img
+    //     const imageUrl = isMobile ? mobile : desktop;
+    //     return (
+    //       <div
+    //         key={mobile}
+    //         style={{
+    //           backgroundImage: `url(https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/${img.id}.webp)`,
+    //           backgroundSize: "cover",
+    //           // backgroundSize: "contain",
+    //           // backgroundRepeat: "no-repeat",
+    //         }}
+    //         className="w-full aspect-[4/5] "
+    //       >
+    //         <motion.div
+    //           transition={TWEEN_OPTIONS}
+    //           className={cn(
+    //             // "w-fit",
+    //             // "shrink-0"
+    //             "min-h-[80vh]",
+    //             "aspect-[8/10]"
+    //           )}
+    //         />
+    //       </div>
+    //     );
+    //   })}
+    // </>
   );
 }
 
@@ -138,7 +164,15 @@ type TitleProps = { className?: string; imgIndex: number };
 
 function Titles({ className, imgIndex }: TitleProps) {
   return (
-    <div className={cn("absolute", "left-2", "top-0", "md:left-[32px]")}>
+    <div
+      className={cn(
+        "absolute",
+        "left-2",
+        "top-0",
+        "md:left-[32px]",
+        "border border-red-400"
+      )}
+    >
       {SLIDER_IMAGES.map(({ comp, textGradient }, i) =>
         i === imgIndex ? (
           <motion.h1
@@ -158,6 +192,7 @@ function Titles({ className, imgIndex }: TitleProps) {
               "leading-[3rem]",
               "sm:leading-[4.2rem]",
               "md:leading-[5.5rem]",
+
               textGradient,
               className
             )}

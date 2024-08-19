@@ -105,23 +105,40 @@ export const PRODUCTS = [
 
 // Make sure to configure tailwind to purge files inside of lib for these classes to work
 export const SLIDER_IMAGES = [
+  // https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/667c1edd2148a8112d42153a_slider_1_mob.webp
   {
-    id: "667c1ec9ebf826c004a69380",
+    // id: "667c1ec9ebf826c004a69380",
+    // id: "667c1edd2148a8112d42153a_slider_1_mob.webp"
+    id: {
+      mobile: "667c1edd2148a8112d42153a_slider_1_mob",
+      desktop: "667c1ec9ebf826c004a69380_slider_1_ipad",
+    },
     comp: `Muse Group. <br /> For the music<br />makers.`,
     textGradient: "text-gradient-yellow",
   },
   {
-    id: "654d2e2883bfc44e90a9d380",
+    id: {
+      mobile: "654d2e323a58dfb12430d528_slider_2_mob",
+      desktop: "654d2e2883bfc44e90a9d380_slider_2_ipad",
+    },
     comp: `Our Mission: <br /> Changing the<br />lives of musicans<br />every day`,
     textGradient: "text-gradient-red",
   },
   {
-    id: "654d424d20c9a512579256fc",
+    // id: "654d424d20c9a512579256fc",
+    id: {
+      mobile: "654d42f8c6bd629979d9e739_slider_3_mob",
+      desktop: "654d424d20c9a512579256fc_slider_3_ipad",
+    },
     comp: `Millions of<br />creatives<br />have joined<br />the Muse<br />commuunity`,
     textGradient: "text-gradient-yellow-2",
   },
   {
-    id: "654d4437e50414f464bac639",
+    // id: "654d4437e50414f464bac639",
+    id: {
+      mobile: "654d444bfe854bc74cdf8bbb_slider_4_mob",
+      desktop: "654d4437e50414f464bac639_slider_4_ipad",
+    },
     comp: `<p>Home to the<br />word's most<br />popular music<br />software and<br />collections</p>`,
     textGradient: "text-gradient-purp",
   },

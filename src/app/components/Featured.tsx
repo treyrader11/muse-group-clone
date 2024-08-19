@@ -15,7 +15,6 @@ export default function Featured({ className, children }: FeaturedProps) {
         "sm:pt-[14rem]",
         "font-oswald",
         "px-3",
-        // "py-0",
         className
       )}
     >

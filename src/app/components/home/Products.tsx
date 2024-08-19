@@ -104,8 +104,7 @@ function ProductCard({
             className={cn(
               "tracking-[-1px]",
               "font-inter",
-              // "sm:text-2xl",
-              "xs:text-2xl",
+              "sm:text-2xl",
               "leading-[150%]"
             )}
           >

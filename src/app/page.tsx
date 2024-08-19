@@ -33,7 +33,7 @@ export default function HomePage() {
       <Preloader isInView={isLoading} />
       <div className={cn("pt-24 md:pt-[128px] overflow-clip")}>
         <Hero />
-        <Featured>
+        <Featured className="pt-0">
           <WhatMuseCreates />
         </Featured>
         <Products />

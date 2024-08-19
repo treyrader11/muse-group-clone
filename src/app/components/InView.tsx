@@ -19,6 +19,7 @@ type InViewProps = {
   transition?: Transition;
   viewOptions?: UseInViewOptions;
   className?: string;
+
 };
 
 const defaultVariants = {
@@ -40,10 +41,14 @@ export default function InView({
     <div className={cn("overflow-clip h-fit", className)}>
       <motion.div
         ref={ref}
+        // initial="hidden"
+        // animate={isInView ? "visible" : "hidden"}
         initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
+        whileInView="visible"
         variants={variants}
         transition={transition}
+        viewport={{ once: true, amount: 0.25 }}
+        // viewport={{ once: true }}
       >
         {children}
       </motion.div>

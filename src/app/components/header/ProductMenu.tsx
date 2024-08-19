@@ -28,6 +28,7 @@ export default function ProductsMenu({
         "ease-in-out",
         "px-20",
         "max-w-[1366px]",
+        // "min-h-[100svh]",
         "pt-8",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
         className

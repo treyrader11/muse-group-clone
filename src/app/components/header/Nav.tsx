@@ -82,7 +82,9 @@ export function MobileNav({ children, isActive, className }: MobileNavProps) {
       className={cn(
         "z-[88]",
         "fixed",
-        "inset-0",
+        // "inset-0",
+        "top-0",
+        "inset-x-0",
         "flex",
         "flex-col",
         "justify-end",
@@ -92,7 +94,9 @@ export function MobileNav({ children, isActive, className }: MobileNavProps) {
         "duration-[600ms]",
         "ease-in-out",
         "-translate-y-full",
-        "min-h-screen",
+        // Use both screen and svh incase svh is not supported
+        // "min-h-screen",
+        "min-h-[100svh]",
         isActive ? "translate-y-0" : "-translate-y-full",
         className
       )}

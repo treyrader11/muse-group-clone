@@ -48,7 +48,8 @@ function ProductCard({
         "sm:top-[126px]",
         { "text-white": onColor },
         "min-h-[80vh]",
-        "pt-[160%]"
+        "pt-[160%]",
+        "xs:pt-0",
       )}
     >
       <div className={cn("flex flex-col w-full gap-5")}>
@@ -102,7 +103,7 @@ function ProductCard({
             className={cn(
               "tracking-[-1px]",
               "font-inter",
-              "sm:text-2xl",
+              "xs:text-2xl",
               "leading-[150%]"
             )}
           >

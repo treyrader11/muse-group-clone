@@ -1,10 +1,3 @@
-// import img1 from "@/public/news/muse-img-1.png";
-// import img2 from "@/public/news/muse-img-2.png";
-// import img3 from "@/public/news/muse-img-3.jpg";
-import img1 from "/public/news/muse-img.png";
-import img2 from "/public/news/muse-img-2.png";
-import img3 from "/public/news/muse-img-3.jpg";
-
 export const ASSETS_BASE_URL =
   "https://cdn.prod.website-files.com/6511efa00919fb9000588f9a";
 

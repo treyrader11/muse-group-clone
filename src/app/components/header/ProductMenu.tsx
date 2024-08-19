@@ -45,9 +45,6 @@ export default function ProductMenu({
       >
         <ul
           className={cn(
-            // "absolute",
-            // "inset-x-[4%]",
-            // "inset-y-0",
             "relative",
             "pt-20",
             "grid",

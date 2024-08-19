@@ -91,6 +91,29 @@ const defaultVariants = {
 // }
 
 // docs: https://motion-primitives.com/docs/in-view
+// export default function SlideUp({
+//   children,
+//   variants = defaultVariants,
+//   // variants = slideUpVariants,
+//   transition,
+//   viewOptions,
+// }: SlideUpProps) {
+//   const ref = useRef(null);
+//   const isInView = useInView(ref, viewOptions);
+
+//   return (
+//     <motion.div
+//       ref={ref}
+//       initial="hidden"
+//       animate={isInView ? "visible" : "hidden"}
+//       variants={variants}
+//       transition={transition}
+//     >
+//       {children}
+//     </motion.div>
+//   );
+// }
+
 export default function SlideUp({
   children,
   variants = defaultVariants,
@@ -104,10 +127,10 @@ export default function SlideUp({
   return (
     <motion.div
       ref={ref}
-      initial="hidden"
+      initial="initial"
       animate={isInView ? "visible" : "hidden"}
-      variants={variants}
-      transition={transition}
+      // variants={variants}
+      // transition={transition}
     >
       {children}
     </motion.div>

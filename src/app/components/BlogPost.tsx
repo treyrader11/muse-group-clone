@@ -26,12 +26,9 @@ export default function BlogPost({
         "px-0",
         "pb-16",
 
-        // "group",
-        // "hover:opacity-90",
-        // "hover:cursor-pointer",
         isSingleBlogPage
           ? "text-center"
-          : cn("group", "hover:opacity-90", "hover:cursor-pointer", "gap-4")
+          : cn("group", "hover:opacity-90", "gap-6")
       )}
     >
       <CoverImage imageSrc={image} />
@@ -53,7 +50,15 @@ export default function BlogPost({
       >
         {title}
       </h5>
-      <p className={cn(isSingleBlogPage ? "text-base" : "text-2xl")}>{date}</p>
+      <p
+        className={cn(
+          isSingleBlogPage
+            ? "text-base"
+            : cn("text-xl sm:text-2xl sm:leading-4 leading-4")
+        )}
+      >
+        {date}
+      </p>
       {isSingleBlogPage && <CategoryTag>{category}</CategoryTag>}
     </Card>
   );

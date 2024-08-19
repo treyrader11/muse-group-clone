@@ -10,7 +10,6 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
         className={cn(
           "grid",
           "md:grid-cols-2",
-          "gap-4",
           "md:gap-8",
           "lg:gap-[4rem]"
         )}

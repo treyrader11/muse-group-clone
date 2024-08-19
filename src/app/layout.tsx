@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "./components/Navbar";
+import Header from "./components/header";
 import { fontOswald, fontGrotesk, fontInter } from "@/lib/fonts";
 import { cn } from "@/lib/utils";
 import Footer from "./components/Footer";
@@ -25,12 +25,12 @@ export default function RootLayout({
           "font-grotesk"
         )}
       >
-        <Navbar />
+        <Header />
         <main
           className={cn(
+            // May not need overflow
             "overflow-clip", // keeps content intact including sticky elements
-            "mx-auto",
-            // "relative"
+            "mx-auto"
           )}
         >
           {children}

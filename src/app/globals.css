@@ -45,11 +45,10 @@
     /* letter-spacing: -0.07em; */
     /* font-size: 3.5rem; */
     /* line-height: 52px; */
-    font-size: 5rem;
+
     font-size: 4rem;
     line-height: 3.8rem;
     letter-spacing: -0.04em;
-    
   }
   h3 {
     letter-spacing: -0.07em;
@@ -81,14 +80,30 @@
 
   /* Styles for screens between 640px and 768px. same as sm: breakpoint */
 
+  @media (min-width: 400px) {
+    /* h1 {
+      font-size: 8rem;
+      line-height: 114px;
+    } */
+    h2 {
+      font-size: 8rem;
+      line-height: 7rem;
+    }
+    /* h3 {
+      font-size: 4.5rem;
+      line-height: 4rem;
+      font-weight: 700;
+    } */
+  }
+
   @media (min-width: 640px) and (max-width: 768px) {
     h1 {
       font-size: 8rem;
       line-height: 114px;
     }
     h2 {
-      font-size: 6rem;
-      line-height: 80px;
+      font-size: 9rem;
+      line-height: 8rem;
     }
     h3 {
       font-size: 4.5rem;

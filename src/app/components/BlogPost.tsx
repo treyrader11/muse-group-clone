@@ -25,7 +25,6 @@ export default function BlogPost({
         "gap-4",
         "px-0",
         "pb-16",
-
         isSingleBlogPage
           ? "text-center"
           : cn("group", "hover:opacity-90", "gap-6")
@@ -71,6 +70,7 @@ function CoverImage({ imageSrc }: { imageSrc: string }) {
         "h-[200px]",
         "sm:h-[300px]",
         "w-full",
+        // "sm:w-[350px]",
         "relative",
         "max-w-full"
       )}

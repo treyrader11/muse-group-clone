@@ -8,28 +8,22 @@ export default function Hero({ children }: { children: React.ReactNode }) {
     <section
       className={cn(
         "min-h-screen",
-        "max-w-none",
-        // "pt-40",
+        // "max-w-none",
+        "h-fit",
         "pb-8",
+        "px-12",
         "bg-purple",
         "flex",
         "flex-col",
         "items-center",
         "justify-between",
-         "sm:justify-center"
+        "mx-auto",
+        "gap-y-8"
       )}
     >
-      <div
-        className={cn(
-          "sm:max-w-[80vw]",
-          "mx-auto",
-          // "overflow-visible",
-          "space-y-2",
-          "sm:space-y-24"
-        )}
-      >
+      <div>
         <h2
-          className={cn("font-oswald",  "title-mask", "text-gradient-lavender")}
+          className={cn("font-oswald", "title-mask", "text-gradient-lavender")}
         >
           Explore news and features
         </h2>

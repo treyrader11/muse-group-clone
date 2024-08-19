@@ -59,9 +59,9 @@ const config: Config = {
           400: "hsl(var(--musescore4))",
         },
       },
-      // screens: {
-      //   xs: "400px",
-      // },
+      screens: {
+        xs: "400px",
+      },
       // close button: z-[90]
       // nav: z-[88]
       // products menu: z-[89]
@@ -120,7 +120,7 @@ const config: Config = {
       animation: {
         "open-menu": "open-menu 0.5s ease-in-out forwards",
         "close-menu": "close-menu 0.5s ease-in-out forwards",
-        "fade-in": "fade-in 300ms ease forwards",
+        "fade-in": "fade-in 300ms ease-in-out",
       },
     },
   },

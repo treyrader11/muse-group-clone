@@ -1,18 +1,25 @@
-import { CATEGORY_FILTERS, type CategoryLabel } from "@/lib/constants";
+import {
+  CATEGORY_FILTERS,
+  type CategoryLabel,
+  BLOG_DATA,
+} from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import React from "react";
 
 type CategoriesProps = {
   activeCategory: CategoryLabel;
+  categories: CategoryLabel[];
   setActiveCategory: React.Dispatch<React.SetStateAction<CategoryLabel>>;
 };
 
 export default function CategoryFilters({
   activeCategory,
+  categories,
   setActiveCategory,
 }: CategoriesProps) {
   return (
     <ul
+      key={categories.length}
       className={cn(
         "gap-2",
         "flex-wrap",
@@ -21,7 +28,7 @@ export default function CategoryFilters({
         "flex"
       )}
     >
-      {CATEGORY_FILTERS.map((category, i) => (
+      {categories.map((category, i) => (
         <li key={i}>
           <Category
             onClick={() => setActiveCategory(category)}
@@ -57,8 +64,8 @@ function Category({ className, onClick, children }: CategoryItemProps) {
         "bg-black",
         "text-white",
         "rounded-full",
-        "sm:py-3.5",
-        "sm:px-8",
+        "xs:py-3.5",
+        "xs:px-8",
         "py-1.5",
         "px-3",
         "sm:py-4",

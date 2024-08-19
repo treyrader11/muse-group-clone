@@ -17,6 +17,11 @@ export default function NewsroomPage() {
   );
   const [filteredData, setFilteredData] = useState(BLOG_DATA);
 
+  // Filter out categories that don't have any posts
+  const availableCategories = CATEGORY_FILTERS.filter((category) =>
+    BLOG_DATA.some((blog) => blog.category === category || category === "All")
+  );
+
   useEffect(() => {
     if (activeCategory === "All") setFilteredData(BLOG_DATA);
     else {
@@ -25,12 +30,14 @@ export default function NewsroomPage() {
       );
     }
   }, [activeCategory]);
+
   return (
-    <div className={cn("")}>
+    <div>
       <Hero>
         <CategoryFilters
           activeCategory={activeCategory}
           setActiveCategory={setActiveCategory}
+          categories={availableCategories}
         />
       </Hero>
       {filteredData.length > 0 && <NewsBlogs data={filteredData} />}

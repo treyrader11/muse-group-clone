@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import InView from "./components/InView";
 import { createTransition, slideUpVariants } from "@/lib/motion";
+import { motion } from "framer-motion";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -37,19 +38,24 @@ export default function HomePage() {
 
 function WhatMuseCreates() {
   return (
-    <InView variants={slideUpVariants} transition={createTransition()}>
-      <h1 className="title-mask text-gradient-orange">
-        What Muse <br />
-        creates
-        <br />
-      </h1>
+    <>
       <InView
         variants={slideUpVariants}
-        transition={createTransition({ ease: "easeInOut", duration: 0.5 })}
+        transition={createTransition({ ease: "linear", duration: 0.5 })}
+      >
+        <h1 className="title-mask text-gradient-orange">
+          What Muse <br />
+          creates
+          <br />
+        </h1>
+      </InView>
+      <InView
+        variants={slideUpVariants}
+        transition={createTransition({ ease: "linear", duration: 0.5 })}
       >
         <h3 className="sm:px-16">For&nbsp;OUR&nbsp;400M+ USERS</h3>
       </InView>
-    </InView>
+    </>
   );
 }
 

@@ -51,14 +51,8 @@ export default function ProductMenu({
       >
         <ul
           className={cn(
-            // "relative",
-            // "pt-20",
-
             "gap-8",
             "px-10",
-
-            "grid-cols-4",
-            // "md:grid-cols-4",
             // "place-items-center",
             // "mx-auto",
             // "max-w-[700px]",
@@ -67,7 +61,8 @@ export default function ProductMenu({
             "flex-wrap",
             "justify-center",
             "items-evenly",
-            "md:grid"
+            "md:grid",
+            "grid-cols-4"
           )}
         >
           <Close

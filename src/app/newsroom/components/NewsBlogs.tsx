@@ -5,7 +5,7 @@ import BlogPost from "../../components/BlogPost";
 
 export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
   return (
-    <section className="px-10">
+    <section className="">
       <ul
         className={cn(
           "grid",

@@ -30,7 +30,7 @@ export default function BlogPost({
         // "hover:opacity-90",
         // "hover:cursor-pointer",
         isSingleBlogPage
-          ? " text-center"
+          ? "text-center"
           : cn("group", "hover:opacity-90", "hover:cursor-pointer", "gap-4")
       )}
     >
@@ -46,7 +46,6 @@ export default function BlogPost({
           "font-oswald",
           "tracking-tighter",
           "group-hover:opacity-70",
-          //   "text-left",
           isSingleBlogPage
             ? cn("text-gradient-lavender-2 text-6xl leading-[3.5rem] pt-10")
             : cn("")
@@ -66,7 +65,6 @@ function CoverImage({ imageSrc }: { imageSrc: string }) {
       className={cn(
         "h-[200px]",
         "sm:h-[300px]",
-        // "h-[300px]",
         "w-full",
         "relative",
         "max-w-full"

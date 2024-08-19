@@ -42,9 +42,14 @@
   }
   h2 {
     font-weight: 900;
-    letter-spacing: -0.07em;
-    font-size: 3.5rem;
-    line-height: 52px;
+    /* letter-spacing: -0.07em; */
+    /* font-size: 3.5rem; */
+    /* line-height: 52px; */
+    font-size: 5rem;
+    font-size: 4rem;
+    line-height: 3.8rem;
+    letter-spacing: -0.04em;
+    
   }
   h3 {
     letter-spacing: -0.07em;

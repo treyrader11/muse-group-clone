@@ -57,11 +57,14 @@ function Category({ className, onClick, children }: CategoryItemProps) {
         "bg-black",
         "text-white",
         "rounded-full",
-        "py-3.5",
-        "px-8",
+        "sm:py-3.5",
+        "sm:px-8",
+        "py-1.5",
+        "px-3",
         "sm:py-4",
         "sm:px-9",
-        "text-2xl",
+        "text-sm",
+        "sm:text-2xl",
         className
       )}
     >

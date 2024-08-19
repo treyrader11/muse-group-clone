@@ -55,7 +55,7 @@ export default function ProductMenu({
             // "pt-20",
 
             "gap-8",
-            // "xs:px-[6rem]",
+            "px-10",
 
             "grid-cols-4",
             // "md:grid-cols-4",
@@ -63,7 +63,6 @@ export default function ProductMenu({
             // "mx-auto",
             // "max-w-[700px]",
             // "z-4",
-
             "flex",
             "flex-wrap",
             "justify-center",

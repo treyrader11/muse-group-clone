@@ -19,7 +19,6 @@ type InViewProps = {
   transition?: Transition;
   viewOptions?: UseInViewOptions;
   className?: string;
-
 };
 
 const defaultVariants = {
@@ -35,15 +34,13 @@ export default function InView({
   className,
 }: InViewProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, viewOptions);
-
+  const isInView = useInView(ref, viewOptions); // not sure if i'll need it
   return (
     <div className={cn("overflow-clip h-fit", className)}>
       <motion.div
         ref={ref}
-        // initial="hidden"
-        // animate={isInView ? "visible" : "hidden"}
         initial="hidden"
+        // animate={isInView ? "visible" : "hidden"}
         whileInView="visible"
         variants={variants}
         transition={transition}

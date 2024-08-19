@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* colors */
+    /* Colors */
 
     /* use hsl if you want color channels to work with tw's opacity modifier syntax: */
     --black: 240, 2%, 10%;
@@ -28,6 +28,8 @@
     --accessible-components-dark-grey: 0, 0%, 61%;
     --musescore: 222, 28%, 14%;
     --lilac: 253, 68%, 58%;
+
+    /* Sizes */
 
     /* --nav-height: 84px; */
   }
@@ -66,6 +68,10 @@
     max-width: 1366px;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  a {
+    cursor: pointer;
   }
 
   /* Styles for screens between 640px and 768px. same as sm: breakpoint */
@@ -123,14 +129,12 @@
   .toggle-burger {
     @apply [&>div::before]:translate-y-0 [&>div::before]:rotate-45 [&>div::after]:translate-y-0 [&>div::after]:-rotate-45 [&>div]:rotate-[720deg];
   }
-
   .flex-center {
     @apply flex items-center justify-center;
   }
   .size-screen {
     @apply h-screen w-screen;
   }
-
   .title-mask {
     @apply overflow-hidden
     bg-clip-text
@@ -151,23 +155,18 @@
     -webkit-background-clip: text;
     background-clip: text;
   }
-
   .text-gradient-yellow {
     background-image: linear-gradient(#ffff5b, #daecfe);
   }
-
   .text-gradient-red {
     background-image: linear-gradient(174deg, #ff2001 5%, white 41%);
   }
-
   .text-gradient-yellow-2 {
     background-image: linear-gradient(#ffa800, #ffff5b);
   }
-
   .text-gradient-purp {
     background-image: linear-gradient(333deg, #5127da 54%, #9bcefd 89%);
   }
-
   .text-gradient-green {
     background-image: linear-gradient(
       193deg,
@@ -175,7 +174,6 @@
       hsl(var(--lime-green)) 86%
     );
   }
-
   .text-gradient-orange {
     background-image: linear-gradient(
       346deg,
@@ -183,7 +181,6 @@
       #fa6d3e 87%
     );
   }
-
   .text-gradient-lavender {
     background-image: linear-gradient(
       346deg,

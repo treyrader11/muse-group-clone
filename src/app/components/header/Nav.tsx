@@ -1,23 +1,6 @@
-"use client";
-
 import { cn } from "@/lib/utils";
-import Logo from "../Logo";
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import {
-  ASSETS_BASE_URL,
-  PRODUCTS,
-  ROUTES,
-  NAV_HEIGHT,
-  SMALL_HEIGHT_PERCENTAGE,
-} from "@/lib/constants";
-import CloseButton from "../CloseButton";
-import { motion } from "framer-motion";
-import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
-import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
-import Burger from "../Burger";
+import { ROUTES, NAV_HEIGHT, SMALL_HEIGHT_PERCENTAGE } from "@/lib/constants";
 
 type NavProps = {
   className?: string;
@@ -80,11 +63,9 @@ export function MobileNav({ children, isActive, className }: MobileNavProps) {
   return (
     <div
       className={cn(
-        "z-[88]",
+        "z-3",
         "fixed",
-        // "inset-0",
-        // "top-0",
-        // "inset-x-0",
+        "inset-0",
         "flex",
         "flex-col",
         "justify-end",

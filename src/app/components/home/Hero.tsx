@@ -3,7 +3,7 @@ import Slider from "./Slider";
 
 export default function Hero() {
   return (
-    <section>
+    <section className="">
       <Slider />
     </section>
   );

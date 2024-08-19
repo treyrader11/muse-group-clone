@@ -4,14 +4,14 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
-import CloseButton from "../CloseButton";
+import Close from "../Close";
 
 type ProductsMenuProps = {
   isActive: boolean;
   className?: string;
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
-export default function ProductsMenu({
+export default function ProductMenu({
   isActive,
   className,
   setIsProductMenuOpen,
@@ -19,7 +19,7 @@ export default function ProductsMenu({
   return (
     <div
       className={cn(
-        "z-[89]",
+        "z-4",
         "fixed",
         "inset-0",
         "bg-grey",
@@ -36,29 +36,19 @@ export default function ProductsMenu({
     >
       <div
         className={cn(
-          // "absolute",
-          // "inset-x-[4%]",
-          // "inset-y-0",
           "mt-[84px]",
-          "md:border-t border-white/10",
+          "md:border-t",
+          "border-white/10",
           "max-w-[1366px]",
-          // "pt-8",
-          // "grid",
-          // "gap-8",
-          // "gap-y-10",
-          // "grid-cols-2",
-          // "md:grid-cols-4",
-          // "place-items-center",
           "mx-auto",
-          // "max-w-[700px]",
           "relative",
           className
         )}
       >
-        <CloseButton
+        {/* <Close
           onClick={() => setIsProductMenuOpen(false)}
           className="hidden md:block mt-10"
-        />
+        /> */}
 
         <ul
           className={cn(
@@ -74,10 +64,13 @@ export default function ProductsMenu({
             "place-items-center",
             "mx-auto",
             "max-w-[700px]"
-            // "overflow-hidden"
           )}
         >
-          {PRODUCTS.map(({ label, iconId, path }) => (
+          <Close
+            onClick={() => setIsProductMenuOpen(false)}
+            className="hidden md:flex mt-10 z-5"
+          />
+          {/* {PRODUCTS.map(({ label, iconId, path }) => (
             <li key={iconId} className="">
               <Link
                 href={path}
@@ -88,20 +81,10 @@ export default function ProductsMenu({
                   "items-center",
                   "flex",
                   "flex-col",
-                  // "md:p-10",
-                  // "grid",
-                  // "grid-rows-2",
                   "gap-10"
                 )}
               >
-                <div
-                  className={cn(
-                    "absolute",
-                    "size-full",
-                    // "w-[120px]",
-                    "h-[120px]"
-                  )}
-                >
+                <div className={cn("absolute", "w-full", "h-[120px]")}>
                   <Image
                     fill
                     src={`${ASSETS_BASE_URL}/${iconId}.svg`}
@@ -112,16 +95,59 @@ export default function ProductsMenu({
                 <p
                   className={cn(
                     "absolute",
-                    // "-bottom-8",
                     "-bottom-5",
-                    "xs:bottom-0",
-                    "text-nowrap"
+                    "sm:bottom-0",
+                    "text-nowrap",
+                    "whitespace-nowrap"
                   )}
                 >
                   {label}
                 </p>
               </Link>
             </li>
+          ))} */}
+          {PRODUCTS.map(({ label, iconId, path }) => (
+            <Link
+              key={iconId}
+              href={path}
+              className={cn(
+                "relative",
+                "size-full",
+                "w-[120px]",
+                "items-center",
+                "flex",
+                "flex-col",
+                "grid",
+                "grid-rows-2",
+                "gap-10"
+              )}
+            >
+              <div
+                className={cn(
+                  "absolute",
+                  "size-full",
+                  "w-[120px]",
+                  "items-center"
+                )}
+              >
+                <Image
+                  fill
+                  src={`${ASSETS_BASE_URL}/${iconId}.svg`}
+                  alt={label}
+                />
+              </div>
+              <p
+                className={cn(
+                  "absolute",
+                  // "-bottom-8",
+                  "-bottom-5",
+                  "sm:bottom-0"
+                  // "text-nowrap"
+                )}
+              >
+                {label}
+              </p>
+            </Link>
           ))}
         </ul>
         {/* {PRODUCTS.map(({ label, iconId, path }) => (
@@ -159,7 +185,7 @@ export default function ProductsMenu({
                   "absolute",
                   // "-bottom-8",
                   "-bottom-5",
-                  "xs:bottom-0",
+                  "sm:bottom-0",
                   "text-nowrap"
                 )}
               >

@@ -57,12 +57,17 @@ export default function Slider({ className }: SliderProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl",
-        "xs:rounded-3xl",
+        "rounded-xl",
+        "sm:rounded-2xl",
+        "md:rounded-3xl",
         "relative",
         "overflow-clip",
-        // "overflow-hidden",
         "-mt-[9rem]",
+        // "min-h-screen",
+        // "absolute",
+        // "w-screen",
+        // "-inset-x-0",
+        // "px-4",
         className
       )}
     >
@@ -85,7 +90,8 @@ export default function Slider({ className }: SliderProps) {
           "items-center",
           "mx-auto",
           "cursor-grab",
-          "active:cursor-grabbing"
+          "active:cursor-grabbing",
+          // "h-screen",
         )}
       >
         <Images />
@@ -108,12 +114,18 @@ export function Images() {
                 img.id
               }_slider_${i + 1}_ipad.webp)`,
               backgroundSize: "cover",
+              // backgroundSize: "contain",
+              // backgroundRepeat: "no-repeat",
             }}
-            className="w-full"
+            className="w-full "
           >
             <motion.div
               transition={TWEEN_OPTIONS}
-              className={cn("w-screen aspect-[8/10] shrink-0")}
+              className={cn(
+                "w-screen",
+                //  "min-h-[80vh]",
+                "aspect-[8/10] shrink-0"
+              )}
             />
           </div>
         );
@@ -126,16 +138,7 @@ type TitleProps = { className?: string; imgIndex: number };
 
 function Titles({ className, imgIndex }: TitleProps) {
   return (
-    <div
-      className={cn(
-        "absolute",
-        // "top-10",
-        "left-2",
-        // "sm:top-20",
-        "top-0",
-        "md:left-[32px]"
-      )}
-    >
+    <div className={cn("absolute", "left-2", "top-0", "md:left-[32px]")}>
       {SLIDER_IMAGES.map(({ comp, textGradient }, i) =>
         i === imgIndex ? (
           <motion.h1
@@ -150,10 +153,10 @@ function Titles({ className, imgIndex }: TitleProps) {
               "text-left",
               "font-oswald",
               "text-[3rem]",
-              "xs:text-7xl",
+              "sm:text-7xl",
               "md:text-8xl",
               "leading-[3rem]",
-              "xs:leading-[4.2rem]",
+              "sm:leading-[4.2rem]",
               "md:leading-[5.5rem]",
               textGradient,
               className
@@ -172,7 +175,7 @@ type BulletProps = {
 
 function Bullets({ imgIndex, setImgIndex }: BulletProps) {
   return (
-    <div className={cn("flex justify-center w-full relative")}>
+    <div className={cn("flex-center w-full relative")}>
       <div
         className={cn(
           "flex",
@@ -187,7 +190,8 @@ function Bullets({ imgIndex, setImgIndex }: BulletProps) {
           "py-5",
           "rounded-3xl",
           "w-fit",
-          "z-20"
+          // "z-20"
+          "z-1"
         )}
       />
 
@@ -202,7 +206,8 @@ function Bullets({ imgIndex, setImgIndex }: BulletProps) {
               "transition-colors",
               "bg-white",
               "relative",
-              "z-20",
+              // "z-20",
+              "z-1",
               {
                 "bg-yellow": i === imgIndex,
               }

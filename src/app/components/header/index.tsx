@@ -9,7 +9,7 @@ import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
 import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
 import Burger from "../Burger";
 import Nav, { MobileNav } from "./Nav";
-import ProductsMenu from "./ProductMenu";
+import ProductMenu from "./ProductMenu";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -37,7 +37,8 @@ export default function Header() {
           "top-0",
           "h-[71px]",
           "md:h-[87px]",
-          "z-50",
+          // "z-50",
+          "z-2",
           "py-3",
           "px-[4%]",
           { "text-white": isNewsroomPage }
@@ -73,7 +74,7 @@ export default function Header() {
       </header>
       <Logo
         color={isNewsroomPage ? "white" : "black"}
-        className="z-[99] md:hidden fixed top-3 left-[4%]"
+        className="z-highest md:hidden fixed top-3 left-[4%]"
       />
 
       <Burger
@@ -86,12 +87,12 @@ export default function Header() {
           "right-0",
           "md:hidden",
           "fixed",
-          "z-[99]",
+          "z-highest",
           isNewsroomPage ? "[&_span]:bg-white" : "[&_span]:bg-black"
         )}
       />
 
-      <ProductsMenu
+      <ProductMenu
         isActive={isProductMenuOpen}
         setIsProductMenuOpen={setIsProductMenuOpen}
         // isMobile={width < 768}
@@ -136,7 +137,8 @@ function Overlay({ className }: { className?: string }) {
         "h-[71px]",
         "md:h-[87px]",
         "w-full",
-        "z-50",
+        // "z-50",
+        "z-2",
         className
       )}
     />

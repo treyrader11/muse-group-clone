@@ -97,7 +97,7 @@ export default function HomePage() {
             </h1> */}
           </SlideUp>
 
-          <h3 className="xs:px-16">For&nbsp;OUR&nbsp;400M+ USERS</h3>
+          <h3 className="sm:px-16">For&nbsp;OUR&nbsp;400M+ USERS</h3>
         </Featured>
         <Products />
         <Featured>

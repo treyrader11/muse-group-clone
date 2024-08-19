@@ -2,24 +2,21 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
 
-export default function CloseButton({
-  className,
-  onClick,
-}: {
+type CloseProps = {
   className?: string;
   onClick: () => void;
-}) {
+};
+export default function Close({ className, onClick }: CloseProps) {
   return (
     <a
       onClick={onClick}
       className={cn(
         "hover:opacity-60",
-        "cursor-pointer",
-        "size-10",
         "absolute",
         "right-0",
         "top-[8%]",
-        "z-[90]",
+        // "z-[90]",
+        "z-2",
         className
       )}
     >

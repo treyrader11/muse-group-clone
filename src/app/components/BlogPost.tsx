@@ -38,9 +38,9 @@ export default function BlogPost({
       <h5
         className={cn(
           "text-3xl",
-          "xs:text-4xl",
+          "sm:text-4xl",
           "leading-8",
-          "xs:leading-9",
+          "sm:leading-9",
           "font-semibold",
           "uppercase",
           "font-oswald",
@@ -65,7 +65,7 @@ function CoverImage({ imageSrc }: { imageSrc: string }) {
     <div
       className={cn(
         "h-[200px]",
-        "xs:h-[300px]",
+        "sm:h-[300px]",
         // "h-[300px]",
         "w-full",
         "relative",

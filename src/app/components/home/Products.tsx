@@ -67,7 +67,7 @@ function ProductCard({
           )}
         >
           <ProductTitle>
-            <div className="size-10 xs:size-[4rem] relative">
+            <div className="size-10 sm:size-[4rem] relative">
               <Image
                 src={`${ASSETS_BASE_URL}/${iconId}.svg`}
                 alt={label}
@@ -102,7 +102,7 @@ function ProductCard({
             className={cn(
               "tracking-[-1px]",
               "font-inter",
-              "xs:text-2xl",
+              "sm:text-2xl",
               "leading-[150%]"
             )}
           >

@@ -9,7 +9,6 @@ import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import InView from "./components/InView";
 import { createTransition, slideUpVariants } from "@/lib/motion";
-import { motion } from "framer-motion";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);

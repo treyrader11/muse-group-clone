@@ -47,10 +47,6 @@
   }
   h2 {
     font-weight: 900;
-    /* letter-spacing: -0.07em; */
-    /* font-size: 3.5rem; */
-    /* line-height: 52px; */
-
     font-size: 4rem;
     line-height: 3.8rem;
     letter-spacing: -0.04em;
@@ -70,8 +66,9 @@
   }
 
   /* Explain global styles in tutorial */
+  footer,
   section {
-    padding: 7.5rem 1rem 0;
+    padding: 7.5rem 1.2rem 0;
     width: 100%;
     height: 100%;
     max-width: 1366px;

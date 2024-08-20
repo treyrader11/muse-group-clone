@@ -5,30 +5,30 @@ const config: Config = {
     "./src/pages/**/*.{js,ts,jsx,tsx}",
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx}",
-    "./src/lib/**/*.{js,ts,jsx,tsx}", // make sure to explain
+    "./src/lib/**/*.{js,ts,jsx,tsx}", // make sure to explain custom file purge
   ],
   theme: {
-      // screens: {
-      //   xs: "400px",
-      // },
-      // close button: z-[90]
-      // nav: z-[88]
-      // products menu: z-[89]
-      // overlay: z-[50]
-      // pre-loader: z-[99]
-      // header: z-50
-      // header logo: z-[99]
-      // burger: z-[99]
-      // header overlay: z-[50]
-      // slider wrapper: z-20
-      // slider bullets: z-20
+    // screens: {
+    //   xs: "400px",
+    // },
+    // close button: z-[90]
+    // nav: z-[88]
+    // products menu: z-[89]
+    // overlay: z-[50]
+    // pre-loader: z-[99]
+    // header: z-50
+    // header logo: z-[99]
+    // burger: z-[99]
+    // header overlay: z-[50]
+    // slider wrapper: z-20
+    // slider bullets: z-20
     zIndex: {
       "1": "10",
       "2": "20",
       "3": "30",
       "4": "40",
       "5": "50",
-      "highest": "90",
+      highest: "90",
     },
     extend: {
       colors: {
@@ -62,30 +62,8 @@ const config: Config = {
       screens: {
         xs: "400px",
       },
-      // close button: z-[90]
-      // nav: z-[88]
-      // products menu: z-[89]
-      // overlay: z-[50]
-      // pre-loader: z-[99]
-      // header: z-50
-      // header logo: z-[99]
-      // burger: z-[99]
-      // header overlay: z-[50]
-      // slider wrapper: z-20
-      // slider bullets: z-20
-
-      // zIndex: {
-      //   "1": "20",
-      //   "2": "21",
-      //   "3": "22",
-      //   "4": "23",
-      //   "5": "24",
-      //   "highest": "25",
-      // },
       fontFamily: {
-        poppins: "var(--font-poppins)",
         inter: "var(--font-inter)",
-        nunito: "var(--font-nunito)",
         oswald: "var(--font-oswald)",
         grotesk: "var(--font-grotesk)",
       },

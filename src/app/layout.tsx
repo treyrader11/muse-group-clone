@@ -22,18 +22,10 @@ export default function RootLayout({
           fontGrotesk.variable,
           fontOswald.variable,
           fontInter.variable,
-          "font-grotesk"
+          "font-inter"
         )}
       >
         <Header />
-        {/* <main
-          className={cn(
-            "overflow-clip", // keeps content intact including sticky elements
-            "mx-auto"
-          )}
-        >
-          {children}
-        </main> */}
         {children}
         <Footer />
       </body>

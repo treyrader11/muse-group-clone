@@ -1,4 +1,4 @@
-import { stagger, type Transition, type Variants } from "framer-motion";
+import { type Transition, type Variants } from "framer-motion";
 
 // type: "spring", stiffness: 100
 

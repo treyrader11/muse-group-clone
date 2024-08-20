@@ -217,31 +217,281 @@ export const CATEGORY_FILTERS = [
 
 export type CategoryLabel = (typeof CATEGORY_FILTERS)[number];
 
+// export const BLOG_DATA: BlogPost[] = [
+//   {
+//     image: "muse-img-2.png",
+//     title: "From midi to Muse Group: Larry Morton & music industry innovation",
+//     description: "The world’s most popular composition and notation software.",
+//     id: "larry-morton-muse-group",
+//     category: "Team",
+//     date: "August 8, 2024",
+//   },
+
+//   {
+//     image: "muse-img-3.jpg",
+//     title: "Muse Group and Collins collaborate on a monumental musical rebrand",
+//     description: "The world’s most popular composition and notation software.",
+//     id: "muse-group-rebrand",
+//     category: "News",
+//     date: "June 27, 2024",
+//   },
+//   {
+//     image: "muse-img.png",
+//     title:
+//       "Major updates come to Muse Hub and Audacity: introducting a new audio store",
+//     description: "The world’s most popular composition and notation software.",
+//     id: "muse-hub-store-audacity-update",
+//     category: "Press Releases",
+//     date: "July 17, 2024",
+//   },
+// ];
+
 export const BLOG_DATA: BlogPost[] = [
-  {
-    image: "muse-img-2.png",
-    title: "From midi to Muse Group: Larry Morton & music industry innovation",
-    description: "The world’s most popular composition and notation software.",
-    id: "larry-morton-muse-group",
-    category: "Team",
-    date: "August 8, 2024",
-  },
   {
     image: "muse-img.png",
     title:
-      "Major updates come to Muse Hub and Audacity: introducting a new audio store",
+      "Major updates come to Muse Hub and Audacity: introducing a new audio store",
     description: "The world’s most popular composition and notation software.",
     id: "muse-hub-store-audacity-update",
     category: "Press Releases",
     date: "July 17, 2024",
   },
   {
-    image: "muse-img-3.jpg",
-    title: "Muse Group and Collins collaborate on a monumental musical rebrand",
-    description: "The world’s most popular composition and notation software.",
-    id: "muse-group-rebrand",
+    image: "muse-img.png",
+    title: "Muse Group releases new collaboration tools for musicians",
+    description:
+      "Enhancing real-time collaboration for artists across the globe.",
+    id: "muse-group-collaboration-tools",
     category: "News",
-    date: "June 27, 2024",
+    date: "August 1, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "An in-depth look at the new features in MuseScore 4.5",
+    description: "Revolutionizing the way musicians compose and arrange music.",
+    id: "musescore-4-5-features",
+    category: "Features",
+    date: "August 10, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Meet the team behind Muse Group's innovative products",
+    description: "Introducing the talented individuals driving innovation.",
+    id: "muse-group-team-introduction",
+    category: "Team",
+    date: "July 25, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Artist spotlight: Jane Doe’s journey with MuseScore",
+    description:
+      "A closer look at how Jane Doe uses MuseScore to compose beautiful music.",
+    id: "artist-spotlight-jane-doe",
+    category: "Artists",
+    date: "August 12, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title:
+      "Press release: Muse Group's new partnership with Berklee College of Music",
+    description:
+      "A collaboration set to redefine music education and technology.",
+    id: "muse-berklee-partnership",
+    category: "Press Releases",
+    date: "July 30, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "How Muse Hub is supporting independent artists",
+    description:
+      "Tools and resources for artists to distribute and monetize their work.",
+    id: "muse-hub-independent-artists",
+    category: "Features",
+    date: "August 5, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "News update: MuseScore reaches 10 million downloads",
+    description: "A milestone achievement for the music notation software.",
+    id: "musescore-10-million-downloads",
+    category: "News",
+    date: "July 22, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Inside Muse Group: A day in the life of our development team",
+    description: "A behind-the-scenes look at the people building our tools.",
+    id: "muse-group-development-team",
+    category: "Team",
+    date: "August 15, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Artist spotlight: John Smith’s use of Audacity in sound design",
+    description:
+      "How Audacity empowers John Smith to create unique soundscapes.",
+    id: "artist-spotlight-john-smith",
+    category: "Artists",
+    date: "August 18, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Muse Group's commitment to open-source software",
+    description:
+      "An overview of our contributions to the open-source community.",
+    id: "muse-group-open-source-commitment",
+    category: "Press Releases",
+    date: "July 20, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "New feature: Muse Hub’s enhanced audio editing tools",
+    description:
+      "Taking audio editing to the next level with advanced features.",
+    id: "muse-hub-audio-editing-tools",
+    category: "Features",
+    date: "July 27, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Team spotlight: The designers shaping MuseScore’s interface",
+    description:
+      "Meet the creative minds behind MuseScore’s user-friendly design.",
+    id: "musescore-interface-designers",
+    category: "Team",
+    date: "August 7, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "How MuseScore is helping educators teach music theory",
+    description: "Exploring MuseScore’s impact on music education in schools.",
+    id: "musescore-music-theory-education",
+    category: "News",
+    date: "August 3, 2024",
+  },
+
+  // break
+  {
+    image: "muse-img.png",
+    title:
+      "Major updates come to Muse Hub and Audacity: introducing a new audio store",
+    description: "The world’s most popular composition and notation software.",
+    id: "muse-hub-store-audacity-update",
+    category: "Press Releases",
+    date: "July 17, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Muse Group releases new collaboration tools for musicians",
+    description:
+      "Enhancing real-time collaboration for artists across the globe.",
+    id: "muse-group-collaboration-tools",
+    category: "News",
+    date: "August 1, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "An in-depth look at the new features in MuseScore 4.5",
+    description: "Revolutionizing the way musicians compose and arrange music.",
+    id: "musescore-4-5-features",
+    category: "Features",
+    date: "August 10, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Meet the team behind Muse Group's innovative products",
+    description: "Introducing the talented individuals driving innovation.",
+    id: "muse-group-team-introduction",
+    category: "Team",
+    date: "July 25, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Artist spotlight: Jane Doe’s journey with MuseScore",
+    description:
+      "A closer look at how Jane Doe uses MuseScore to compose beautiful music.",
+    id: "artist-spotlight-jane-doe",
+    category: "Artists",
+    date: "August 12, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title:
+      "Press release: Muse Group's new partnership with Berklee College of Music",
+    description:
+      "A collaboration set to redefine music education and technology.",
+    id: "muse-berklee-partnership",
+    category: "Press Releases",
+    date: "July 30, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "How Muse Hub is supporting independent artists",
+    description:
+      "Tools and resources for artists to distribute and monetize their work.",
+    id: "muse-hub-independent-artists",
+    category: "Features",
+    date: "August 5, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "News update: MuseScore reaches 10 million downloads",
+    description: "A milestone achievement for the music notation software.",
+    id: "musescore-10-million-downloads",
+    category: "News",
+    date: "July 22, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Inside Muse Group: A day in the life of our development team",
+    description: "A behind-the-scenes look at the people building our tools.",
+    id: "muse-group-development-team",
+    category: "Team",
+    date: "August 15, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Artist spotlight: John Smith’s use of Audacity in sound design",
+    description:
+      "How Audacity empowers John Smith to create unique soundscapes.",
+    id: "artist-spotlight-john-smith",
+    category: "Artists",
+    date: "August 18, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Muse Group's commitment to open-source software",
+    description:
+      "An overview of our contributions to the open-source community.",
+    id: "muse-group-open-source-commitment",
+    category: "Press Releases",
+    date: "July 20, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "New feature: Muse Hub’s enhanced audio editing tools",
+    description:
+      "Taking audio editing to the next level with advanced features.",
+    id: "muse-hub-audio-editing-tools",
+    category: "Features",
+    date: "July 27, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "Team spotlight: The designers shaping MuseScore’s interface",
+    description:
+      "Meet the creative minds behind MuseScore’s user-friendly design.",
+    id: "musescore-interface-designers",
+    category: "Team",
+    date: "August 7, 2024",
+  },
+  {
+    image: "muse-img.png",
+    title: "How MuseScore is helping educators teach music theory",
+    description: "Exploring MuseScore’s impact on music education in schools.",
+    id: "musescore-music-theory-education",
+    category: "News",
+    date: "August 3, 2024",
   },
 ];
 

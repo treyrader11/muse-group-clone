@@ -25,12 +25,9 @@ export default function ProductMenu({
         "transition-all",
         "duration-[600ms]",
         "ease-in-out",
-        // "px-20",
-        "max-w-[1366px]",
         "pt-8",
+        "md:pt-0",
         isActive ? "translate-y-0" : "-translate-y-[120%]",
-
-        //new
         "grid",
         "place-content-center",
         className
@@ -38,25 +35,25 @@ export default function ProductMenu({
     >
       <nav
         className={cn(
-          // "mt-[84px]",
+          "md:mt-[84px]",
           "md:border-t",
           "border-white/10",
-          // "max-w-[1366px]",
-          // "mx-auto",
-          // "relative",
-          // "border border-red-400",
-
+          "md:w-[93vw]", // not sure about breakpoint
+          "relative",
           className
         )}
       >
+        <Close
+          onClick={() => setIsProductMenuOpen(false)}
+          className="hidden md:block absolute"
+        />
         <ul
           className={cn(
+            "max-w-3xl",
             "gap-8",
             "px-10",
-            // "place-items-center",
-            // "mx-auto",
-            // "max-w-[700px]",
-            // "z-4",
+            "md:pt-20",
+            "mx-auto",
             "flex",
             "flex-wrap",
             "justify-center",
@@ -65,10 +62,6 @@ export default function ProductMenu({
             "grid-cols-4"
           )}
         >
-          <Close
-            onClick={() => setIsProductMenuOpen(false)}
-            className="hidden md:block mt-10"
-          />
           {PRODUCTS.map(({ label, iconId, path }) => (
             <Link
               key={iconId}
@@ -88,7 +81,7 @@ export default function ProductMenu({
                 src={`${ASSETS_BASE_URL}/${iconId}.svg`}
                 alt={label}
               />
-              <p className={cn("text-center font-inter")}>{label}</p>
+              <p className={cn("text-center")}>{label}</p>
             </Link>
           ))}
         </ul>

@@ -26,10 +26,10 @@ const defaultVariants = {
   visible: { opacity: 1 },
 };
 
-// const staggerTransition = {
-//   delayChildren: 0.9,
-//   staggerDirection: -1,
-// };
+const staggerTransition = {
+  delayChildren: 0.9,
+  staggerDirection: -1,
+};
 
 export default function InView({
   children,
@@ -39,7 +39,7 @@ export default function InView({
   className,
 }: InViewProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, viewOptions); // not sure if i'll need it
+  const isInView = useInView(ref, viewOptions);
   return (
     <div className={cn("overflow-clip h-fit", className)}>
       <motion.div
@@ -49,9 +49,7 @@ export default function InView({
         whileInView="visible"
         variants={variants}
         transition={transition}
-        // transition={staggerTransition}
-
-        // viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true }}
       >
         {children}
       </motion.div>

@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Logo from "../Logo";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
@@ -21,10 +21,16 @@ export default function Header() {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
-  useEffect(() => {
+  const handleScreenChange = useCallback(() => {
     // reset when page or width of viewport changes
-    isProductMenuOpen && setIsProductMenuOpen(false);
-    isMobileMenuOpen && setIsMobileMenuOpen(false);
+    if (isProductMenuOpen) setIsProductMenuOpen(false);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+  }, []);
+
+  useEffect(() => {
+    // handleScreenChange();
+    if (isProductMenuOpen) setIsProductMenuOpen(false);
+    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
   return (

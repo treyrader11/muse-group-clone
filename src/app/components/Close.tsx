@@ -6,6 +6,7 @@ type CloseProps = {
   className?: string;
   onClick: () => void;
 };
+
 export default function Close({ className, onClick }: CloseProps) {
   return (
     <a
@@ -13,15 +14,12 @@ export default function Close({ className, onClick }: CloseProps) {
       className={cn(
         "hover:opacity-60",
         "absolute",
+        "size-8",
         "right-0",
         "top-[8%]",
-        // "z-[90]",
-        "z-2",
-
         className
       )}
     >
-      {/* https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/6514243500b73ab4728583a9_cross.svg */}
       <Image
         fill
         alt="close"

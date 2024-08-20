@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { ASSETS_BASE_URL, PRODUCTS } from "@/lib/constants";
@@ -49,7 +51,6 @@ function ProductCard({
         { "text-white": onColor },
         "min-h-[80vh]",
         "pt-[160%]",
-        // "sm:pt-0",
         "xs:pt-0"
       )}
     >
@@ -103,7 +104,6 @@ function ProductCard({
           <p
             className={cn(
               "tracking-[-1px]",
-              "font-inter",
               "sm:text-2xl",
               "leading-[150%]"
             )}

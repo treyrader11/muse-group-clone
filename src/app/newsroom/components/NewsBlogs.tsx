@@ -4,8 +4,6 @@ import { type BlogPost as TBlogPost } from "@/lib/constants";
 import BlogPost from "../../components/BlogPost";
 
 export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
-  const hasMultipleBlogs = data.length > 1;
-
   return (
     <section>
       {/* // You can use a key on the parent element (ul or section) that changes when the filtered data changes. This will force React to fully re-render the element and apply the animation again.
@@ -14,7 +12,7 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
         // key={data.length}
         className={cn(
           "grid",
-          hasMultipleBlogs // center and max-width if only 1 blog
+          data.length > 1 // center and max-width if only 1 blog
             ? "md:grid-cols-2 max-w-7xl"
             : "max-w-4xl grid-cols-1",
           "md:gap-8",

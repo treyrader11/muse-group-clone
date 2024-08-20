@@ -70,7 +70,7 @@ function Category({ className, onClick, children }: CategoryItemProps) {
         "sm:text-2xl",
         // needs to overlap bg image
         "relative",
-        "z-3",
+        "z-1",
         className
       )}
     >

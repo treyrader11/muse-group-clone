@@ -10,6 +10,9 @@ import Preloader from "./components/Preloader";
 import InView from "./components/InView";
 import { createTransition, slideUpVariants } from "@/lib/motion";
 
+// const VIEW_OPTIONS = { once: true, margin: "0px 0px -250px 0px" };
+const VIEW_OPTIONS = { once: true };
+
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -39,6 +42,7 @@ function WhatMuseCreates() {
   return (
     <>
       <InView
+        viewOptions={VIEW_OPTIONS}
         variants={slideUpVariants}
         transition={createTransition({ ease: "linear", duration: 0.5 })}
       >
@@ -49,6 +53,7 @@ function WhatMuseCreates() {
         </h1>
       </InView>
       <InView
+        viewOptions={VIEW_OPTIONS}
         variants={slideUpVariants}
         transition={createTransition({ ease: "linear", duration: 0.5 })}
       >
@@ -60,7 +65,11 @@ function WhatMuseCreates() {
 
 function MoreToCome() {
   return (
-    <InView variants={slideUpVariants} transition={createTransition()}>
+    <InView
+      viewOptions={VIEW_OPTIONS}
+      variants={slideUpVariants}
+      transition={createTransition()}
+    >
       <h2 className="title-mask text-gradient-green">
         and so much <br />
         more to come

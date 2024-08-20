@@ -26,11 +26,6 @@ const defaultVariants = {
   visible: { opacity: 1 },
 };
 
-const staggerTransition = {
-  delayChildren: 0.9,
-  staggerDirection: -1,
-};
-
 export default function InView({
   children,
   variants = defaultVariants,
@@ -46,10 +41,10 @@ export default function InView({
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        whileInView="visible"
+        // whileInView="visible"
+        // viewport={{ once: true }}
         variants={variants}
         transition={transition}
-        viewport={{ once: true }}
       >
         {children}
       </motion.div>

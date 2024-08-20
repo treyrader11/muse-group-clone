@@ -1,15 +1,15 @@
+"use client";
+
 import { cn } from "@/lib/utils";
 import React from "react";
 import { type BlogPost as TBlogPost } from "@/lib/constants";
 import BlogPost from "../../components/BlogPost";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
   return (
     <section>
-      {/* // You can use a key on the parent element (ul or section) that changes when the filtered data changes. This will force React to fully re-render the element and apply the animation again.
-          // By setting the key on the section element to something that changes with the data (like data.length), React will treat it as a new element on each filter, thus re-triggering the animation. */}
       <ul
-        // key={data.length}
         className={cn(
           "grid",
           data.length > 1 // center and max-width if only 1 blog
@@ -21,11 +21,18 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
           "mx-auto"
         )}
       >
-        {data.map((item, i) => (
-          <li className="animate-fade-in" key={i}>
-            <BlogPost {...item} />
-          </li>
-        ))}
+        <AnimatePresence mode="wait">
+          {data.map((item, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+            >
+              <BlogPost {...item} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </ul>
     </section>
   );

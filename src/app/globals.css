@@ -220,4 +220,39 @@
       hsl(var(--lilac)) 80%
     );
   }
+  .hamburger {
+    /* transform-origin: center center;
+    transition: 0.25s cubic-bezier(0.37, 1.2, 0.42, 1.02);
+    will-change: transform;
+    height: 0.09em;
+    width: 1em; */
+
+    height: 1em;
+    width: 1em;
+    min-width: 1em;
+    min-height: 1em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hamburger::before,
+  .hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 0.09em;
+    width: 1em;
+    background-color: currentColor;
+    transform-origin: center center;
+    transition: 0.25s cubic-bezier(0.37, 1.2, 0.42, 1.02);
+    will-change: transform;
+  }
+  .hamburger::before {
+    transform: translateY(-0.09em);
+  }
+  .hamburger::after {
+    transform: translateY(0.09em);
+  }
 }

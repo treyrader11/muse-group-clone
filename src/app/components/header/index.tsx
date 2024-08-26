@@ -2,7 +2,7 @@
 
 import { cn } from "@/lib/utils";
 import Logo from "../Logo";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 import { useWindowDimensions } from "@/lib/hooks/useWindowDimensions";
@@ -10,6 +10,7 @@ import { useScrollPosition } from "@/lib/hooks/useScrollPosition";
 import Burger from "../Burger";
 import Nav, { MobileNav } from "./Nav";
 import ProductMenu from "./ProductMenu";
+import Hamburger from "../Hamburger";
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -21,21 +22,14 @@ export default function Header() {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
-  const handleScreenChange = useCallback(() => {
-    // reset when page or width of viewport changes
-    if (isProductMenuOpen) setIsProductMenuOpen(false);
-    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
-  }, []);
-
   useEffect(() => {
-    // handleScreenChange();
-    if (isProductMenuOpen) setIsProductMenuOpen(false);
-    if (isMobileMenuOpen) setIsMobileMenuOpen(false);
+    setIsProductMenuOpen(false);
+    setIsMobileMenuOpen(false);
   }, [pathname, isSmallScreen]);
 
   return (
     <>
-      <Overlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
+      <HeaderOverlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
       <header
         className={cn(
           "inset-x-0",
@@ -57,7 +51,7 @@ export default function Header() {
             "gap-8",
             "h-full",
             "max-w-[1366px]",
-            "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding
+            "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding. tw equivalent aint working
           )}
         >
           <Logo
@@ -69,8 +63,11 @@ export default function Header() {
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
             className={cn("hidden md:flex self-start")} // hack margin
             isActive={(href) => {
-              // If the product menu is open, only make the products link active
-              if (isProductMenuOpen && href === "/products") return true;
+              // If the product menu is open, return true for the products link
+              if (isProductMenuOpen && href === "#") {
+                return true;
+              }
+
               // Otherwise, match based on the current pathname
               return href === pathname;
             }}
@@ -84,7 +81,7 @@ export default function Header() {
         className="z-highest md:hidden fixed top-3 left-[4%]"
       />
 
-      <Burger
+      <Hamburger
         isActive={isMobileMenuOpen}
         onClick={() => {
           setIsProductMenuOpen(false);
@@ -117,9 +114,10 @@ export default function Header() {
           setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
           className={cn("flex-col flex-center pb-[70px]")}
           isActive={(href) => {
-            // If the product menu is open, only make the products link active
-            if (isProductMenuOpen && href === "/products") true;
-            // if (isProductMenuOpen) href === "/products";
+            // If the product menu is open, return true for the products link
+            if (isProductMenuOpen && href === "#") {
+              return true;
+            }
             // Otherwise, match based on the current pathname
             return href === pathname;
           }}
@@ -129,13 +127,12 @@ export default function Header() {
   );
 }
 
-function Overlay({ className }: { className?: string }) {
+function HeaderOverlay({ className }: { className?: string }) {
   const scrollY = useScrollPosition(85);
   return (
     <motion.div
       style={{
         transform: `translateY(${scrollY}px)`,
-        // height: `${NAV_HEIGHT}px`,
       }}
       className={cn(
         "fixed",

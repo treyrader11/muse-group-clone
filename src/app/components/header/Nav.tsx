@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ROUTES, NAV_HEIGHT, SMALL_HEIGHT_PERCENTAGE } from "@/lib/constants";
+import { ROUTES } from "@/lib/constants";
 
 type NavProps = {
   className?: string;
@@ -34,8 +34,7 @@ export default function Nav({
       {ROUTES.map(({ path, label }) => (
         <Link
           onClick={() => {
-            if (path === "/products") setIsProductMenuOpen(true);
-            else setIsProductMenuOpen(false);
+            if (path === "#") setIsProductMenuOpen(true);
           }}
           className={cn("hover:opacity-60", {
             "opacity-60": isActive(path),
@@ -72,7 +71,7 @@ export function MobileNav({ children, isActive, className }: MobileNavProps) {
         "duration-[600ms]",
         "ease-in-out",
         "-translate-y-full",
-        // Use both screen and svh incase svh is not supported
+        // Use both screen and svh in case svh is not supported
         "min-h-screen",
         "min-h-[100svh]",
         isActive ? "translate-y-0" : "-translate-y-full",

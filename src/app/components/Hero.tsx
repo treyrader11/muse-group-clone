@@ -87,7 +87,7 @@ function BackgroundImage({ className, src }: BackgroundImageProps) {
     >
       <Image
         src={`${ASSETS_BASE_URL}/${src}`}
-        alt="newsroom banner"
+        alt="Hero background"
         width={1200}
         height={630}
         loading="lazy"

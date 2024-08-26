@@ -5,6 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
+// Can achieve this will db query
 export function sortByDate<T extends { date: string }>(data: T[]): T[] {
   return data.sort((a, b) => {
     const dateA = new Date(a.date).getTime();

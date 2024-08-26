@@ -21,18 +21,18 @@ type InViewProps = {
   className?: string;
 };
 
-const defaultVariants = {
+const DEFAULT_VARIANTS = {
   hidden: { opacity: 0 },
   visible: { opacity: 1 },
 };
 
-const VIEW_OPTIONS = { once: true };
+const DEFAULT_VIEW_OPTIONS = { once: true };
 
 export default function InView({
   children,
-  variants = defaultVariants,
+  variants = DEFAULT_VARIANTS,
   transition,
-  viewOptions = VIEW_OPTIONS,
+  viewOptions = DEFAULT_VIEW_OPTIONS,
   className,
 }: InViewProps) {
   const ref = useRef(null);
@@ -43,8 +43,6 @@ export default function InView({
         ref={ref}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        // whileInView="visible"
-        // viewport={{ once: true }} // this logic goes in isInView
         variants={variants}
         transition={transition}
       >

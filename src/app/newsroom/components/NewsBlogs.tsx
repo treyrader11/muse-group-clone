@@ -21,7 +21,7 @@ export default function NewsBlogs({ data }: { data: TBlogPost[] }) {
           "mx-auto"
         )}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {data.map((item, i) => (
             <motion.div
               key={i}

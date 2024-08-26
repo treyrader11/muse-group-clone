@@ -34,7 +34,8 @@ export default function Button({
         "text-white",
         "font-[500]",
         "tracking-tighter",
-        "leading-[44px]"
+        "leading-[44px]",
+        className
       )}
     >
       {children}

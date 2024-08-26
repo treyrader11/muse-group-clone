@@ -17,7 +17,8 @@ export default function Team() {
         "flex-col",
         "gap-6",
         "font-oswald",
-        "text-center"
+        "text-center",
+        // "relative"
       )}
     >
       <TeamLogo />
@@ -43,7 +44,7 @@ export default function Team() {
 function TeamLogo({ className }: { className?: string }) {
   return (
     <div className={cn("flex items-center gap-3", className)}>
-      <div className={cn("relative size-6 flex-center")}>
+      <div className={cn("relative size-6 ")}>
         <Logo className="size-full absolute" />
       </div>
 
@@ -62,25 +63,47 @@ function TeamLogo({ className }: { className?: string }) {
   );
 }
 
-function Avatars({ className }: { className?: string }) {
+
+
+type AvatarSetProps = {
+  avatars: string[];
+  className?: string;
+};
+
+function AvatarSet({ avatars, className }: AvatarSetProps) {
   return (
-    <div className={cn("flex flex-col font-inter px-8", className)}>
-      <div className={cn("flex gap-3 flex-wrap", className)}>
-        {TEAM_AVATARS.map((avatar, i) => (
-          <div className="relative size-12" key={i}>
-            <Image
-              src={avatar}
-              alt="Avatar 1"
-              fill
-              className="object-contain rounded-full"
-            />
-          </div>
-        ))}
-        <p>
-          People Operations, Revenue, Operations, Communications, Information
-          Security, Finance, Design & Brand
-        </p>
+    <div className={cn("flex gap-3 flex-wrap", className)}>
+      {avatars.map((avatar, i) => (
+        <div className="relative size-12" key={i}>
+          <Image
+            src={avatar}
+            alt={`Avatar ${i + 1}`}
+            fill
+            className="object-contain rounded-full"
+          />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// Avatars Component
+function Avatars({ className }: { className?: string }) {
+  const set1 = TEAM_AVATARS.slice(0, 6);
+  const set2 = TEAM_AVATARS.slice(6, 13);
+  const set3 = TEAM_AVATARS.slice(13, 19);
+
+  return (
+    <div className={cn("px-8 flex flex-col flex-center", className)}>
+      <div className="grid gap-4 grid-rows-3">
+        <AvatarSet avatars={set1} />
+        <AvatarSet avatars={set2} className="-ml-8" />
+        <AvatarSet avatars={set3} />
       </div>
+      <p className="mt-4">
+        People Operations, Revenue, Operations, Communications, Information
+        Security, Finance, Design & Brand
+      </p>
     </div>
   );
 }

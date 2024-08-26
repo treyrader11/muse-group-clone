@@ -137,6 +137,28 @@ export const SLIDER_IMAGES = [
   },
 ];
 
+export const TEAM_AVATARS = [
+  "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+  "https://i.pravatar.cc/150?u=a04258a2462d826712d",
+  "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+  "https://i.pravatar.cc/150?u=a04258114e29026302d",
+  "https://i.pravatar.cc/150?u=a04258114e29026702d",
+  "https://i.pravatar.cc/150?u=a04258114e29026708c",
+  "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+  "https://i.pravatar.cc/150?u=a04258a2462d826712d",
+  "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+  "https://i.pravatar.cc/150?u=a04258114e29026302d",
+  "https://i.pravatar.cc/150?u=a04258114e29026702d",
+  "https://i.pravatar.cc/150?u=a04258114e29026708c",
+  "https://i.pravatar.cc/150?u=a042581f4e29026024d",
+  "https://i.pravatar.cc/150?u=a04258a2462d826712d",
+  "https://i.pravatar.cc/150?u=a042581f4e29026704d",
+  "https://i.pravatar.cc/150?u=a04258114e29026302d",
+  "https://i.pravatar.cc/150?u=a04258114e29026702d",
+  "https://i.pravatar.cc/150?u=a04258114e29026708c",
+  "https://i.pravatar.cc/150?u=a04258a2462d826712d",
+];
+
 export const BANNERS = [
   {
     id: "6511efa10919fb9000588fef_Career",

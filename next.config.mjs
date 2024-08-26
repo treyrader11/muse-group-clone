@@ -5,6 +5,7 @@ const nextConfig = {
     remotePatterns: [
       { hostname: `cdn.prod.website-files.com` },
       { hostname: `w3.org` },
+      { hostname: `i.pravatar.cc` },
     ],
   },
 };

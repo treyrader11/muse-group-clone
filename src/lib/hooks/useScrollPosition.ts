@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
-import { NAV_HEIGHT } from "../constants";
 
-export const useScrollPosition = (cap: number = NAV_HEIGHT) => {
+export const useScrollPosition = (cap: number = 71) => {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {

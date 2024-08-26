@@ -75,6 +75,10 @@
     cursor: pointer;
   }
 
+  main {
+    overflow: clip;
+  }
+
   /* Styles for screens between 640px and 768px. same as sm: breakpoint */
 
   @media (min-width: 500px) {

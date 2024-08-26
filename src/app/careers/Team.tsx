@@ -17,7 +17,7 @@ export default function Team() {
         "flex-col",
         "gap-6",
         "font-oswald",
-        "text-center",
+        "text-center"
         // "relative"
       )}
     >
@@ -63,8 +63,6 @@ function TeamLogo({ className }: { className?: string }) {
   );
 }
 
-
-
 type AvatarSetProps = {
   avatars: string[];
   className?: string;
@@ -94,13 +92,13 @@ function Avatars({ className }: { className?: string }) {
   const set3 = TEAM_AVATARS.slice(13, 19);
 
   return (
-    <div className={cn("px-8 flex flex-col flex-center", className)}>
+    <div className={cn("flex flex-col gap-8 flex-center", className)}>
       <div className="grid gap-4 grid-rows-3">
         <AvatarSet avatars={set1} />
         <AvatarSet avatars={set2} className="-ml-8" />
         <AvatarSet avatars={set3} />
       </div>
-      <p className="mt-4">
+      <p className={cn("mt-4 leading-10 font-inter tracking-normal")}>
         People Operations, Revenue, Operations, Communications, Information
         Security, Finance, Design & Brand
       </p>

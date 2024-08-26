@@ -34,10 +34,12 @@ export default function Header() {
         className={cn(
           "fixed",
           "inset-x-0",
-          // "py-3",
-          // "h-[var(--header-height)]",
-          // "md:h-[calc(var(--header-height)_+_16px)]",
+          "top-0", // may not be needed
+          // needs work
 
+          "py-3",
+          "h-[var(--header-height)]",
+          // "md:h-[calc(var(--header-height)_+_16px)]",
           "z-highest",
           "px-[4%]",
           { "text-white": isNewsroomPage }
@@ -45,17 +47,15 @@ export default function Header() {
       >
         <div
           className={cn(
-            "py-3",
-            "h-[var(--header-height)]",
+            // "py-5",
+            // "h-[var(--header-height)]", // set height here due to product menu overlap and z-index
             "md:h-[calc(var(--header-height)_+_16px)]",
-
-            "flex",
             "items-center",
+            "flex",
             "md:grid",
-            "grid-cols-2",
+            "md:grid-cols-2",
             "gap-8",
             "max-w-[1366px]",
-
             "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding. tw equivalent aint working
           )}
         >

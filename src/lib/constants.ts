@@ -26,7 +26,7 @@ export const PRODUCTS = [
       mobile: "667ca059c2fc56b858c26dd4_First%20Screen%20mob%20index.webp",
       desktop: "667ca0158cbfffe8a5cf2a01_MS-index.webp",
     },
-    path: "musescore.com",
+    path: "musescore",
     description: "The home of sheet music.",
     onColor: true,
   },
@@ -37,7 +37,7 @@ export const PRODUCTS = [
       mobile: "6567294fc86a15e485b81bc8_MS4.jpg",
       desktop: "6511efa10919fb9000588fd0_ms4_web_mainpage.webp",
     },
-    path: "/musescore-studio",
+    path: "musescore-studio",
     description: "The world’s most popular composition and notation software.",
   },
   {
@@ -47,7 +47,7 @@ export const PRODUCTS = [
       mobile: "655d04e35a8770eed85927d1_ADCT.webp",
       desktop: "6511efa10919fb9000588fd1_ADCT.webp",
     },
-    path: "/audacity",
+    path: "audacity",
     description: "The number one audio recording and editing app.",
     onColor: true,
   },
@@ -58,14 +58,14 @@ export const PRODUCTS = [
       mobile: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
       desktop: "667ca7024cfe1597b6e0b16b_MH-indexjpg.jpg",
     },
-    path: "/muse-hub",
+    path: "musehub",
     description: "One hub for all your creative apps.",
     onColor: true,
   },
   {
     label: "Audio.com",
     iconId: "667b441b78e0517ea5a1b0c2_audio",
-    path: "audio.com",
+    path: "audio",
     banner: {
       mobile: "667ca1578372278c1e3b9179_First%20Screen%20mob%20index.webp",
       desktop: "667ca1053439d5df14de5c63_AU.webp",
@@ -77,7 +77,7 @@ export const PRODUCTS = [
   {
     label: "StaffPad",
     iconId: "6511efa00919fb9000588fc4_logo_mh-1",
-    path: "/staffpad",
+    path: "staffpad",
     banner: {
       mobile: "6511efa10919fb9000588fdd_SP.webp",
       desktop: "6511efa10919fb9000588fd4_SP.webp",
@@ -89,7 +89,7 @@ export const PRODUCTS = [
   {
     label: "Tonebridge",
     iconId: "667d5b773ccdfd0443b55ad4_tb",
-    path: "/tonebridge",
+    path: "tonebridge",
     banner: {
       mobile: "6511efa10919fb9000588fdb_TB.webp",
       desktop: "6511efa10919fb9000588fd5_TB.webp",

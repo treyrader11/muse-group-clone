@@ -80,7 +80,8 @@ function ProductLink({ iconId, path, label }: ProductLinkProps) {
   return (
     <Link
       key={iconId}
-      href={path}
+      target="_blank"
+      href={`https://www.mu.se/${path}`}
       className={cn("items-center group flex flex-col gap-2")}
     >
       <div
@@ -97,7 +98,7 @@ function ProductLink({ iconId, path, label }: ProductLinkProps) {
           src={`${ASSETS_BASE_URL}/${iconId}.svg`}
           alt={label}
           className={cn(
-            "group-hover:-mt-2",
+            "md:group-hover:-mt-2",
             "transition-all",
             "duration-300",
             "ease-in-out"

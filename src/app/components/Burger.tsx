@@ -91,7 +91,8 @@ export default function Burger({
           "h-4",
           "sm:h-[1.4rem]",
           "relative",
-          "m-5",
+          // "mx-5",
+          // "mt"
           "duration-200",
           // delays rotation (make same as overlay fall)
           isActive && cn("delay-300", "rotate-[135deg]")

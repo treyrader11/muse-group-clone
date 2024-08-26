@@ -32,12 +32,11 @@ export default function Header() {
       <HeaderOverlay className={cn(isNewsroomPage ? "bg-black" : "bg-white")} />
       <header
         className={cn(
-          "inset-x-0",
           "fixed",
-          "top-0",
+          "inset-x-0",
           "h-[var(--header-height)]",
           "md:h-[calc(var(--header-height)_+_16px)]",
-          "z-2",
+          "z-highest",
           "py-3",
           "px-[4%]",
           { "text-white": isNewsroomPage }
@@ -45,20 +44,18 @@ export default function Header() {
       >
         <div
           className={cn(
-            "grid",
+            "flex",
+            "items-center",
+            "md:grid",
             "grid-cols-2",
-            "place-content-start",
             "gap-8",
-            "h-full",
             "max-w-[1366px]",
             "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding. tw equivalent aint working
           )}
         >
           <Logo
             color={isNewsroomPage ? "white" : "black"}
-            className={cn("hidden md:block ")}
           />
-
           <Nav
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
             className={cn("hidden md:flex self-start")} // hack margin
@@ -71,29 +68,20 @@ export default function Header() {
               return href === pathname;
             }}
           />
+          <Burger
+            isActive={isMobileMenuOpen}
+            onClick={() => {
+              setIsProductMenuOpen(false);
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+            }}
+            className={cn(
+              "md:hidden",
+              "ml-auto",
+              isNewsroomPage ? "[&_span]:bg-white" : "[&_span]:bg-black"
+            )}
+          />
         </div>
       </header>
-
-      {/* Put these here because they must over lap overlays */}
-      <Logo
-        color={isNewsroomPage ? "white" : "black"}
-        className="z-highest md:hidden fixed top-3 left-[4%]"
-      />
-
-      <Burger
-        isActive={isMobileMenuOpen}
-        onClick={() => {
-          setIsProductMenuOpen(false);
-          setIsMobileMenuOpen(!isMobileMenuOpen);
-        }}
-        className={cn(
-          "right-0",
-          "md:hidden",
-          "fixed",
-          "z-highest",
-          isNewsroomPage ? "[&_span]:bg-white" : "[&_span]:bg-black"
-        )}
-      />
 
       <ProductMenu
         isActive={isProductMenuOpen}
@@ -111,11 +99,9 @@ export default function Header() {
           setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
           className={cn("flex-col flex-center pb-[70px]")}
           isActive={(href) => {
-            // If the product menu is open, return true for the products link
             if (isProductMenuOpen && href === "#") {
               return true;
             }
-            // Otherwise, match based on the current pathname
             return href === pathname;
           }}
         />

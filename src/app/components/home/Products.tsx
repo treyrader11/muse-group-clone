@@ -22,6 +22,7 @@ type CardProps = {
   iconId: string;
   onColor?: boolean;
   banner: { mobile: string; desktop: string };
+  path: string;
 };
 
 function ProductCard({
@@ -30,12 +31,14 @@ function ProductCard({
   iconId,
   onColor,
   banner,
+  path,
 }: CardProps) {
   const { width } = useWindowDimensions();
   const isSmallScreen = width < 768;
 
   return (
     <Card
+      linkTo={`https://www.mu.se/${path}`}
       style={{
         backgroundImage: `url(${ASSETS_BASE_URL}/${
           isSmallScreen ? banner.mobile : banner.desktop
@@ -101,13 +104,7 @@ function ProductCard({
             </div>
           </ProductTitle>
 
-          <p
-            className={cn(
-              "tracking-[-1px]",
-              "sm:text-2xl",
-              "leading-[150%]"
-            )}
-          >
+          <p className={cn("tracking-[-1px]", "sm:text-2xl", "leading-[150%]")}>
             {description}
           </p>
         </div>

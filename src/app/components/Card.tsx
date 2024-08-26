@@ -18,6 +18,7 @@ export default function Card({
   if (linkTo) {
     return (
       <Link
+        target="_blank"
         href={linkTo}
         style={style}
         className={cn(
@@ -25,7 +26,6 @@ export default function Card({
           "flex-col",
           "relative",
           "w-full",
-          // "px-[40px]",
           "rounded-2xl",
           "sm:rounded-3xl",
           "md:rounded-[2rem]",

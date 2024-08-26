@@ -1,3 +1,4 @@
+import { ASSETS_BASE_URL } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React from "react";
@@ -5,25 +6,27 @@ import React from "react";
 type CloseProps = {
   className?: string;
   onClick: () => void;
+  iconUrl?: string;
 };
 
-export default function Close({ className, onClick }: CloseProps) {
+export default function Close({ className, onClick, iconUrl }: CloseProps) {
   return (
     <a
       onClick={onClick}
       className={cn(
         "hover:opacity-60",
-        "absolute",
-        "size-8",
-        "right-0",
-        "top-[8%]",
+        "hidden",
+        "md:inline-block",
+        "ml-auto",
+
         className
       )}
     >
       <Image
-        fill
-        alt="close"
-        src="https://cdn.prod.website-files.com/6511efa00919fb9000588f9a/651426c95acecdb34f8bdbd6_cross.svg"
+        width={40}
+        height={40}
+        alt="close button"
+        src={`${ASSETS_BASE_URL}/${iconUrl}`}
       />
     </a>
   );

@@ -35,8 +35,8 @@ export default function Header() {
           "inset-x-0",
           "fixed",
           "top-0",
-          "h-[71px]",
-          "md:h-[87px]",
+          "h-[var(--header-height)]",
+          "md:h-[calc(var(--header-height)_+_16px)]",
           "z-2",
           "py-3",
           "px-[4%]",
@@ -67,7 +67,6 @@ export default function Header() {
               if (isProductMenuOpen && href === "#") {
                 return true;
               }
-
               // Otherwise, match based on the current pathname
               return href === pathname;
             }}
@@ -81,7 +80,7 @@ export default function Header() {
         className="z-highest md:hidden fixed top-3 left-[4%]"
       />
 
-      <Hamburger
+      <Burger
         isActive={isMobileMenuOpen}
         onClick={() => {
           setIsProductMenuOpen(false);
@@ -99,9 +98,7 @@ export default function Header() {
       <ProductMenu
         isActive={isProductMenuOpen}
         setIsProductMenuOpen={setIsProductMenuOpen}
-        className={cn({
-          "bg-black text-white": isNewsroomPage,
-        })}
+        background={isNewsroomPage ? "dark" : "light"}
       />
 
       <MobileNav
@@ -137,8 +134,8 @@ function HeaderOverlay({ className }: { className?: string }) {
       className={cn(
         "fixed",
         "top-0",
-        "h-[71px]",
-        "md:h-[87px]",
+        "h-[var(--header-height)]",
+        "md:h-[calc(var(--header-height)_+_16px)]",
         "w-full",
         "z-2",
         className

@@ -7,14 +7,105 @@ import Close from "../Close";
 type ProductsMenuProps = {
   isActive: boolean;
   className?: string;
+  background: "dark" | "light";
   setIsProductMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default function ProductMenu({
   isActive,
   className,
+  background,
   setIsProductMenuOpen,
 }: ProductsMenuProps) {
+  const isDarkBG = background === "dark";
+  return (
+    <DropdownOverlay
+      className={cn(
+        {
+          "translate-y-0": isActive,
+          "bg-black text-white": isDarkBG,
+        },
+        "w-screen",
+        className
+      )}
+    >
+      <nav
+        className={cn(
+          "md:pt-8",
+          "top-[var(--header-height)]",
+          "md:border-t",
+          "border-black/40",
+          { "border-white/10": isDarkBG },
+          "w-[93vw]",
+          "flex",
+          "flex-col",
+          className
+        )}
+      >
+        <Close
+          iconUrl={
+            isDarkBG
+              ? "651426c95acecdb34f8bdbd6_cross.svg"
+              : "6514243500b73ab4728583a9_cross.svg"
+          }
+          onClick={() => setIsProductMenuOpen(false)}
+          className={cn("")}
+        />
+        <div
+          className={cn(
+            "max-w-2xl",
+            "gap-10",
+            "mx-auto",
+            "grid",
+            "grid-cols-2",
+            "md:grid-cols-4"
+          )}
+        >
+          {PRODUCTS.map((prod, i) => (
+            <ProductLink key={i} {...prod} />
+          ))}
+        </div>
+      </nav>
+    </DropdownOverlay>
+  );
+}
+
+type ProductLinkProps = {
+  iconId: string;
+  path: string;
+  label: string;
+};
+
+function ProductLink({ iconId, path, label }: ProductLinkProps) {
+  return (
+    <Link
+      key={iconId}
+      href={path}
+      className={cn("items-center flex flex-col gap-2")}
+    >
+      <div
+        className={cn(
+          "relative",
+          "min-h-16",
+          "min-w-16",
+          "size-20",
+          "md:size-32"
+        )}
+      >
+        <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
+      </div>
+
+      <p className={cn("text-center")}>{label}</p>
+    </Link>
+  );
+}
+
+type DropdownOverlayProps = {
+  children: React.ReactNode;
+  className?: string;
+};
+
+function DropdownOverlay({ children, className }: DropdownOverlayProps) {
   return (
     <div
       className={cn(
@@ -27,65 +118,13 @@ export default function ProductMenu({
         "ease-in-out",
         "pt-8",
         "md:pt-0",
-        isActive ? "translate-y-0" : "-translate-y-[120%]",
+        "-translate-y-[120%]",
         "grid",
         "place-content-center",
         className
       )}
     >
-      <nav
-        className={cn(
-          "md:mt-[84px]",
-          "md:border-t",
-          "border-white/10",
-          "md:w-[93vw]", // not sure about breakpoint
-          "relative",
-          className
-        )}
-      >
-        <Close
-          onClick={() => setIsProductMenuOpen(false)}
-          className="hidden md:block absolute"
-        />
-        <ul
-          className={cn(
-            "max-w-3xl",
-            "gap-8",
-            "px-10",
-            "md:pt-20",
-            "mx-auto",
-            "flex",
-            "flex-wrap",
-            "justify-center",
-            "items-evenly",
-            "md:grid",
-            "grid-cols-4"
-          )}
-        >
-          {PRODUCTS.map(({ label, iconId, path }) => (
-            <Link
-              key={iconId}
-              href={path}
-              className={cn(
-                "relative",
-                "w-[120px]",
-                "items-center",
-                "flex",
-                "flex-col",
-                "gap-2"
-              )}
-            >
-              <Image
-                width={64}
-                height={64}
-                src={`${ASSETS_BASE_URL}/${iconId}.svg`}
-                alt={label}
-              />
-              <p className={cn("text-center")}>{label}</p>
-            </Link>
-          ))}
-        </ul>
-      </nav>
+      {children}
     </div>
   );
 }

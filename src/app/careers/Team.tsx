@@ -105,3 +105,38 @@ function Avatars({ className }: { className?: string }) {
     </div>
   );
 }
+
+// function Avatars({ className }: { className?: string }) {
+//   return (
+//     <div className={cn("flex flex-col gap-8", className)}>
+//       <div
+//         className="grid gap-4"
+//         style={{
+//           gridTemplateColumns: "repeat(7, minmax(0, 1fr))", // 7 columns
+//           gridAutoFlow: "dense", // Fill grid cells densely
+//         }}
+//       >
+//         {TEAM_AVATARS.map((avatar, i) => (
+//           <div
+//             key={i}
+//             className={cn(
+//               "relative size-12",
+//               i % 13 < 6 ? "col-span-1" : "col-span-1" // Adjust column span based on position
+//             )}
+//           >
+//             <Image
+//               src={avatar}
+//               alt={`Avatar ${i + 1}`}
+//               fill
+//               className="object-contain rounded-full"
+//             />
+//           </div>
+//         ))}
+//       </div>
+//       <p className={cn("mt-4 leading-10 font-inter tracking-normal")}>
+//         People Operations, Revenue, Operations, Communications, Information
+//         Security, Finance, Design & Brand
+//       </p>
+//     </div>
+//   );
+// }

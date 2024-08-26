@@ -34,28 +34,32 @@ export default function Header() {
         className={cn(
           "fixed",
           "inset-x-0",
-          "h-[var(--header-height)]",
-          "md:h-[calc(var(--header-height)_+_16px)]",
+          // "py-3",
+          // "h-[var(--header-height)]",
+          // "md:h-[calc(var(--header-height)_+_16px)]",
+
           "z-highest",
-          "py-3",
           "px-[4%]",
           { "text-white": isNewsroomPage }
         )}
       >
         <div
           className={cn(
+            "py-3",
+            "h-[var(--header-height)]",
+            "md:h-[calc(var(--header-height)_+_16px)]",
+
             "flex",
             "items-center",
             "md:grid",
             "grid-cols-2",
             "gap-8",
             "max-w-[1366px]",
+
             "[grid-template-columns:1fr_1fr]" // keeps contents from overflowing pass padding. tw equivalent aint working
           )}
         >
-          <Logo
-            color={isNewsroomPage ? "white" : "black"}
-          />
+          <Logo color={isNewsroomPage ? "white" : "black"} />
           <Nav
             setIsProductMenuOpen={() => setIsProductMenuOpen(true)}
             className={cn("hidden md:flex self-start")} // hack margin

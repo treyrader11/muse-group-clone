@@ -25,7 +25,7 @@ export default function ProductMenu({
           "translate-y-0": isActive,
           "bg-black text-white": isDarkBG,
         },
-        "w-screen",
+
         className
       )}
     >
@@ -81,7 +81,7 @@ function ProductLink({ iconId, path, label }: ProductLinkProps) {
     <Link
       key={iconId}
       href={path}
-      className={cn("items-center flex flex-col gap-2")}
+      className={cn("items-center group flex flex-col gap-2")}
     >
       <div
         className={cn(
@@ -92,7 +92,17 @@ function ProductLink({ iconId, path, label }: ProductLinkProps) {
           "md:size-32"
         )}
       >
-        <Image fill src={`${ASSETS_BASE_URL}/${iconId}.svg`} alt={label} />
+        <Image
+          fill
+          src={`${ASSETS_BASE_URL}/${iconId}.svg`}
+          alt={label}
+          className={cn(
+            "group-hover:-mt-2",
+            "transition-all",
+            "duration-300",
+            "ease-in-out"
+          )}
+        />
       </div>
 
       <p className={cn("text-center")}>{label}</p>

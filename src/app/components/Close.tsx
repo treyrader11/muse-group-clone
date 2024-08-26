@@ -18,7 +18,6 @@ export default function Close({ className, onClick, iconUrl }: CloseProps) {
         "hidden",
         "md:inline-block",
         "ml-auto",
-
         className
       )}
     >

@@ -1,6 +1,6 @@
 "use client";
 
-import Hero from "./components/home/Hero";
+import Hero from "./components/Hero";
 import Products from "./components/home/Products";
 import Featured from "./components/Featured";
 import Banners from "./components/home/Banners";
@@ -9,6 +9,7 @@ import { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
 import InView from "./components/InView";
 import { createTransition, slideUpVariants } from "@/lib/motion";
+import Slider from "./components/home/Slider";
 
 export default function HomePage() {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +22,16 @@ export default function HomePage() {
     <main>
       <Preloader isInView={isLoading} />
       <div className={cn("pt-24 md:pt-[128px] overflow-clip")}>
-        <Hero />
+        <Hero
+          className={cn(
+            "min-h-screen",
+            "max-h-[80vh]",
+            "max-h-[80dvh]",
+            "block"
+          )}
+        >
+          <Slider />
+        </Hero>
         <Featured className="py-0">
           <WhatMuseCreates />
         </Featured>

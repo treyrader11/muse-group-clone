@@ -119,7 +119,6 @@ export default function Hamburger({
         onClick={onClick}
         className={cn(
           "fixed",
-          // "relative",
           "-top-1",
           "sm:-top-4",
           "right-5",

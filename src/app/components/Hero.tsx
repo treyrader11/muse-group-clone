@@ -13,6 +13,7 @@ type HeroProps = {
   headlineText?: string;
   backgroundImageUrl?: string;
 };
+
 export default function Hero({
   children,
   className,
@@ -28,7 +29,7 @@ export default function Hero({
         "min-h-screen",
         "h-fit",
         "pb-8",
-        "px-12",
+        // "px-12",
         {
           "bg-purple": backgroundColor === "purple",
           "bg-limeGreen": backgroundColor === "green",
